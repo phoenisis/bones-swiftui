@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "SettingsBulletinLocalization.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "SettingsBulletinLocalization@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "SettingsBulletinLocalization@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

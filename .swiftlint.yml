@@ -1,0 +1,28 @@
+excluded:
+  - .build
+  - .swiftpm
+  - Package.swift
+
+included: # case-sensitive paths to include during linting. `--path` is ignored if present
+  - Sources/BonesDS
+
+line_length:
+  warning: 300
+  ignores_comments: true
+
+force_cast: error 
+force_try:
+  severity: error 
+
+disabled_rules:
+  - switch_case_alignment
+  - nesting
+  - identifier_name
+  - type_name
+  - implicit_getter
+  - vertical_parameter_alignment
+  - large_tuple
+  - cyclomatic_complexity
+  - private_over_fileprivate
+
+reporter: "xcode"
