@@ -99,7 +99,7 @@ extension Font {
 
 /// A custom `ViewModifier` that applies a specific font style to a view.
 struct FontModifier: ViewModifier {
-	let font: BonesFontStyle
+  let font: Font.BonesFontStyle
 
   /// Modifies the provided content with a custom font style.
   ///
@@ -131,7 +131,7 @@ extension View {
   /// Text("Hello, World!")
   ///     .font(.bones(style: .title))
   /// ```
-	public func font(_ font: BonesFontStyle) -> some View {
+  public func font(_ font: Font.BonesFontStyle) -> some View {
 		self
 			.modifier(FontModifier(font: font))
 	}
@@ -140,7 +140,7 @@ extension View {
 // MARK: - Preview
 /// A struct for previewing different font styles in the canvas.
 fileprivate struct FontPreview: View {
-	var fontStyle: BonesFontStyle
+  var fontStyle: Font.BonesFontStyle
 	var title: String
 	@State var isExpended: Bool = false
 
@@ -176,7 +176,7 @@ fileprivate struct FontPreview: View {
 struct Preview_Fonts: View {
   var body: some View {
 		List {
-			ForEach(BonesFontToken.allCases) { font in
+      ForEach(Font.BonesFontToken.allCases) { font in
 				FontPreview(fontStyle: .bones(font), title: font.id)
 					.previewDisplayName(font.id)
 			}

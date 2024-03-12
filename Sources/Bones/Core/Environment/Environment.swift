@@ -8,17 +8,11 @@
 import Foundation
 import SwiftUI
 
-/// A Boolean value indicating whether the design is square or not.
-///
-/// This computed property accesses the `envTheme.sizes.radius.isSquareDesign` property.
-public var isSquareDesign: Bool { get { envTheme.sizes.radius.isSquareDesign } }
-
 /// An instance of `EnvTheme`, representing the current environment theme.
 public var envTheme: EnvTheme = .init()
 
 /// Represents the current environment theme.
 public struct EnvTheme {
-  var fonts  : EnvFont   = .init()
   var colors : EnvColors = .init()
   var sizes  : EnvSizes  = .init()
   var assets : EnvAssets = .init()
@@ -53,11 +47,6 @@ public struct EnvAssets: Sendable {
     self.splashScreenUrl = splashScreenUrl
     self.mascotUrl = mascotUrl
   }
-}
-
-/// Represents the fonts configuration for the environment theme.
-struct EnvFont {
-	var isFontRelative: Bool = false
 }
 
 /// Represents the color configuration for the environment theme.
@@ -128,9 +117,6 @@ struct EnvSizes {
 
   /// Represents the radius sizes used in the environment theme.
 	struct RadiusSize {
-    /// A Boolean value that indicates whether the design uses square corners.
-		var isSquareDesign: Bool { get { small == 0 && medium == 0 }}
-
     /// Different radius sizes used within the environment theme.
 		var small: Double = 4
     var medium: Double = 8

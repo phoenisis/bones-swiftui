@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIFont {
   /// Loads TrueType fonts (TTF) bundled with the module.
   /// Iterates through all cases of `BonesFontName` enum and tries to load each font.
   public static func loadFontsTTF() {
-    BonesFontName.allCases
+    Font.BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "ttf") }
       .compactMap { $0 }
       .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
@@ -20,7 +21,7 @@ extension UIFont {
   /// Loads OpenType fonts (OTF) bundled with the module.
   /// Iterates through all cases of `BonesFontName` enum and tries to load each font.
   public static func loadFontsOTF() {
-    BonesFontName.allCases
+    Font.BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "otf") }
       .compactMap { $0 }
       .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
@@ -29,19 +30,19 @@ extension UIFont {
   /// Initializes a new font object based on the specified style.
   ///
   /// - Parameter style: The style of the font as defined in `BonesFontStyle`.
-  public convenience init(_ style: BonesFontStyle) {
+  public convenience init(_ style: Font.BonesFontStyle) {
     UIFont.loadFontsTTF()
     UIFont.loadFontsOTF()
 
-    let h1: BonesFont = .bones(size: 32, weight: .black)
-    let h2: BonesFont = .bones(size: 24, weight: .black)
-    let h3: BonesFont = .bones(size: 20, weight: .black)
-    let body: BonesFont = .bones(size: 16, weight: .regular)
-    let bodyBold: BonesFont = .bones(size: 16, weight: .bold)
-    let small: BonesFont = .bones(size: 12, weight: .regular)
-    let smallBold: BonesFont = .bones(size: 12, weight: .bold)
-    let extraSmall: BonesFont = .bones(size: 10, weight: .regular)
-    let extraSmallBold: BonesFont = .bones(size: 10, weight: .bold)
+    let h1: Font.BonesFont = .bones(size: 32, weight: .black)
+    let h2: Font.BonesFont = .bones(size: 24, weight: .black)
+    let h3: Font.BonesFont = .bones(size: 20, weight: .black)
+    let body: Font.BonesFont = .bones(size: 16, weight: .regular)
+    let bodyBold: Font.BonesFont = .bones(size: 16, weight: .bold)
+    let small: Font.BonesFont = .bones(size: 12, weight: .regular)
+    let smallBold: Font.BonesFont = .bones(size: 12, weight: .bold)
+    let extraSmall: Font.BonesFont = .bones(size: 10, weight: .regular)
+    let extraSmallBold: Font.BonesFont = .bones(size: 10, weight: .bold)
 
     switch style {
       case .bones(style: let style):

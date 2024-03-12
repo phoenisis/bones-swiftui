@@ -14,7 +14,7 @@ import SwiftUI
 public struct ExpandingText: View {
   let text: String
   let showMoreText: String
-  let fontToken: BonesFontToken
+  let fontToken: Font.BonesFontToken
   let lineNumber: Int
   @State private var isExpanded: Bool
   @State private var isTruncated: Bool = false
@@ -28,7 +28,7 @@ public struct ExpandingText: View {
   ///   - showMoreText: The text to display for the "Show More" button. Default is "show more".
   public init(
     _ text: String,
-    font: BonesFontToken,
+    font: Font.BonesFontToken,
     lineNumber: Int = 3,
     isExpanded: Bool = false,
     showMoreText: String = "show more"
@@ -78,7 +78,7 @@ public struct ExpandingText: View {
   ///   - geometry: The available geometry to render the text.
   ///
   /// - Returns: A Boolean value indicating whether the text is truncated or not.
-  func isTextTruncated(_ text: String, font: BonesFontToken, in geometry: GeometryProxy) -> Bool {
+  func isTextTruncated(_ text: String, font: Font.BonesFontToken, in geometry: GeometryProxy) -> Bool {
     let total = text.boundingRect(
       with: CGSize(width: geometry.size.width, height: .greatestFiniteMagnitude),
       options: .usesLineFragmentOrigin,
