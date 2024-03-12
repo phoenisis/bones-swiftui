@@ -197,7 +197,7 @@ public enum BonesButtonStyleToken {
   }
 
   public enum BonesButtonShapeToken {
-    case rectangle(BonesRadiusToken, fillColor: BonesColorToken, shadow: ShadowToken)
+    case rectangle(CGFloat.BonesRadius, fillColor: BonesColorToken, shadow: ShadowToken)
   }
 
   case text(icon: BonesIconToken?)

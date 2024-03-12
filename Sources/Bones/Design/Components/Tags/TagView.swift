@@ -65,7 +65,7 @@ public struct TagView: View {
     }
   }
 
-  var radius: BonesRadiusToken {
+  var radius: CGFloat.BonesRadius {
     switch style {
       case .default:
           .large

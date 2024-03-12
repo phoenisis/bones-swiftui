@@ -13,7 +13,7 @@ extension View {
   /// - Parameter bonesLength: The padding value as `BonesPadding`.
   ///
   /// - Returns: A view with applied padding.
-	@inlinable public func padding(_ bonesLength: BonesPadding) -> some View {
+	@inlinable public func padding(_ bonesLength: BonesSpacing) -> some View {
 		switch bonesLength {
 			case .bones(let size):
 				return self
@@ -28,7 +28,7 @@ extension View {
   ///   - bonesLength: The padding value as `BonesPadding`.
   ///
   /// - Returns: A view with applied padding to specific edges.
-	@inlinable public func padding(_ edges: Edge.Set = .all, _ bonesLength: BonesPadding) -> some View {
+	@inlinable public func padding(_ edges: Edge.Set = .all, _ bonesLength: BonesSpacing) -> some View {
 		switch bonesLength {
 			case .bones(let size):
 				return self
@@ -72,7 +72,7 @@ public extension RoundedRectangle {
 }
 
 public extension UnevenRoundedRectangle {
-  @inlinable init(topLeadingRadius: BonesRadiusToken = .none, bottomLeadingRadius: BonesRadiusToken = .none, bottomTrailingRadius: BonesRadiusToken = .none, topTrailingRadius: BonesRadiusToken = .none, style: RoundedCornerStyle = .continuous) {
+  @inlinable init(topLeadingRadius: CGFloat.BonesRadius = .none, bottomLeadingRadius: CGFloat.BonesRadius = .none, bottomTrailingRadius: CGFloat.BonesRadius = .none, topTrailingRadius: CGFloat.BonesRadius = .none, style: RoundedCornerStyle = .continuous) {
     self.init(
       topLeadingRadius: topLeadingRadius.rawValue,
       bottomLeadingRadius: bottomLeadingRadius.rawValue,
@@ -91,7 +91,7 @@ public extension HStack {
   ///   - spacing: The spacing value as `BonesPadding`.
   ///   - content: The content within the stack.
   ///
-	init(alignment: VerticalAlignment = .center, spacing: BonesPadding, @ViewBuilder content: () -> Content) {
+	init(alignment: VerticalAlignment = .center, spacing: BonesSpacing, @ViewBuilder content: () -> Content) {
 		switch spacing {
 			case .bones(let bonesPaddingToken):
 				self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.rawValue), content: content)
@@ -107,7 +107,7 @@ public extension VStack {
   ///   - spacing: The spacing value as `BonesPadding`.
   ///   - content: The content within the stack.
   ///
-	init(alignment: HorizontalAlignment = .center, spacing: BonesPadding, @ViewBuilder content: () -> Content) {
+	init(alignment: HorizontalAlignment = .center, spacing: BonesSpacing, @ViewBuilder content: () -> Content) {
 		switch spacing {
 			case .bones(let bonesPaddingToken):
 				self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.rawValue), content: content)
@@ -123,7 +123,7 @@ fileprivate struct PaddingRadiusPreview: View {
 	var name: String
 
 	enum PaddingRadiusType {
-		case padding(BonesPadding)
+		case padding(BonesSpacing)
 		case radius(BonesRadius)
 	}
 
@@ -154,7 +154,7 @@ struct Preview_Sizes: View {
 	var body: some View {
 		List {
 			Section {
-				ForEach(BonesPaddingToken.allCases) { padding in
+        ForEach(CGFloat.BonesSpacing.allCases) { padding in
 					PaddingRadiusPreview(type: .padding(.bones(padding)), name: padding.id)
 				}
 			} header: {
@@ -164,7 +164,7 @@ struct Preview_Sizes: View {
 			}
 
 			Section {
-				ForEach(BonesRadiusToken.allCases) { radius in
+				ForEach(CGFloat.BonesRadius.allCases) { radius in
 					PaddingRadiusPreview(type: .radius(.bones(radius)), name: radius.id)
 				}
 			} header: {
