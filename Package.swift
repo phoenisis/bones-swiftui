@@ -20,10 +20,10 @@ let package = Package(
       url: "https://github.com/EmergeTools/Pow",
       .upToNextMajor(from: "1.0.0")
     ),
-      .package(
-        url: "https://github.com/raphaelmor/Polyline",
-        .upToNextMajor(from: "5.0.0")
-      ),
+    .package(
+      url: "https://github.com/raphaelmor/Polyline",
+      .upToNextMajor(from: "5.0.0")
+    )
   ],
 	targets: [
 		.target(
@@ -32,14 +32,14 @@ let package = Package(
         .product(name: "Pow", package: "Pow"),
         .product(name: "Polyline", package: "Polyline"),
 			],
-			resources: [
-				.process("Resources/Catalogs"),
-				.process("Resources/Fonts"),
-				.process("Resources/Lotties")
-			],
-			swiftSettings: [
-				.enableUpcomingFeature("StrictConcurrency=complete"),
-			]
+      resources: [
+        .process("Resources/Catalogs"),
+        .process("Resources/Fonts"),
+        .process("Resources/Lotties")
+      ], 
+      swiftSettings: [
+        .enableUpcomingFeature("StrictConcurrency=complete"),
+      ]
 		)
 	]
 )

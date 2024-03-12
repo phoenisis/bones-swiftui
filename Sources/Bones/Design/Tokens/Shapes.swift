@@ -131,8 +131,8 @@ public struct BonesObsidianProfileShape: Shape {
     return path
   }
 }
-
 public struct BonesEarnPointShape: Shape {
+    // swiftlint:disable:next function_body_length
   public func path(in rect: CGRect) -> Path {
     var path = Path()
     let width = rect.size.width

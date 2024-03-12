@@ -11,6 +11,7 @@ extension Image {
   /// Initializes an Image with a symbol representing the specified `BonesIconStyle`.
   ///
   /// - Parameter type: A `BonesIconStyle` value representing the icon style to use.
+  // swiftlint:disable:next function_body_length
 	public init(_ type: BonesIconStyle) {
 		switch type {
 			case .bones(let style):

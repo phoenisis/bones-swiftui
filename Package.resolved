@@ -1,4 +1,5 @@
 {
+  "originHash" : "237d488de6fa9ab53e2bcf57fb7da4ebf05587fabc42025832d7875252e58120",
   "pins" : [
     {
       "identity" : "polyline",
@@ -19,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

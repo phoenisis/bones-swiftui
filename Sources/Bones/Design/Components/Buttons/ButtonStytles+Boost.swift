@@ -108,6 +108,7 @@ struct BonesBoostButton: ButtonStyle {
     computeRemainingDuration()
   }
 
+  // swiftlint:disable:next function_body_length
   func makeBody(configuration: Configuration) -> some View {
     VStack(
       alignment: .center,
@@ -216,6 +217,7 @@ struct BonesBoostButton: ButtonStyle {
     .onAppear {
       computeRemainingDuration()
       let sound = Bundle.module.path(forResource: "countDown", ofType: "wav")
+        // swiftlint:disable:next force_try
       self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
 
     }

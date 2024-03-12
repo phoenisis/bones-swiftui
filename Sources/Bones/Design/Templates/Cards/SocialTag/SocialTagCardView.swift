@@ -117,6 +117,7 @@ public struct SocialTagCardView: ButtonStyle {
 
   }
 
+    // swiftlint:disable:next function_body_length
   public func makeBody(configuration: Configuration) -> some View {
     VStack(alignment: .leading, spacing: .bones(.large)) {
       if tags.isEmpty == false || isEnabled == false {
