@@ -17,7 +17,7 @@ extension View {
     switch bonesLength {
       case .bones(let size):
         return self
-          .padding(size.rawValue)
+          .padding(size.value)
     }
   }
 
@@ -32,7 +32,7 @@ extension View {
     switch bonesLength {
       case .bones(let size):
         return self
-          .padding(edges, size.rawValue)
+          .padding(edges, size.value)
     }
   }
 
@@ -94,7 +94,7 @@ public extension HStack {
   init(alignment: VerticalAlignment = .center, spacing: BonesSpacing, @ViewBuilder content: () -> Content) {
     switch spacing {
       case .bones(let bonesPaddingToken):
-        self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.rawValue), content: content)
+        self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.value), content: content)
     }
   }
 }
@@ -110,7 +110,7 @@ public extension VStack {
   init(alignment: HorizontalAlignment = .center, spacing: BonesSpacing, @ViewBuilder content: () -> Content) {
     switch spacing {
       case .bones(let bonesPaddingToken):
-        self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.rawValue), content: content)
+        self.init(alignment: alignment, spacing: CGFloat(bonesPaddingToken.value), content: content)
     }
 
   }

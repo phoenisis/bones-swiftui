@@ -37,7 +37,7 @@ extension CGFloat {
   ///
   /// The actual values for these spacing sizes can be customized by assigning different
   /// values to the corresponding cases in `bonesSpacings`.
-  public enum BonesSpacing: CGFloat, CaseIterable, Identifiable {
+  public enum BonesSpacing: CaseIterable, Identifiable {
     case none
     case small
     case medium
@@ -45,12 +45,12 @@ extension CGFloat {
     case large
     case xLarge
 
-    /// The raw value of the spacing size.
+    /// The  value of the spacing size.
     ///
     /// Returns the actual `CGFloat` value for the spacing size, looking up the value
     /// in `bonesSpacings` dictionary if available, and providing default values for
     /// each size category if not explicitly defined.
-    public var rawValue: CGFloat {
+    public var value: CGFloat {
       switch self {
         case .none: return bonesSpacings[.none] ?? 0
         case .small:  return bonesSpacings[.small] ?? 4

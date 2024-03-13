@@ -18,6 +18,7 @@ public final class Bones {
   /// - Parameters:
   ///   - colors: A dictionary mapping `Color.BonesColorToken` to hex color strings.
   ///   - spacing: A dictionary mapping `CGFloat.BonesSpacing` to spacing values.
+  @discardableResult
   public init(
     colors: [Color.BonesColorToken: String] = [:],
     spacing: [CGFloat.BonesSpacing: CGFloat] = [:]
