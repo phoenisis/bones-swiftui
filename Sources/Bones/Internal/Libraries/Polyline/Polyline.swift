@@ -1,83 +1,83 @@
-  // Polyline.swift
-  //
-  // Copyright (c) 2015 Raphaël Mor
-  //
-  // Permission is hereby granted, free of charge, to any person obtaining a copy
-  // of this software and associated documentation files (the "Software"), to deal
-  // in the Software without restriction, including without limitation the rights
-  // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  // copies of the Software, and to permit persons to whom the Software is
-  // furnished to do so, subject to the following conditions:
-  //
-  // The above copyright notice and this permission notice shall be included in all
-  // copies or substantial portions of the Software.
-  //
-  // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  // SOFTWARE.
+// Polyline.swift
+//
+// Copyright (c) 2015 Raphaël Mor
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import Foundation
 #if canImport(CoreLocation)
-import CoreLocation
+  import CoreLocation
 #endif
 #if canImport(MapKit) && !os(watchOS)
-import MapKit
+  import MapKit
 #endif
 
-  // MARK: - Public Classes -
+// MARK: - Public Classes -
 
-  /// This class can be used for :
-  ///
-  /// - Encoding an [CLLocation] or a [CLLocationCoordinate2D] to a polyline String
-  /// - Decoding a polyline String to an [CLLocation] or a [CLLocationCoordinate2D]
-  /// - Encoding / Decoding associated levels
-  ///
-  /// it is aims to produce the same results as google's iOS sdk not as the online
-  /// tool which is fuzzy when it comes to rounding values
-  ///
-  /// it is based on google's algorithm that can be found here :
-  ///
-  /// :see: https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+/// This class can be used for :
+///
+/// - Encoding an [CLLocation] or a [CLLocationCoordinate2D] to a polyline String
+/// - Decoding a polyline String to an [CLLocation] or a [CLLocationCoordinate2D]
+/// - Encoding / Decoding associated levels
+///
+/// it is aims to produce the same results as google's iOS sdk not as the online
+/// tool which is fuzzy when it comes to rounding values
+///
+/// it is based on google's algorithm that can be found here :
+///
+/// :see: https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 public struct Polyline {
   
-    /// The array of coordinates (nil if polyline cannot be decoded)
+  /// The array of coordinates (nil if polyline cannot be decoded)
   public let coordinates: [LocationCoordinate2D]?
-    /// The encoded polyline
+  /// The encoded polyline
   public let encodedPolyline: String
   
-    /// The array of levels (nil if cannot be decoded, or is not provided)
+  /// The array of levels (nil if cannot be decoded, or is not provided)
   public let levels: [UInt32]?
-    /// The encoded levels (nil if cannot be encoded, or is not provided)
+  /// The encoded levels (nil if cannot be encoded, or is not provided)
   public let encodedLevels: String?
   
-    /// The array of location (computed from coordinates)
-#if canImport(CoreLocation)
-  public var locations: [CLLocation]? {
-    return self.coordinates.map(toLocations)
-  }
-#endif
+  /// The array of location (computed from coordinates)
+  #if canImport(CoreLocation)
+    public var locations: [CLLocation]? {
+      return self.coordinates.map(toLocations)
+    }
+  #endif
   
-#if canImport(MapKit) && !os(watchOS)
+  #if canImport(MapKit) && !os(watchOS)
     /// Convert polyline to MKPolyline to use with MapKit (nil if polyline cannot be decoded)
-  @available(tvOS 9.2, *)
-  public var mkPolyline: MKPolyline? {
-    guard let coordinates = self.coordinates else { return nil }
-    let mkPolyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-    return mkPolyline
-  }
-#endif
+    @available(tvOS 9.2, *)
+    public var mkPolyline: MKPolyline? {
+      guard let coordinates = self.coordinates else { return nil }
+      let mkPolyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+      return mkPolyline
+    }
+  #endif
   
-    // MARK: - Public Methods -
+  // MARK: - Public Methods -
   
-    /// This designated initializer encodes a `[CLLocationCoordinate2D]`
-    ///
-    /// - parameter coordinates: The `Array` of `LocationCoordinate2D`s (that is, `CLLocationCoordinate2D`s) that you want to encode
-    /// - parameter levels: The optional `Array` of levels  that you want to encode (default: `nil`)
-    /// - parameter precision: The precision used for encoding (default: `1e5`)
+  /// This designated initializer encodes a `[CLLocationCoordinate2D]`
+  ///
+  /// - parameter coordinates: The `Array` of `LocationCoordinate2D`s (that is, `CLLocationCoordinate2D`s) that you want to encode
+  /// - parameter levels: The optional `Array` of levels  that you want to encode (default: `nil`)
+  /// - parameter precision: The precision used for encoding (default: `1e5`)
   public init(coordinates: [LocationCoordinate2D], levels: [UInt32]? = nil, precision: Double = 1e5) {
     
     self.coordinates = coordinates
@@ -88,11 +88,11 @@ public struct Polyline {
     encodedLevels = levels.map(encodeLevels)
   }
   
-    /// This designated initializer decodes a polyline `String`
-    ///
-    /// - parameter encodedPolyline: The polyline that you want to decode
-    /// - parameter encodedLevels: The levels that you want to decode (default: `nil`)
-    /// - parameter precision: The precision used for decoding (default: `1e5`)
+  /// This designated initializer decodes a polyline `String`
+  ///
+  /// - parameter encodedPolyline: The polyline that you want to decode
+  /// - parameter encodedLevels: The levels that you want to decode (default: `nil`)
+  /// - parameter precision: The precision used for decoding (default: `1e5`)
   public init(encodedPolyline: String, encodedLevels: String? = nil, precision: Double = 1e5) {
     
     self.encodedPolyline = encodedPolyline
@@ -103,18 +103,18 @@ public struct Polyline {
     levels = self.encodedLevels.flatMap(decodeLevels)
   }
   
-#if canImport(CoreLocation)
+  #if canImport(CoreLocation)
     /// This init encodes a `[CLLocation]`
     ///
     /// - parameter locations: The `Array` of `CLLocation` that you want to encode
     /// - parameter levels: The optional array of levels  that you want to encode (default: `nil`)
     /// - parameter precision: The precision used for encoding (default: `1e5`)
-  public init(locations: [CLLocation], levels: [UInt32]? = nil, precision: Double = 1e5) {
+    public init(locations: [CLLocation], levels: [UInt32]? = nil, precision: Double = 1e5) {
     
-    let coordinates = toCoordinates(locations)
-    self.init(coordinates: coordinates, levels: levels, precision:precision)
-  }
-#endif
+      let coordinates = toCoordinates(locations)
+      self.init(coordinates: coordinates, levels: levels, precision:precision)
+    }
+  #endif
 }
 
 // MARK: - Public Functions -
@@ -145,23 +145,23 @@ public func encodeCoordinates(_ coordinates: [LocationCoordinate2D], precision: 
 }
 
 #if canImport(CoreLocation)
-/// This function encodes an `[CLLocation]` to a `String`
-///
-/// - parameter coordinates: The `Array` of `CLLocation` that you want to encode
-/// - parameter precision: The precision used to encode locations (default: `1e5`)
-///
-/// - returns: A `String` representing the encoded Polyline
-public func encodeLocations(_ locations: [CLLocation], precision: Double = 1e5) -> String {
+  /// This function encodes an `[CLLocation]` to a `String`
+  ///
+  /// - parameter coordinates: The `Array` of `CLLocation` that you want to encode
+  /// - parameter precision: The precision used to encode locations (default: `1e5`)
+  ///
+  /// - returns: A `String` representing the encoded Polyline
+  public func encodeLocations(_ locations: [CLLocation], precision: Double = 1e5) -> String {
   
-  return encodeCoordinates(toCoordinates(locations), precision: precision)
-}
+    return encodeCoordinates(toCoordinates(locations), precision: precision)
+  }
 #endif
 
-  /// This function encodes an `[UInt32]` to a `String`
-  ///
-  /// - parameter levels: The `Array` of `UInt32` levels that you want to encode
-  ///
-  /// - returns: A `String` representing the encoded Levels
+/// This function encodes an `[UInt32]` to a `String`
+///
+/// - parameter levels: The `Array` of `UInt32` levels that you want to encode
+///
+/// - returns: A `String` representing the encoded Levels
 public func encodeLevels(_ levels: [UInt32]) -> String {
   return levels.reduce("") {
     $0 + encodeLevel($1)
@@ -204,23 +204,23 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
 }
 
 #if canImport(CoreLocation)
-/// This function decodes a String to a [CLLocation]?
-///
-/// - parameter encodedPolyline: String representing the encoded Polyline
-/// - parameter precision: The precision used to decode locations (default: 1e5)
-///
-/// - returns: A [CLLocation] representing the decoded polyline if valid, nil otherwise
-public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -> [CLLocation]? {
+  /// This function decodes a String to a [CLLocation]?
+  ///
+  /// - parameter encodedPolyline: String representing the encoded Polyline
+  /// - parameter precision: The precision used to decode locations (default: 1e5)
+  ///
+  /// - returns: A [CLLocation] representing the decoded polyline if valid, nil otherwise
+  public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -> [CLLocation]? {
   
-  return decodePolyline(encodedPolyline, precision: precision).map(toLocations)
-}
+    return decodePolyline(encodedPolyline, precision: precision).map(toLocations)
+  }
 #endif
 
-  /// This function decodes a `String` to an `[UInt32]`
-  ///
-  /// - parameter encodedLevels: The `String` representing the levels to decode
-  ///
-  /// - returns: A `[UInt32]` representing the decoded Levels if the `String` is valid, `nil` otherwise
+/// This function decodes a `String` to an `[UInt32]`
+///
+/// - parameter encodedLevels: The `String` representing the levels to decode
+///
+/// - returns: A `[UInt32]` representing the decoded Levels if the `String` is valid, `nil` otherwise
 public func decodeLevels(_ encodedLevels: String) -> [UInt32]? {
   var remainingLevels = encodedLevels.unicodeScalars
   var decodedLevels   = [UInt32]()
@@ -381,15 +381,15 @@ enum PolylineError: Error {
 }
 
 #if canImport(CoreLocation)
-private func toCoordinates(_ locations: [CLLocation]) -> [CLLocationCoordinate2D] {
-  return locations.map {location in location.coordinate}
-}
+  private func toCoordinates(_ locations: [CLLocation]) -> [CLLocationCoordinate2D] {
+    return locations.map {location in location.coordinate}
+  }
 
-private func toLocations(_ coordinates: [CLLocationCoordinate2D]) -> [CLLocation] {
-  return coordinates.map { coordinate in
-    CLLocation(latitude:coordinate.latitude, longitude:coordinate.longitude)
+  private func toLocations(_ coordinates: [CLLocationCoordinate2D]) -> [CLLocation] {
+    return coordinates.map { coordinate in
+      CLLocation(latitude:coordinate.latitude, longitude:coordinate.longitude)
     }
-}
+  }
 #endif
 
 private func isSeparator(_ value: Int32) -> Bool {

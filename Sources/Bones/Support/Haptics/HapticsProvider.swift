@@ -1,16 +1,16 @@
-  //
-  //  File.swift
-  //
-  //
-  //  Created by Quentin PIDOUX on 13/03/2024.
-  //
+//
+//  File.swift
+//
+//
+//  Created by Quentin PIDOUX on 13/03/2024.
+//
 
-import UIKit
 import SwiftUI
+import UIKit
 
-  /// A utility to provide haptic feedback in iOS applications.
+/// A utility to provide haptic feedback in iOS applications.
 public enum HapticsProvider {
-    /// The types of haptic feedback that can be generated.
+  /// The types of haptic feedback that can be generated.
   public enum HapticFeedbackType {
     case selection
     case light(_ intensity: CGFloat = 1.0)
@@ -25,7 +25,7 @@ public enum HapticsProvider {
   private static let mediumImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
   private static let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
   
-    /// Prepares the specified type of haptic feedback generator for use.
+  /// Prepares the specified type of haptic feedback generator for use.
   public static func prepareHapticFeedbackGenerator(_ type: HapticFeedbackType) {
     switch type {
       case .selection: selectionFeedbackGenerator.prepare()
@@ -36,7 +36,7 @@ public enum HapticsProvider {
     }
   }
   
-    /// Triggers the specified type of haptic feedback.
+  /// Triggers the specified type of haptic feedback.
   public static func sendHapticFeedback(_ type: HapticFeedbackType) {
     prepareHapticFeedbackGenerator(type)
     
