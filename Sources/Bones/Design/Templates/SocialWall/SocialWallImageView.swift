@@ -111,11 +111,11 @@ public struct SocialWallImageView: View {
           }
           .clipped()
           .onTapGesture(count: 2, perform: {
-            Haptic.feedback(.light)
+            HapticsProvider.sendHapticFeedback(.light())
             didDoubleTap()
           })
           .onTapGesture(count: 1, perform: {
-            Haptic.feedback(.light)
+            HapticsProvider.sendHapticFeedback(.light())
             withAnimation(.spring()) {
               isImagePresented = true
             }
@@ -123,7 +123,7 @@ public struct SocialWallImageView: View {
           .onLongPressGesture(
             minimumDuration: 0.3,
             perform: {
-              Haptic.feedback(.light)
+              HapticsProvider.sendHapticFeedback(.light())
               withAnimation(.spring()) {
                 isImagePresented = true
               }

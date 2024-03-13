@@ -86,7 +86,7 @@ public struct SocialCommentView: View {
               content: {
                 Button(
                   action: {
-                    Haptic.feedback(.light)
+                    HapticsProvider.sendHapticFeedback(.light())
                     didLikedTapped()
                   }, label: {
                     HStack(alignment: .center) {

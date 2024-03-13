@@ -53,7 +53,7 @@ public struct SocialWallLikesByView: View {
 
   public var body: some View {
     Button(action: {
-      Haptic.feedback(.light)
+      HapticsProvider.sendHapticFeedback(.light())
       didTap()
     }, label: {
       HStack(

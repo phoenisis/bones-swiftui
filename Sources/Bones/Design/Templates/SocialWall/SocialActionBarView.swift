@@ -66,7 +66,7 @@ public struct SocialActionBarView: View {
               Button(
                 action: {
                   likedTapped()
-                  Haptic.feedback(.light)
+                  HapticsProvider.sendHapticFeedback(.light())
                 }, label: {
                   HStack(alignment: .center) {
                     ZStack {
@@ -117,7 +117,7 @@ public struct SocialActionBarView: View {
               Button(
                 action: {
                   commentTapped()
-                  Haptic.feedback(.light)
+                  HapticsProvider.sendHapticFeedback(.light())
                 }, label: {
                   HStack(alignment: .center) {
                     BonesIcon(icon: .bones(.comment), renderingMode: .template)
@@ -139,7 +139,7 @@ public struct SocialActionBarView: View {
           if self.isSharable {
             Button(action: {
               shareTapped?()
-              Haptic.feedback(.light)
+              HapticsProvider.sendHapticFeedback(.light())
             }, label: {
               BonesIcon(icon: .bones(.share), renderingMode: .template)
                 .frame(width: 20, height: 20)

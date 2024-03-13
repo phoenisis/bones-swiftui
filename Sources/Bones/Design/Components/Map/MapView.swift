@@ -20,7 +20,7 @@ public struct BonesMapView: View {
   }
 
   func didTapOnSatellite() {
-    Haptic.feedback(.soft)
+    HapticsProvider.sendHapticFeedback(.light(0.5))
     isSatellitePresented = true
 
     changeMap()
@@ -28,7 +28,7 @@ public struct BonesMapView: View {
 
 
   func didTapOnMap() {
-    Haptic.feedback(.soft)
+    HapticsProvider.sendHapticFeedback(.light(0.5))
     isSatellitePresented = false
 
     changeMap()
@@ -42,7 +42,7 @@ public struct BonesMapView: View {
   public var body: some View {
     UIKitMapView(mapType: mapType, polyline: polyline, allowHits: false)
       .onTapGesture(count: 1, perform: {
-        Haptic.feedback(.light)
+        HapticsProvider.sendHapticFeedback(.light())
         withAnimation(.spring()) {
           isMapPresented = true
         }

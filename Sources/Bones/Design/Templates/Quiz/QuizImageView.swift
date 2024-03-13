@@ -84,7 +84,7 @@ public struct QuizImageView: View {
           .onTapGesture(
             count: 1,
             perform: {
-              Haptic.feedback(.light)
+              HapticsProvider.sendHapticFeedback(.light())
               withAnimation(.spring()) {
                 isImagePresented = true
               }

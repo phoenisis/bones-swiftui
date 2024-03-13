@@ -31,7 +31,7 @@ public struct HistorySocialTagView: View {
 
   public var body: some View {
     Button("") {
-      Haptic.feedback(.light)
+      HapticsProvider.sendHapticFeedback(.light())
       withAnimation(.spring()) {
         isImagePresented = true
       }
