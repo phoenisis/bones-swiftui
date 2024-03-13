@@ -1,5 +1,5 @@
 //
-//  ButtonStyles+Text.swift
+//  TextButton.swift
 //  
 //
 //  Created by Quentin PIDOUX on 03/10/2023.

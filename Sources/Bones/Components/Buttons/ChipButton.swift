@@ -1,5 +1,5 @@
 //
-//  ButtonStyles+Chip.swift
+//  ChipButton.swift
 //
 //
 //  Created by Quentin PIDOUX on 09/10/2023.

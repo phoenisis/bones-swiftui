@@ -1,5 +1,5 @@
 //
-//  ButtonStyles+Play.swift
+//  PlayButton.swift
 //
 //
 //  Created by Quentin PIDOUX on 29/09/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A custom button style for the home play button in the Bones design system.
-struct BonesHomePlay: ButtonStyle {
+struct BonesPlayButton: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
 
   /// Creates the view of the button based on the button's configuration.

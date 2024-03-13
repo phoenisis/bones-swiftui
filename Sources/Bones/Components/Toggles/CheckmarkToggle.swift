@@ -1,5 +1,5 @@
 //
-//  ToggleStyles+Legal.swift
+//  CheckmarkToggle.swift
 //  
 //
 //  Created by Quentin PIDOUX on 09/11/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A custom `ToggleStyle` for consent forms in the application.
-struct ConsentToggleStyle: ToggleStyle {
+struct CheckmarkToggleStyle: ToggleStyle {
   /// Color for the toggle when it is in the "on" state.
   let onColor: Color = Color.bones.primary
   /// Color for the toggle when it is in the "off" state.

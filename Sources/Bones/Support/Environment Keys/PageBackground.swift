@@ -1,5 +1,5 @@
 //
-//  Colors+PageBackground.swift
+//  PageBackground.swift
 //
 //
 //  Created by Quentin PIDOUX on 13/03/2024.

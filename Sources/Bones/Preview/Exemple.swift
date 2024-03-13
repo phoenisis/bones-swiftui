@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  Exemple.swift
 //
 //
 //  Created by Quentin PIDOUX on 13/03/2024.
@@ -11,6 +11,9 @@ struct SwiftUIViewTest: View {
   var body: some View {
     Button("Hello, world!", action: {})
       .buttonStyle(.bones(.small(.fill)))
+
+    Text("")
+      .bold()
   }
 
   init() {

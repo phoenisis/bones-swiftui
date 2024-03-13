@@ -1,5 +1,5 @@
 //
-//  ButtonStytles+Boost.swift
+//  BoostButton.swift
 //
 //
 //  Created by Quentin PIDOUX on 30/01/2024.

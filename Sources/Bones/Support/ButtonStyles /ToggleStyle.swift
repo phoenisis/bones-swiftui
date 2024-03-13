@@ -1,8 +1,8 @@
 //
-//  Toggles+Interface.swift
-//  
+//  ToggleStyle.swift
 //
-//  Created by Quentin PIDOUX on 09/11/2023.
+//
+//  Created by Quentin PIDOUX on 13/03/2024.
 //
 
 import SwiftUI
@@ -21,18 +21,8 @@ extension View {
       case .bones(let bonesTogglesStyleToken):
         switch bonesTogglesStyleToken {
           case .legal:
-            return AnyView(self.toggleStyle(ConsentToggleStyle()))
+            return AnyView(self.toggleStyle(CheckmarkToggleStyle()))
         }
     }
   }
 }
-
-
-/// Defines the possible styles that can be applied to `Toggle` elements.
-public enum BonesTogglesStyles { case bones(BonesTogglesStyleToken) }
-
-/// A token that represents a specific style for toggles.
-public enum BonesTogglesStyleToken {
-  case legal
-}
-

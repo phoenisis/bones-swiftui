@@ -1,5 +1,5 @@
 //
-//  ButtonStyles+SocialTagSelection.swift
+//  SocialTagSelectionButton.swift
 //  
 //
 //  Created by Quentin PIDOUX on 08/02/2024.
@@ -56,7 +56,8 @@ struct BonesSocialTagSelectionButton: ButtonStyle {
             .font(.custom(.bones(.small)))
         }
         if let points {
-          PointsView(points)
+          Text(points)
+            .bonesStyle(.points)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
       }
@@ -96,9 +97,9 @@ struct Preview_BonesSocialTagSelection: View {
   var body: some View {
     Section {
       Button("cillum non incididunt enim") {}
-        .buttonStyle(.bones(.text(icon: nil)))
+        .buttonStyle(.bones(.text(icon: .add)))
     } header: {
-      Text("social taf")
+      Text("social tag")
         .font(.bones(.bodyBold))
         .foregroundStyle(Color.bones.textDark)
     }
