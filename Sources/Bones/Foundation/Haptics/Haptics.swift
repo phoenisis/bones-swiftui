@@ -1,17 +1,14 @@
 //
-//  File.swift
+//  Haptics.swift
 //
 //
 //  Created by Quentin PIDOUX on 29/09/2023.
 //
 
-#if canImport(UIKit)
 import UIKit
-#endif
 
 /// `Haptic` is a class responsible for managing and triggering haptic feedback on compatible devices.
 public class Haptic {
-
   /// Generates impact feedback with the specified style, if `isTriggered` is `true`.
   /// - Parameters:
   ///   - feedbackStyle: The style of the impact feedback. A member of `UIImpactFeedbackGenerator.FeedbackStyle`.
