@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RankedElementView.swift
 //
 //
 //  Created by Quentin PIDOUX on 27/11/2023.
@@ -150,7 +150,7 @@ public struct RankedElementView: View {
           spacing: .bones(.small),
           content: {
             CachedAsyncImage(url: URL(string: medal.image)) { image in image.resizable()
-                .scaledToFit()
+              .scaledToFit()
             } placeholder: {
               ZStack(alignment: .center) {
                 ProgressView()
@@ -187,7 +187,7 @@ public struct RankedElementView: View {
       ForEach(medals, id: \.image) { medal in
         HStack(alignment: .center, content: {
           CachedAsyncImage(url: URL(string: medal.image)) { image in image.resizable()
-              .scaledToFit()
+            .scaledToFit()
           } placeholder: {
             ZStack(alignment: .center) {
               ProgressView()
@@ -195,10 +195,10 @@ public struct RankedElementView: View {
             .foregroundStyle(Color.bones.grey4)
           }
           .frame(width: 22, height: 22)
-          
+
           HStack(content: {
             Text("x") +
-            Text(medal.count, format: .number)
+              Text(medal.count, format: .number)
           })
           .font(.custom(.bones(.small)))
         })
@@ -231,7 +231,7 @@ public struct RankedElementView: View {
       ],
       isHighlighted: true
     )
-    
+
     RankedElementView(
       title: "est qui minim occaecat sit veniam cillum laboris anim ea cupidatat eu",
       rank: 1,

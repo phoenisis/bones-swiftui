@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Shapes.swift
 //  
 //
 //  Created by Quentin PIDOUX on 30/10/2023.
@@ -132,7 +132,7 @@ public struct BonesObsidianProfileShape: Shape {
   }
 }
 public struct BonesEarnPointShape: Shape {
-    // swiftlint:disable:next function_body_length
+  // swiftlint:disable:next function_body_length
   public func path(in rect: CGRect) -> Path {
     var path = Path()
     let width = rect.size.width

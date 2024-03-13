@@ -102,7 +102,6 @@ public struct ImageLargeView: View {
             }
           }
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-
           .onAppear {
             isFullScreenViewVisible = true
           }

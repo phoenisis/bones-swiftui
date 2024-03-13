@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  CardMobilityView.swift
 //
 //
 //  Created by Quentin PIDOUX on 25/10/2023.
@@ -23,75 +23,75 @@ struct BonesCardMobilityButton: ButtonStyle {
     VStack(alignment: .center,
            spacing: nil,
            content: {
-      Rectangle()
-        .foregroundStyle(
-          Color.clear
-            .shadow(.bones.drop(.far))
-        )
-        .aspectRatio(2.9, contentMode: .fit)
-    })
-    .overlay(alignment: .center, content: {
-      configuration.label
-        .font(.custom(.bones(.h3)))
-        .multilineTextAlignment(.center)
-        .minimumScaleFactor(0.9)
-        .conditionalEffect(
-          .pushDown,
-          condition: configuration.isPressed
-        )
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .padding(.vertical, .bones(.large))
-        .padding(.horizontal, .bones(.xLarge))
-        .overlay(alignment: .trailing, content: {
-          BonesIcon(icon: .bones(.chevronRight), fontWeight: .light)
-            .frame(width: chevronSize,
-                   height: chevronSize,
-                   alignment: .center)
-            .conditionalEffect(
-              .pushDown,
-              condition: configuration.isPressed
-            )
-            .padding(.bones(configuration.isPressed ? .medium : .large))
-        })
-        .foregroundStyle(
-          Color.bones.textLight
-            .shadow(.bones.drop(.close))
-        )
-        .background(
-          ZStack(content: {
-            if let imageUrl {
-              CachedAsyncImage(
-                url: URL(string: imageUrl)
-              ) {
-                image in image.resizable()
-              } placeholder: {
-                ZStack(alignment: .center) {
-                  ProgressView()
-                }
-              }
-            } else {
-              Color.bones.black
-            }
-            Color.bones.black.opacity(0.1)
-          })
-          .frame(maxWidth: .infinity)
-          .aspectRatio(2.9, contentMode: .fill)
-          .cornerRadius(.bones(.medium))
-        )
-    })
-    .shadow(radius: .bones(configuration.isPressed ? .none : .close))
-    .conditionalEffect(
-      .pushDown,
-      condition: configuration.isPressed
-    )
-    .animation(.default, value: configuration.isPressed)
-    .changeEffect(
-      .feedback(
-        hapticImpact: .light
-      ),
-      value: configuration.isPressed
-    )
-    .applyButtonMinHeight()
+             Rectangle()
+               .foregroundStyle(
+                 Color.clear
+                   .shadow(.bones.drop(.far))
+               )
+               .aspectRatio(2.9, contentMode: .fit)
+           })
+           .overlay(alignment: .center, content: {
+             configuration.label
+               .font(.custom(.bones(.h3)))
+               .multilineTextAlignment(.center)
+               .minimumScaleFactor(0.9)
+               .conditionalEffect(
+                 .pushDown,
+                 condition: configuration.isPressed
+               )
+               .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+               .padding(.vertical, .bones(.large))
+               .padding(.horizontal, .bones(.xLarge))
+               .overlay(alignment: .trailing, content: {
+                 BonesIcon(icon: .bones(.chevronRight), fontWeight: .light)
+                   .frame(width: chevronSize,
+                          height: chevronSize,
+                          alignment: .center)
+                   .conditionalEffect(
+                     .pushDown,
+                     condition: configuration.isPressed
+                   )
+                   .padding(.bones(configuration.isPressed ? .medium : .large))
+               })
+               .foregroundStyle(
+                 Color.bones.textLight
+                   .shadow(.bones.drop(.close))
+               )
+               .background(
+                 ZStack(content: {
+                   if let imageUrl {
+                     CachedAsyncImage(
+                       url: URL(string: imageUrl)
+                     ) {
+                       image in image.resizable()
+                     } placeholder: {
+                       ZStack(alignment: .center) {
+                         ProgressView()
+                       }
+                     }
+                   } else {
+                     Color.bones.black
+                   }
+                   Color.bones.black.opacity(0.1)
+                 })
+                 .frame(maxWidth: .infinity)
+                 .aspectRatio(2.9, contentMode: .fill)
+                 .cornerRadius(.bones(.medium))
+               )
+           })
+           .shadow(radius: .bones(configuration.isPressed ? .none : .close))
+           .conditionalEffect(
+             .pushDown,
+             condition: configuration.isPressed
+           )
+           .animation(.default, value: configuration.isPressed)
+           .changeEffect(
+             .feedback(
+               hapticImpact: .light
+             ),
+             value: configuration.isPressed
+           )
+           .applyButtonMinHeight()
   }
 }
 

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  EmptyListContentView.swift
 //  
 //
 //  Created by Quentin PIDOUX on 30/11/2023.

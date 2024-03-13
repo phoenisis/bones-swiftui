@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HistoryGPSView.swift
 //
 //
 //  Created by Quentin PIDOUX on 29/12/2023.
@@ -114,8 +114,8 @@ struct HistoryGPSButtonStyle: ButtonStyle {
         .fill(Color.bones.white)
         .shadow(radius: .bones(
           isAvailable 
-          ? configuration.isPressed ? .close : .far
-          : .none)
+            ? configuration.isPressed ? .close : .far
+            : .none)
         )
     )
     .opacity(isHidden ? 0.5 : 1)

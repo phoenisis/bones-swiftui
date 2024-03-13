@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ColorModifier.swift
 //
 //
 //  Created by Quentin PIDOUX on 25/09/2023.
@@ -20,47 +20,47 @@ import SwiftUI
 /// This struct provides a SwiftUI view that previews a color.
 fileprivate struct ColorsPreview: View {
   var colorType: Color.BonesColorToken
-	@State var isExpended: Bool = false
+  @State var isExpended: Bool = false
 
   var body: some View {
-		HStack {
-			Text(colorType.id.toWords)
-				.font(.custom(.bones(.body)))
+    HStack {
+      Text(colorType.id.toWords)
+        .font(.custom(.bones(.body)))
 
-			Spacer()
+      Spacer()
 
-			Circle()
-				.foregroundStyle(
-					Color(BonesColor.bones(colorType))
-						.shadow(.bones.drop(.close))
-				)
-				.frame(width: 50, height: 50)
-				.onTapGesture {
-					isExpended.toggle()
-				}
-		}
-		.sheet(isPresented: $isExpended, content: {
-			NavigationStack {
-				ScrollView {}
-					.background(Color(BonesColor.bones(colorType)))
-			}
-			.presentationDetents([.medium, .large])
-		})
-	}
+      Circle()
+        .foregroundStyle(
+          Color(BonesColor.bones(colorType))
+            .shadow(.bones.drop(.close))
+        )
+        .frame(width: 50, height: 50)
+        .onTapGesture {
+          isExpended.toggle()
+        }
+    }
+    .sheet(isPresented: $isExpended, content: {
+      NavigationStack {
+        ScrollView {}
+          .background(Color(BonesColor.bones(colorType)))
+      }
+      .presentationDetents([.medium, .large])
+    })
+  }
 }
 
 /// A SwiftUI view providing a list of color previews.
 ///
 /// This struct displays a list of color previews using the `ColorsPreview` struct.
 struct Preview_Colors: View {
-	var body: some View {
-		List {
+  var body: some View {
+    List {
       ForEach(Color.BonesColorToken.allCases) { color in
-				ColorsPreview(colorType: color)
-			}
-		}
-		.listBackgroundColor()
-	}
+        ColorsPreview(colorType: color)
+      }
+    }
+    .listBackgroundColor()
+  }
 }
 
 /// Provides the capability to apply a tint to any view.
@@ -75,5 +75,5 @@ public extension View {
 }
 
 #Preview {
-	Preview_Colors()
+  Preview_Colors()
 }

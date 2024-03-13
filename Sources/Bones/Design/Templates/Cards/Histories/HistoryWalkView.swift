@@ -10,7 +10,7 @@ import SwiftUI
 public struct HistoryWalkView: View {
   let title: String
   let points: String?
-  
+
   public init(title: String, points: String?) {
     self.title = title
     self.points = points

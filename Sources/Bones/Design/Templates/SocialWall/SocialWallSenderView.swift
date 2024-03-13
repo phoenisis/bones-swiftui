@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialWallSenderView.swift
 //
 //
 //  Created by Quentin PIDOUX on 20/10/2023.

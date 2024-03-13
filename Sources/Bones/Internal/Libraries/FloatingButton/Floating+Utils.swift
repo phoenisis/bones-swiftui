@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Floating+Utils.swift
 //  
 //
 //  Created by Quentin PIDOUX on 21/11/2023.
@@ -14,7 +14,7 @@ extension View {
   }
 }
 
-extension Collection where Element == CGPoint {
+extension Collection<CGPoint> {
 
   subscript (safe index: Index) -> CGPoint {
     return indices.contains(index) ? self[index] : .zero

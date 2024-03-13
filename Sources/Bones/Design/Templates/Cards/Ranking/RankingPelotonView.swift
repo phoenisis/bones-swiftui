@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RankingPelotonView.swift
 //
 //
 //  Created by Quentin PIDOUX on 24/11/2023.
@@ -118,8 +118,8 @@ public struct RankingPelotonView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
       if let imageUrl {
         CachedAsyncImage(url: URL(string: imageUrl)) { image in image.resizable()
-            .scaledToFit()
-            .frame(width: 86, height: 86)
+          .scaledToFit()
+          .frame(width: 86, height: 86)
         } placeholder: {
           ZStack(alignment: .center) {
             ProgressView()
@@ -136,7 +136,7 @@ public struct RankingPelotonView: View {
     if let url {
       return AnyView(
         CachedAsyncImage(url: URL(string: url)) { image in image.resizable()
-            .scaledToFill()
+          .scaledToFill()
         } placeholder: {
           /// Placeholder with a team icon and a progress view until the image loads.
           ZStack(alignment: .center) {
@@ -145,12 +145,12 @@ public struct RankingPelotonView: View {
           }
           .foregroundStyle(Color.bones.grey3)
         }
-          .frame(width: isHighlighted ? 80 : 60, height: isHighlighted ? 100 : 80)
-          .clipShape(BonesShieldShape())
-          .background(
-            BonesShieldShape()
-              .stroke(Color.bones.black.opacity(0.4), lineWidth: 1)
-          )
+        .frame(width: isHighlighted ? 80 : 60, height: isHighlighted ? 100 : 80)
+        .clipShape(BonesShieldShape())
+        .background(
+          BonesShieldShape()
+            .stroke(Color.bones.black.opacity(0.4), lineWidth: 1)
+        )
       )
     } else {
       return AnyView(
@@ -176,7 +176,7 @@ public struct RankingPelotonView: View {
         Text(title)
           .font(.custom(.bones(.smallBold)))
           .multilineTextAlignment(.center)
-        //          .padding(.bones(.small))
+          //          .padding(.bones(.small))
           .frame(maxWidth: .infinity)
           .frame(height: 40)
           .foregroundStyle(Color.bones.textDark)
@@ -280,8 +280,8 @@ public struct RankingPelotonView: View {
                       spacing: .bones(.medium),
                       content: {
                         CachedAsyncImage(url: URL(string: medal.0)) { image in image.resizable()
-                            .scaledToFit()
-                            .frame(width: 70, height: 70)
+                          .scaledToFit()
+                          .frame(width: 70, height: 70)
                         } placeholder: {
                           ZStack(alignment: .center) {
                             ProgressView()
@@ -308,7 +308,7 @@ public struct RankingPelotonView: View {
 
             }
           })
-        .padding(.bottom, .bones(.large))
+          .padding(.bottom, .bones(.large))
       })
   }
 }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialTagCardView.swift
 //
 //
 //  Created by Quentin PIDOUX on 18/12/2023.
@@ -28,7 +28,7 @@ public struct SocialTagCardView: ButtonStyle {
     var finalDuration: String?
 
     var remainingPercentage: Float? {
-      guard let minDate = minDate, let maxDate = maxDate else { return nil }
+      guard let minDate, let maxDate else { return nil }
       let totalDuration = maxDate.timeIntervalSince(minDate)
       let remainingDuration = -minDate.timeIntervalSinceNow
       let percent = Float(remainingDuration / totalDuration)
@@ -62,16 +62,16 @@ public struct SocialTagCardView: ButtonStyle {
     }
 
     var durationTotal: Duration? {
-      guard let minDate = minDate, let maxDate = maxDate else { return nil }
+      guard let minDate, let maxDate else { return nil }
       return Duration.seconds(maxDate.timeIntervalSince(minDate))
     }
 
     mutating func updateRemaining() {
       guard let maxDate, let minDate else { return }
-      
+
       guard Date.now.timeIntervalSince(minDate) <= maxDate.timeIntervalSince(minDate)+1 else { return }
 
-        remaining =
+      remaining =
         Duration.seconds(-minDate.timeIntervalSinceNow).formatted(.time(pattern: .hourMinuteSecond))
 //        Duration
 //          .UnitsFormatStyle(
@@ -117,7 +117,7 @@ public struct SocialTagCardView: ButtonStyle {
 
   }
 
-    // swiftlint:disable:next function_body_length
+  // swiftlint:disable:next function_body_length
   public func makeBody(configuration: Configuration) -> some View {
     VStack(alignment: .leading, spacing: .bones(.large)) {
       if tags.isEmpty == false || isEnabled == false {
@@ -192,7 +192,7 @@ public struct SocialTagCardView: ButtonStyle {
                   Text("24h")
                 }
               }
-              )
+            )
             .font(.custom(.bones(.bodyBold)))
 
             ProgressView(value: progressType.remainingPercentage)
@@ -203,7 +203,7 @@ public struct SocialTagCardView: ButtonStyle {
           if let progress {
             ProgressView(value: progress)
               .progressViewStyle(.linear)
-            //              .frame(maxWidth: .infinity, alignment: .leading)
+              //              .frame(maxWidth: .infinity, alignment: .leading)
               .scaleEffect(x: 1, y: 3, anchor: .center)
               .tint(Color.bones.primary)
           }
@@ -252,7 +252,7 @@ public struct SocialTagCardView: ButtonStyle {
                   insertion: .movingParts.pop(Color.bones.primary).combined(with: .opacity ),
                   removal: .identity
                     .combined(with:
-                        .movingParts.pop
+                      .movingParts.pop
                     )
                 )
             )
@@ -277,8 +277,8 @@ public struct SocialTagCardView: ButtonStyle {
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
         .fill(Color.bones.white)
         .shadow(radius: .bones(isEnabled
-                               ? isClickable ? .close : .none
-                               : .none))
+            ? isClickable ? .close : .none
+            : .none))
     )
     .opacity(isEnabled ? 1 : 0.3)
     .padding(.horizontal, (isExpanded && isExpandable) ? 0 : 16)

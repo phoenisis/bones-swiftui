@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonStyles+Home.swift
 //
 //
 //  Created by Quentin PIDOUX on 03/11/2023.
@@ -39,37 +39,37 @@ struct HomeCardView: View {
         VStack(alignment: .leading,
                spacing: .bones(.medium),
                content: {
-          HStack(spacing: .bones(.medium)) {
-            BonesIcon(icon: .bones(.great))
-              .frame(width: 16, height: 16)
+                 HStack(spacing: .bones(.medium)) {
+                   BonesIcon(icon: .bones(.great))
+                     .frame(width: 16, height: 16)
 
-            Text("sondage du jour")
-              .textCase(.uppercase)
-              .font(.custom(.bones(.extraSmall)))
-              .fontWeight(.black)
-          }
-          Spacer()
-          Text("Funky pas funky?... Partage ta vibe du jour!")
-            .textCase(.uppercase)
-            .font(.custom(.bones(.h3)))
-          Spacer()
+                   Text("sondage du jour")
+                     .textCase(.uppercase)
+                     .font(.custom(.bones(.extraSmall)))
+                     .fontWeight(.black)
+                 }
+                 Spacer()
+                 Text("Funky pas funky?... Partage ta vibe du jour!")
+                   .textCase(.uppercase)
+                   .font(.custom(.bones(.h3)))
+                 Spacer()
 
-          HStack(
-            alignment: .center,
-            spacing: .bones(.medium),
-            content: {
-              Text("participer au sondage")
-                .textCase(.uppercase)
-                .font(.custom(.bones(.small)))
-              BonesIcon(icon: .bones(.arrowRight))
-                .frame(width: 24, height: 24)
-            })
-          .frame(maxWidth: .infinity, alignment: .trailing)
-        })
-        .foregroundStyle(Color.bones.textDark)
-        .padding(.bones(.large))
-        .frame(maxWidth: .infinity, alignment: .topLeading)
-        .frame(height: geo.size.height/2)
+                 HStack(
+                   alignment: .center,
+                   spacing: .bones(.medium),
+                   content: {
+                     Text("participer au sondage")
+                       .textCase(.uppercase)
+                       .font(.custom(.bones(.small)))
+                     BonesIcon(icon: .bones(.arrowRight))
+                       .frame(width: 24, height: 24)
+                   })
+                   .frame(maxWidth: .infinity, alignment: .trailing)
+               })
+               .foregroundStyle(Color.bones.textDark)
+               .padding(.bones(.large))
+               .frame(maxWidth: .infinity, alignment: .topLeading)
+               .frame(height: geo.size.height/2)
       }
     }
     .overlay(alignment: .trailing, content: {

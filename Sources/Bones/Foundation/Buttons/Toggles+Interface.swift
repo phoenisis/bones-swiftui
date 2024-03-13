@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Toggles+Interface.swift
 //  
 //
 //  Created by Quentin PIDOUX on 09/11/2023.

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ListModifier.swift
 //  
 //
 //  Created by Quentin PIDOUX on 16/10/2023.
@@ -26,8 +26,8 @@ public extension View {
   /// }
   /// .listBackgroundColor(.bones(.customColor))
   /// ```
-	@ViewBuilder func listBackgroundColor(_ color: BonesColor = .bones(.background)) -> some View {
-		self.background(Color(color))
-    .scrollContentBackground(.hidden)
-	}
+  @ViewBuilder func listBackgroundColor(_ color: BonesColor = .bones(.background)) -> some View {
+    self.background(Color(color))
+      .scrollContentBackground(.hidden)
+  }
 }

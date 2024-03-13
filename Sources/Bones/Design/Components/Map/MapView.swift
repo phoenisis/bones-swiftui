@@ -1,13 +1,13 @@
 //
-//  SwiftUIView.swift
+//  MapView.swift
 //
 //
 //  Created by Quentin PIDOUX on 22/01/2024.
 //
 
-import SwiftUI
 import MapKit
 import Polyline
+import SwiftUI
 
 public struct BonesMapView: View {
   @State var mapType: MKMapType = .mutedStandard
@@ -51,7 +51,6 @@ public struct BonesMapView: View {
       .aspectRatio(1.5, contentMode: .fit)
       .cornerRadius(.bones(.large))
       .shadow(radius: .bones(.close))
-
       .opacity(isMapPresented ? 0 : 1)
       .fullScreenCover(isPresented: $isMapPresented) {
         UIKitMapView(mapType: mapType, polyline: polyline, allowHits: true)
@@ -134,8 +133,8 @@ public struct BonesMapView: View {
 #Preview {
   VStack {
     BonesMapView(polyline: """
-gmuqH{viaEKBSX_BfEgB~Di@`BWl@{@tCe@jBKv@Gz@Cz@?x@B~A@~AXzDp@~GTlBHv@HxBG\\]b@e@Cs@Ie@DcBKuCc@O@gB?uEOe@Cg@Mg@Ic@Fe@AsBKe@Gc@?e@EkACg@Ee@?_AEc@?_FWe@Ge@FY?oAGc@?c@Ec@Ag@GuBGaAIuCIU@e@EqAAi@GqB?i@Ec@?e@GmAGgAIiA?iAKoACg@GoCMyACmAKc@BiAKw@?oBOo@?a@GsAAq@EqDAmCO_CGgBKu@IgA[a@[]e@E}@DyALsBLmEAoDIyAKs@C{@I{@UsBUoAOmAK{@E{@g@eDi@}EYuBc@oDM_BOy@UyBWwC_BmKIw@[uBSqBYwBMuB]oBWqBEw@q@qEg@yESkAa@wDUiASoAOmBYwCE{@Ay@DcB?{@DwBLqD@}@D}@H}@F}BTgERaFDsBBGD{@?}@LwBj@iPRyDHoDHiBDoD@wBHqDIiEA}BMqDIyD?y@SoHAcCUcGEwBEwGIkASiLKwBEuBIu@e@KmA@}AAg@CeHCkDCkBHoAGmA?mAEuCAiAGkADgEKqBBg@CsBCmD@qBKmA?mDHmFZiFRg@DmABiATwADmBPmABg@AqBFkBLmA@qBNsG\\mADYBg@CkAHwABc@Be@FsGVaEXBE~Ea@vAIvA?tBQb@GjH_@FBh@BzEYr@GtBGd@EjDSfDElAKf@IxFQb@G~@E~AMxCI|AMbEKnBCpADtA@r@Ed@F`FDrBH`CAvBDd@Ad@C|D?tBFd@Af@DtEEdHFvFAn@U~@d@lAVd@NdCrAXRrAnAzAlA`BxAvCbCbFnDd@VbA`@jBTjADf@F|ABjAF|CDf@@d@DnBDnAL~@@jADlCTlAAh@BxBRhAFpBBb@@\\Fd@AvBDjAHzADbE\\|CLrDBf@HlAAhAL~GRd@BxBXhAFNBRp@B|@?x@QxHEvDObEInD?tBEtDAlFCvBK~CFtBEzCMnGIL?hCWlP@vBOnH@z@IrECfAGnD@~@IzB?pBSxKClDBnJGx@MpLIvBIpFCtFQpGAxBGpBCpDKxH@rBMbDA`CC|B@rDAfJYrGIbHIrBAv@B|@Ev@@|@KvBEtB?jBPv@d@RnAFpCVnA?lAFb@H`BFjANlAGd@BjDZh@Cj@D~@Eb@@d@DtADTDd@BVJ^Bb@ORe@C{@o@mFu@yISmD?}CB{@XsC`AmETs@jDwI
-""")
+    gmuqH{viaEKBSX_BfEgB~Di@`BWl@{@tCe@jBKv@Gz@Cz@?x@B~A@~AXzDp@~GTlBHv@HxBG\\]b@e@Cs@Ie@DcBKuCc@O@gB?uEOe@Cg@Mg@Ic@Fe@AsBKe@Gc@?e@EkACg@Ee@?_AEc@?_FWe@Ge@FY?oAGc@?c@Ec@Ag@GuBGaAIuCIU@e@EqAAi@GqB?i@Ec@?e@GmAGgAIiA?iAKoACg@GoCMyACmAKc@BiAKw@?oBOo@?a@GsAAq@EqDAmCO_CGgBKu@IgA[a@[]e@E}@DyALsBLmEAoDIyAKs@C{@I{@UsBUoAOmAK{@E{@g@eDi@}EYuBc@oDM_BOy@UyBWwC_BmKIw@[uBSqBYwBMuB]oBWqBEw@q@qEg@yESkAa@wDUiASoAOmBYwCE{@Ay@DcB?{@DwBLqD@}@D}@H}@F}BTgERaFDsBBGD{@?}@LwBj@iPRyDHoDHiBDoD@wBHqDIiEA}BMqDIyD?y@SoHAcCUcGEwBEwGIkASiLKwBEuBIu@e@KmA@}AAg@CeHCkDCkBHoAGmA?mAEuCAiAGkADgEKqBBg@CsBCmD@qBKmA?mDHmFZiFRg@DmABiATwADmBPmABg@AqBFkBLmA@qBNsG\\mADYBg@CkAHwABc@Be@FsGVaEXBE~Ea@vAIvA?tBQb@GjH_@FBh@BzEYr@GtBGd@EjDSfDElAKf@IxFQb@G~@E~AMxCI|AMbEKnBCpADtA@r@Ed@F`FDrBH`CAvBDd@Ad@C|D?tBFd@Af@DtEEdHFvFAn@U~@d@lAVd@NdCrAXRrAnAzAlA`BxAvCbCbFnDd@VbA`@jBTjADf@F|ABjAF|CDf@@d@DnBDnAL~@@jADlCTlAAh@BxBRhAFpBBb@@\\Fd@AvBDjAHzADbE\\|CLrDBf@HlAAhAL~GRd@BxBXhAFNBRp@B|@?x@QxHEvDObEInD?tBEtDAlFCvBK~CFtBEzCMnGIL?hCWlP@vBOnH@z@IrECfAGnD@~@IzB?pBSxKClDBnJGx@MpLIvBIpFCtFQpGAxBGpBCpDKxH@rBMbDA`CC|B@rDAfJYrGIbHIrBAv@B|@Ev@@|@KvBEtB?jBPv@d@RnAFpCVnA?lAFb@H`BFjANlAGd@BjDZh@Cj@D~@Eb@@d@DtADTDd@BVJ^Bb@ORe@C{@o@mFu@yISmD?}CB{@XsC`AmETs@jDwI
+    """)
   }
 }
 
@@ -158,7 +157,7 @@ struct UIKitMapView: UIViewRepresentable {
     mapView.isPitchEnabled  = true
     mapView.delegate        = context.coordinator
 
-    guard let polyline = polyline else { return mapView }
+    guard let polyline else { return mapView }
 
     let locations: [CLLocationCoordinate2D] = Polyline(encodedPolyline: polyline).coordinates ?? []
 
@@ -211,7 +210,7 @@ fileprivate extension MKMapView {
 
     if shouldIncludeOverlays {
       let annotations = self.annotations.filter { !($0 is MKUserLocation) }
-      annotations.forEach { annotation in
+      for annotation in annotations {
         let circle = MKCircle(center: annotation.coordinate, radius: 1)
         mapOverlays.append(circle)
       }
@@ -226,7 +225,7 @@ fileprivate extension MKMapView {
 fileprivate extension MKMapRect {
   init(bounding overlays: [MKOverlay]) {
     self = .null
-    overlays.forEach { overlay in
+    for overlay in overlays {
       let rect: MKMapRect = overlay.boundingMapRect
       self = self.union(rect)
     }
@@ -398,7 +397,7 @@ open class GradientPathRenderer: MKOverlayPathRenderer {
     /*
      Draw the gradient in the clipped context of the path
      */
-    if let gradient = gradient {
+    if let gradient {
       context.drawLinearGradient(gradient, start: gradientStart, end: gradientEnd, options: CGGradientDrawingOptions.drawsBeforeStartLocation)
     }
 

@@ -1,23 +1,23 @@
-  //
-  //  Colors.swift
-  //
-  //
-  //  Created by Quentin PIDOUX on 13/03/2024.
-  //
+//
+//  Colors.swift
+//
+//
+//  Created by Quentin PIDOUX on 13/03/2024.
+//
 
 import SwiftUI
 
-  /// A global dictionary to map `BonesColorToken` to hexadecimal color strings.
+/// A global dictionary to map `BonesColorToken` to hexadecimal color strings.
 var bonesColors: [Color.BonesColorToken: String] = [:]
 
-  /// An enumeration to encapsulate color styles within the application.
+/// An enumeration to encapsulate color styles within the application.
 public enum BonesColor { case bones(Color.BonesColorToken) }
 
 extension Color {
-    /// An enumeration of color tokens used throughout the application.
-    ///
-    /// This enum defines a comprehensive set of colors represented as tokens,
-    /// enabling a consistent and flexible color system within the app.
+  /// An enumeration of color tokens used throughout the application.
+  ///
+  /// This enum defines a comprehensive set of colors represented as tokens,
+  /// enabling a consistent and flexible color system within the app.
   public enum BonesColorToken: String, CaseIterable, Identifiable {
     case background
     case foreground
@@ -60,12 +60,12 @@ extension Color {
     public var id: String { self.rawValue }
   }
   
-    /// Initializes a `Color` instance with a specified `BonesColor`.
-    ///
-    /// Attempts to initialize the color using a hex code from `bonesColors`.
-    /// If no hex code is found, it falls back to a color defined in assets.
-    ///
-    /// - Parameter color: The `BonesColor` enum specifying the desired color token.
+  /// Initializes a `Color` instance with a specified `BonesColor`.
+  ///
+  /// Attempts to initialize the color using a hex code from `bonesColors`.
+  /// If no hex code is found, it falls back to a color defined in assets.
+  ///
+  /// - Parameter color: The `BonesColor` enum specifying the desired color token.
   public init(_ color: BonesColor) {
     switch color {
       case .bones(let colorType):
@@ -75,7 +75,7 @@ extension Color {
     }
   }
   
-    /// A structure to conveniently access the application's color scheme.
+  /// A structure to conveniently access the application's color scheme.
   public struct bones {
     public static let background = Color(.bones(.background))
     public static let foreground = Color(.bones(.foreground))
@@ -127,16 +127,16 @@ fileprivate extension Color {
     var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, o: CGFloat = 0
     guard NativeColor(self).getRed(&r, green: &g, blue: &b, alpha: &o) else {
       return (0, 0, 0, 0)
-      }
-    return (r, g, b, o)
     }
+    return (r, g, b, o)
+  }
   
   /// Initializes a `Color` with another `Color` instance.
   ///
   /// - Parameter color: The `Color` to clone.
   init(color: Color) {
     self.init(red: color.components.red, green: color.components.green, blue: color.components.blue, opacity: color.components.opacity)
-    }
+  }
   
   /// Initializes a `Color` with a hexadecimal color code.
   ///
@@ -149,5 +149,5 @@ fileprivate extension Color {
     let green = CGFloat((rgbValue >> 8) & 0xff) / 255
     let blue = CGFloat(rgbValue & 0xff) / 255
     self.init(red: red, green: green, blue: blue)
-    }
+  }
 }

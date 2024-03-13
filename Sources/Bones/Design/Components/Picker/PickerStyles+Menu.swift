@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  PickerStyles+Menu.swift
 //
 //
 //  Created by Quentin PIDOUX on 09/11/2023.
@@ -25,7 +25,7 @@ public struct BonesSmallOutlineMenuPicker<Item>: View where Item: Identifiable, 
   /// Computes the title for the button based on the selected item.
   var buttonTitle: LocalizedStringKey {
     get {
-      if let selectedItem = selectedItem, data.contains(selectedItem) {
+      if let selectedItem, data.contains(selectedItem) {
         return LocalizedStringKey(titleProvider(selectedItem))
       } else {
         return placeholder
@@ -91,7 +91,7 @@ public struct BonesSmallFillMenuPicker<Item>: View where Item: Identifiable, Ite
   /// Computes the title for the button based on the selected item.
   var buttonTitle: LocalizedStringKey {
     get {
-      if let selectedItem = selectedItem, data.contains(selectedItem) {
+      if let selectedItem, data.contains(selectedItem) {
         return LocalizedStringKey(titleProvider(selectedItem))
       } else {
         return placeholder
@@ -120,7 +120,7 @@ public struct BonesSmallFillMenuPicker<Item>: View where Item: Identifiable, Ite
     Menu {
       Text(placeholder)
         .font(.custom(.bones(.bodyBold)))
-      
+
       Picker(selection: $selectedItem) {
         ForEach(data) { item in
           Text(titleProvider(item))
@@ -177,7 +177,7 @@ public struct BonesMenuPicker<Item>: View where Item: Identifiable, Item: Equata
   /// Computes the title for the button based on the selected item.
   var buttonTitle: LocalizedStringKey {
     get {
-      if let selectedItem = selectedItem, data.contains(selectedItem) {
+      if let selectedItem, data.contains(selectedItem) {
         return LocalizedStringKey(titleProvider(selectedItem))
       } else {
         return placeholder

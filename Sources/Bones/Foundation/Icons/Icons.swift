@@ -8,17 +8,17 @@
 import Foundation
 import SwiftUI
 
-  /// A representation of icon styles for use in the application.
+/// A representation of icon styles for use in the application.
 public enum BonesIconStyle {
   case bones(_ style: Image.BonesImage)
 }
 
 extension Image {
-    /// Defines a comprehensive list of icons used throughout the application.
-    ///
-    /// This enumeration includes system icons, custom icons, and placeholders for icons
-    /// loaded from image assets. It leverages SwiftUI's `Image` system for easy integration
-    /// and consistent use across the application.
+  /// Defines a comprehensive list of icons used throughout the application.
+  ///
+  /// This enumeration includes system icons, custom icons, and placeholders for icons
+  /// loaded from image assets. It leverages SwiftUI's `Image` system for easy integration
+  /// and consistent use across the application.
   public enum BonesImage: String, CaseIterable, Identifiable {
     case play
     case pause
@@ -69,23 +69,23 @@ extension Image {
     case joinTeam
     case leaveTeam
     
-      // Custom icons, loaded from image assets
+    // Custom icons, loaded from image assets
     case bolt
     case great
     case seasonRanking
     case globalRanking
     
-      /// Provides a unique identifier for each icon.
+    /// Provides a unique identifier for each icon.
     public var id: String { String(reflecting: self) }
   }
   
-    /// Initializes an `Image` with a specified `BonesIconStyle`.
-    ///
-    /// This initializer selects the appropriate image based on the specified icon style,
-    /// supporting both system and custom icons. It enables the consistent use of icons
-    /// throughout the application's UI components.
-    ///
-    /// - Parameter type: The `BonesIconStyle` specifying the desired icon.
+  /// Initializes an `Image` with a specified `BonesIconStyle`.
+  ///
+  /// This initializer selects the appropriate image based on the specified icon style,
+  /// supporting both system and custom icons. It enables the consistent use of icons
+  /// throughout the application's UI components.
+  ///
+  /// - Parameter type: The `BonesIconStyle` specifying the desired icon.
   public init(_ type: BonesIconStyle) {
     switch type {
       case .bones(let style):
@@ -187,7 +187,7 @@ extension Image {
           case .leaveTeam:
             self.init(systemName: "person.badge.minus")
             
-              // MARK: Custom
+          // MARK: Custom
           case .bolt:
             self.init("bolt", bundle: .module)
           case .great:
@@ -214,12 +214,12 @@ public struct BonesIcon: View {
   ///   - fontWeight: The `Font.Weight` to apply to the icon (if applicable).
   ///   - renderingMode: The `Image.TemplateRenderingMode` to use for rendering the icon.
   public init(icon: BonesIconStyle,
-  fontWeight: Font.Weight = .light,
-  renderingMode: Image.TemplateRenderingMode = .original) {
+              fontWeight: Font.Weight = .light,
+              renderingMode: Image.TemplateRenderingMode = .original) {
     self.icon          = icon
     self.fontWeight    = fontWeight
     self.renderingMode = renderingMode
-    }
+  }
   
   /// Constructs the icon `Image` view with appropriate styling.
   ///
@@ -227,9 +227,9 @@ public struct BonesIcon: View {
   /// the rendering mode and scaling it to fit.
   private func makeIcon() -> Image {
     Image(icon)
-    .renderingMode(renderingMode)
-    .resizable()
-    }
+      .renderingMode(renderingMode)
+      .resizable()
+  }
   
   /// The body of the `BonesIcon` view.
   ///
@@ -237,7 +237,7 @@ public struct BonesIcon: View {
   /// and scaling to fit within its container.
   public var body: some View {
     makeIcon()
-    .fontWeight(fontWeight)
-    .scaledToFit()
-    }
+      .fontWeight(fontWeight)
+      .scaledToFit()
+  }
 }

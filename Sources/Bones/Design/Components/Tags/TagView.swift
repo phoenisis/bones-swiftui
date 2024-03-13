@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TagView.swift
 //  
 //
 //  Created by Quentin PIDOUX on 20/10/2023.
@@ -33,11 +33,11 @@ public struct TagView: View {
   var backgroundColor: Color {
     switch style {
       case .default:
-          .bones.white
+        .bones.white
       case .white:
-          .bones.white
+        .bones.white
       case .primary:
-          .bones.primary
+        .bones.primary
     }
   }
 
@@ -45,11 +45,11 @@ public struct TagView: View {
   var foregroundColor: Color {
     switch style {
       case .default:
-          .bones.textDark
+        .bones.textDark
       case .white:
-          .bones.textDark
+        .bones.textDark
       case .primary:
-          .bones.primaryForeground
+        .bones.primaryForeground
     }
   }
 
@@ -57,22 +57,22 @@ public struct TagView: View {
   var borderColor: Color {
     switch style {
       case .default:
-          .bones.textDark
+        .bones.textDark
       case .white:
-          .bones.white
+        .bones.white
       case .primary:
-          .bones.primary
+        .bones.primary
     }
   }
 
   var radius: CGFloat.BonesRadius {
     switch style {
       case .default:
-          .large
+        .large
       case .white:
-          .small
+        .small
       case .primary:
-          .small
+        .small
     }
   }
 

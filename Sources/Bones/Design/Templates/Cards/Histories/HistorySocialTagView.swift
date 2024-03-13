@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HistorySocialTagView.swift
 //
 //
 //  Created by Quentin PIDOUX on 28/12/2023.
@@ -10,7 +10,7 @@ import SwiftUI
 public struct HistorySocialTagView: View {
   @State private var isImagePresented = false
   @State var isFullScreenViewVisible = false
-  
+
   let imageUrl: String?
   let points: String?
   let description: String?
@@ -37,42 +37,41 @@ public struct HistorySocialTagView: View {
       }
       didTap()
     }
-      .buttonStyle(
-        HistorySocialTagButtonStyle(
-          imageUrl: imageUrl,
-          points: points, 
-          description: description,
-          member: member,
-          isHidden: isHidden, 
-          isFullScreenViewVisible: isFullScreenViewVisible
-        )
+    .buttonStyle(
+      HistorySocialTagButtonStyle(
+        imageUrl: imageUrl,
+        points: points, 
+        description: description,
+        member: member,
+        isHidden: isHidden, 
+        isFullScreenViewVisible: isFullScreenViewVisible
       )
-      .disabled(isActive == false)
-      .fullScreenCover(isPresented: $isImagePresented) {
-        Group {
-          if isFullScreenViewVisible {
-            SwiftUIImageViewer(imageUrl: imageUrl)
-              .onDisappear {
-                isImagePresented = false
-                isFullScreenViewVisible = false
-              }
-              .background(BackgroundBlurView())
-              .frame(maxWidth: .infinity, maxHeight: .infinity)
-          }
+    )
+    .disabled(isActive == false)
+    .fullScreenCover(isPresented: $isImagePresented) {
+      Group {
+        if isFullScreenViewVisible {
+          SwiftUIImageViewer(imageUrl: imageUrl)
+            .onDisappear {
+              isImagePresented = false
+              isFullScreenViewVisible = false
+            }
+            .background(BackgroundBlurView())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-        .onAppear {
-          isFullScreenViewVisible = true
-        }
-        .background(BackgroundBlurView())
       }
-      .transaction({ transaction in
-        transaction.disablesAnimations = false
-        transaction.animation = .easeIn(duration: 0.3)
-      })
-      .listRowSeparator(.hidden)
-      .listRowBackground(Color.clear)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .onAppear {
+        isFullScreenViewVisible = true
+      }
+      .background(BackgroundBlurView())
+    }
+    .transaction({ transaction in
+      transaction.disablesAnimations = false
+      transaction.animation = .easeIn(duration: 0.3)
+    })
+    .listRowSeparator(.hidden)
+    .listRowBackground(Color.clear)
   }
 }
 
@@ -158,7 +157,6 @@ struct HistorySocialTagButtonStyle: ButtonStyle {
       }
     )
     .padding(.bones(.large))
-    
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(
       RoundedRectangle(bonesRadius: .bones(.large), style: .continuous)
@@ -166,8 +164,8 @@ struct HistorySocialTagButtonStyle: ButtonStyle {
         .shadow(
           radius: .bones(
             isEnabled
-            ? configuration.isPressed ? .close : .far
-            : .none
+              ? configuration.isPressed ? .close : .far
+              : .none
           )
         )
     )

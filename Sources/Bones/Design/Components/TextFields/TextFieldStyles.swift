@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TextFieldStyles.swift
 //  
 //
 //  Created by Quentin PIDOUX on 29/09/2023.
@@ -10,13 +10,13 @@ import SwiftUI
 /// Extension to simplify the usage of `BonesDefaultTextFieldStyle`.
 public extension TextFieldStyle where Self == BonesDefaultTextFieldStyle {
   /// A convenient static variable to initialize `BonesDefaultTextFieldStyle`.
-	static var bones: Self { .init() }
+  static var bones: Self { .init() }
 }
 
 /// A default style configuration for Text Fields.
 public struct BonesDefaultTextFieldStyle: TextFieldStyle {
   /// Stylizes the body of the text field.
-	public func _body(configuration: TextField<Self._Label>) -> some View {
+  public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .font(.bones(.bodyBold))
       .foregroundStyle(Color.bones.textDark)
@@ -35,18 +35,18 @@ public struct BonesDefaultTextFieldStyle: TextFieldStyle {
           )
           .stroke(Color.bones.grey2, lineWidth: 2)
         }
-          .foregroundStyle(
-            Color.bones.white
-              .shadow(.bones.inner(.close))
-          )
+        .foregroundStyle(
+          Color.bones.white
+            .shadow(.bones.inner(.close))
+        )
       )
-	}
+  }
 }
 
 /// Extension to simplify the usage of `BonesSearchTextFieldStyle`.
 public extension TextFieldStyle where Self == BonesSearchTextFieldStyle {
   /// A convenient static variable to initialize `BonesSearchTextFieldStyle`.
-	static var bonesSearch: Self { .init() }
+  static var bonesSearch: Self { .init() }
 }
 
 /// A search style configuration for Text Fields.
@@ -76,25 +76,25 @@ public struct BonesSearchTextFieldStyle: TextFieldStyle {
     .onAppear {
       UITextField.appearance().clearButtonMode = .whileEditing
     }
-	}
+  }
 }
 
 /// Extension to simplify the usage of `BonesSecureTextFieldStyle`.
 public extension TextFieldStyle where Self == BonesSecureTextFieldStyle {
   /// A function to initialize `BonesSecureTextFieldStyle` with protection status and a security change handler.
-	static func bonesSecure(_ isProtected: Bool, _ securityChanged: @escaping () -> Void) -> Self { .init(isProtected: isProtected, securityChanged: securityChanged) }
+  static func bonesSecure(_ isProtected: Bool, _ securityChanged: @escaping () -> Void) -> Self { .init(isProtected: isProtected, securityChanged: securityChanged) }
 }
 
 /// A secure text field style configuration with visibility toggle.
 public struct BonesSecureTextFieldStyle: TextFieldStyle {
-	let isProtected: Bool
-	var securityChanged: () -> Void
+  let isProtected: Bool
+  var securityChanged: () -> Void
 
   /// Initializes a new style with protection status and a security change handler.
-	public init(isProtected: Bool, securityChanged: @escaping () -> Void) {
-		self.isProtected = isProtected
-		self.securityChanged = securityChanged
-	}
+  public init(isProtected: Bool, securityChanged: @escaping () -> Void) {
+    self.isProtected = isProtected
+    self.securityChanged = securityChanged
+  }
 
   /// Stylizes the body of the secure text field with a visibility toggle button.
   public func _body(configuration: TextField<Self._Label>) -> some View {
@@ -103,8 +103,8 @@ public struct BonesSecureTextFieldStyle: TextFieldStyle {
         .font(.bones(.bodyBold))
       Button(action: { securityChanged() }, label: {
         Image( isProtected
-               ? .bones(.passwordOn)
-               : .bones(.passwordOff)
+          ? .bones(.passwordOn)
+          : .bones(.passwordOff)
         )
       })
     })
@@ -124,76 +124,76 @@ public struct BonesSecureTextFieldStyle: TextFieldStyle {
             .shadow(.bones.inner(.close))
         )
     )
-		.tint(Color.bones.textDark)
-		.disableAutocorrection(true)
-		.autocapitalization(.none)
-	}
+    .tint(Color.bones.textDark)
+    .disableAutocorrection(true)
+    .autocapitalization(.none)
+  }
 }
 
 /// A secure text field with a visibility toggle.
 public struct BonesSecureField: View {
-	var titleKey: LocalizedStringKey
-	@Binding var text: String
-	@State var isShowingPassword: Bool = false
-	@FocusState var isFieldFocus: FieldToFocus?
+  var titleKey: LocalizedStringKey
+  @Binding var text: String
+  @State var isShowingPassword: Bool = false
+  @FocusState var isFieldFocus: FieldToFocus?
 
   var onSubmit: (() -> Void)?
 
   /// Initializes a new secure field view.
   public init(_ titleKey: LocalizedStringKey, text: Binding<String>, onSubmit: (() -> Void)? = nil) {
-		self.titleKey = titleKey
-		self._text = text
+    self.titleKey = titleKey
+    self._text = text
     self.onSubmit = onSubmit
-	}
+  }
 
   /// The body composed of a secure text field with a visibility toggle.
-	public var body: some View {
-		VStack {
-			Group {
-				if isShowingPassword {
-					TextField(titleKey, text: $text, prompt: {
-						Text(titleKey)
-							.foregroundColor(.bones.grey4)
-					}())
-					.textFieldStyle(.bonesSecure(isShowingPassword, {
-						isShowingPassword.toggle()
-					}))
-          .onSubmit {
-            onSubmit?()
-          }
-				} else {
-					SecureField(titleKey, text: $text, prompt: {
-						Text(titleKey)
-							.foregroundColor(.bones.grey4)
-					}())
-						.focused($isFieldFocus, equals: .secureField)
-						.textFieldStyle(.bonesSecure(isShowingPassword, {
-							isShowingPassword.toggle()
-						}))
+  public var body: some View {
+    VStack {
+      Group {
+        if isShowingPassword {
+          TextField(titleKey, text: $text, prompt: {
+            Text(titleKey)
+              .foregroundColor(.bones.grey4)
+          }())
+            .textFieldStyle(.bonesSecure(isShowingPassword, {
+              isShowingPassword.toggle()
+            }))
             .onSubmit {
               onSubmit?()
             }
-				}
-			}
-			.disableAutocorrection(true)
-			.autocapitalization(.none)
-		}
-		.onChange(of: isShowingPassword) {
-			isFieldFocus = isShowingPassword ? .textField : .secureField
-		}
-	}
+        } else {
+          SecureField(titleKey, text: $text, prompt: {
+            Text(titleKey)
+              .foregroundColor(.bones.grey4)
+          }())
+            .focused($isFieldFocus, equals: .secureField)
+            .textFieldStyle(.bonesSecure(isShowingPassword, {
+              isShowingPassword.toggle()
+            }))
+            .onSubmit {
+              onSubmit?()
+            }
+        }
+      }
+      .disableAutocorrection(true)
+      .autocapitalization(.none)
+    }
+    .onChange(of: isShowingPassword) {
+      isFieldFocus = isShowingPassword ? .textField : .secureField
+    }
+  }
 
-	enum FieldToFocus {
-		case secureField, textField
-	}
+  enum FieldToFocus {
+    case secureField, textField
+  }
 }
 
 struct Preview_TextField: View {
-	@State var field: String = ""
+  @State var field: String = ""
 
-	var body: some View {
-		@State var field: String = ""
-		return  List {
+  var body: some View {
+    @State var field: String = ""
+    return  List {
       Section {
         TextField(
           text: $field,
@@ -241,11 +241,11 @@ struct Preview_TextField: View {
           .font(.custom(.bones(.bodyBold)))
           .foregroundStyle(Color.bones.textDark)
       }
-		}
+    }
     .listBackgroundColor()
-	}
+  }
 }
 
 #Preview {
-	Preview_TextField()
+  Preview_TextField()
 }

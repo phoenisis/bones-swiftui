@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonQuiz.swift
 //
 //
 //  Created by Quentin PIDOUX on 08/01/2024.
@@ -59,44 +59,44 @@ public struct QuizButton: ButtonStyle {
   }
 
   public func makeBody(configuration: Configuration) -> some View {
-      getLabel(configuration: configuration, imageUrl: imageUrl)
-        .cornerRadius(.bones(.medium))
-        .foregroundColor(foregroundColor)
-        .background(
-          getOverlay(configuration: configuration)
-        )
-        .padding(.top, .bones(.medium))
-        .overlay(alignment: .topTrailing) {
-          switch style {
-            case .success, .unSelectedSuccess:
-              BonesIcon(icon: .bones(.checkmark), renderingMode: .template)
-                .foregroundColor(.bones.grey6)
-                .padding(8)
-                .frame(width: 32, height: 32)
-                .cornerRadius(.bones(.medium))
-                .background(
-                  RoundedRectangle(bonesRadius: .bones(.medium))
+    getLabel(configuration: configuration, imageUrl: imageUrl)
+      .cornerRadius(.bones(.medium))
+      .foregroundColor(foregroundColor)
+      .background(
+        getOverlay(configuration: configuration)
+      )
+      .padding(.top, .bones(.medium))
+      .overlay(alignment: .topTrailing) {
+        switch style {
+          case .success, .unSelectedSuccess:
+            BonesIcon(icon: .bones(.checkmark), renderingMode: .template)
+              .foregroundColor(.bones.grey6)
+              .padding(8)
+              .frame(width: 32, height: 32)
+              .cornerRadius(.bones(.medium))
+              .background(
+                RoundedRectangle(bonesRadius: .bones(.medium))
                   .fill(
                     Color.bones.success
                       .shadow(.bones.drop(.close))
                   )
-                )
-                .padding(.trailing, -8)
-                .transition(
-                  .movingParts.pop(Color.bones.primary)
-                )
-            default:
-              EmptyView()
-          }
+              )
+              .padding(.trailing, -8)
+              .transition(
+                .movingParts.pop(Color.bones.primary)
+              )
+          default:
+            EmptyView()
         }
-        .scaleEffect((style == .default && configuration.isPressed) ? 0.98 : 1)
-        .animation(.default, value: configuration.isPressed)
-        .changeEffect(
-          .feedback(
-            hapticImpact: .rigid
-          ),
-          value: configuration.isPressed
-        )
+      }
+      .scaleEffect((style == .default && configuration.isPressed) ? 0.98 : 1)
+      .animation(.default, value: configuration.isPressed)
+      .changeEffect(
+        .feedback(
+          hapticImpact: .rigid
+        ),
+        value: configuration.isPressed
+      )
   }
 
   private func getOverlay(configuration: Configuration) -> some View {
@@ -114,10 +114,10 @@ public struct QuizButton: ButtonStyle {
             backgroundColor
               .shadow(
                 isSelected
-                ? .bones.inner(.close)
-                : configuration.isPressed
-                ? .bones.drop(.close)
-                : .bones.drop(.far)
+                  ? .bones.inner(.close)
+                  : configuration.isPressed
+                  ? .bones.drop(.close)
+                  : .bones.drop(.far)
               )
           )
     }
@@ -279,9 +279,9 @@ struct QuizButtonViewContainer: View {
         .animation(.default, value: button5Style)
         .listRowBackground(Color.clear)
       }
-    header: {
-      Text("Dynamic composant")
-    }
+      header: {
+        Text("Dynamic composant")
+      }
     }
     .listStyle(.grouped)
     .listBackgroundColor()

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ToggleStyles+Legal.swift
 //  
 //
 //  Created by Quentin PIDOUX on 09/11/2023.

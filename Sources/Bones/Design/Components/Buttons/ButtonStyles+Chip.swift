@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonStyles+Chip.swift
 //
 //
 //  Created by Quentin PIDOUX on 09/10/2023.
@@ -32,14 +32,14 @@ struct BonesChipButton: ButtonStyle {
         .padding(.vertical, .bones(.medium))
         .foregroundStyle(
           configuration.isPressed
-          ? Color.bones.textDark
-          : Color.bones.primaryForeground
+            ? Color.bones.textDark
+            : Color.bones.primaryForeground
         )
         .background(
           RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
             .fill(configuration.isPressed
-                  ? Color.bones.white
-                  : Color.bones.primary)
+              ? Color.bones.white
+              : Color.bones.primary)
             .overlay(
               RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
                 .stroke(Color.bones.primary, lineWidth: 1)
@@ -61,14 +61,14 @@ struct BonesChipButton: ButtonStyle {
         .padding(.vertical, .bones(.medium))
         .foregroundStyle(
           configuration.isPressed
-          ? Color.bones.primaryForeground
-          : Color.bones.textDark
+            ? Color.bones.primaryForeground
+            : Color.bones.textDark
         )
         .background(
           RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
             .fill(configuration.isPressed
-                  ? Color.bones.primary
-                  : Color.bones.white)
+              ? Color.bones.primary
+              : Color.bones.white)
             .overlay(
               RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
                 .stroke(Color.bones.primary, lineWidth: 1)
@@ -95,7 +95,7 @@ fileprivate extension View {
   ///   - width: The width of the shadow.
   ///   - blur: The blur radius of the shadow.
   /// - Returns: A view that includes an inner shadow.
-  func innerShadow<S: Shape>(using shape: S, angle: Angle = .degrees(0), color: Color = .bones.black, width: CGFloat = 6, blur: CGFloat = 6) -> some View {
+  func innerShadow(using shape: some Shape, angle: Angle = .degrees(0), color: Color = .bones.black, width: CGFloat = 6, blur: CGFloat = 6) -> some View {
     let finalX = CGFloat(cos(angle.radians - .pi / 2))
     let finalY = CGFloat(sin(angle.radians - .pi / 2))
     return self

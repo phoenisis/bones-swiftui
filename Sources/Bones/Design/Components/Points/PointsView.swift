@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  PointsView.swift
 //
 //
 //  Created by Quentin PIDOUX on 11/01/2024.

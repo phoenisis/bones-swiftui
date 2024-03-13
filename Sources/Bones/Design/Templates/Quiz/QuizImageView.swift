@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  QuizImageView.swift
 //
 //
 //  Created by Quentin PIDOUX on 20/10/2023.
@@ -74,8 +74,8 @@ public struct QuizImageView: View {
             .clipShape(RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous))
             .background(
               CachedAsyncImage(url: URL(string: imageUrl)) { image in image.resizable()
-                  .cornerRadius(.bones(.medium))
-                  .blur(radius: 3.0)
+                .cornerRadius(.bones(.medium))
+                .blur(radius: 3.0)
 
               } placeholder: {}
             )
@@ -105,7 +105,6 @@ public struct QuizImageView: View {
               }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-
             .onAppear {
               isFullScreenViewVisible = true
             }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AvatarGroupView.swift
 //  
 //
 //  Created by Quentin PIDOUX on 19/10/2023.

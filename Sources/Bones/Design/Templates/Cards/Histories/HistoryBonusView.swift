@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HistoryBonusView.swift
 //
 //
 //  Created by Quentin PIDOUX on 29/12/2023.

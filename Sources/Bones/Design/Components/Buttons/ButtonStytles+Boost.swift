@@ -1,12 +1,12 @@
 //
-//  File.swift
+//  ButtonStytles+Boost.swift
 //
 //
 //  Created by Quentin PIDOUX on 30/01/2024.
 //
 
-import SwiftUI
 import AVKit
+import SwiftUI
 
 struct BonesBoostButton: ButtonStyle {
 
@@ -16,8 +16,8 @@ struct BonesBoostButton: ButtonStyle {
   var endDate: Date?
 
   var totalDuration: String? {
-    guard let startDate = startDate,
-            let endDate = endDate
+    guard let startDate,
+          let endDate
     else { return nil }
 
     return Duration.seconds(endDate.timeIntervalSince(startDate)).formatted(.units(allowed: [.hours], zeroValueUnits: .hide))
@@ -36,8 +36,8 @@ struct BonesBoostButton: ButtonStyle {
 
   func computeRemainingDuration() {
 
-    guard let startDate = startDate,
-          let endDate = endDate
+    guard let startDate,
+          let endDate
     else {
       isEnabled = true
       return
@@ -193,20 +193,20 @@ struct BonesBoostButton: ButtonStyle {
         .padding(.bones(.large))
         .background(
           isEnabled 
-          ? Color.bones.primary
-          : Color.bones.grey3
+            ? Color.bones.primary
+            : Color.bones.grey3
         )
         .foregroundStyle(
           isEnabled
-          ? Color.bones.primaryForeground
-          : Color.bones.textDark
+            ? Color.bones.primaryForeground
+            : Color.bones.textDark
         )
         .cornerRadius(.bones(.large))
         .applyButtonMinHeight()
         .shadow(
           radius: isEnabled 
-          ? configuration.isPressed ? .bones(.close) : .bones(.far)
-          : .bones(.none)
+            ? configuration.isPressed ? .bones(.close) : .bones(.far)
+            : .bones(.none)
         )
         .conditionalEffect(
           .pushDown,
@@ -217,7 +217,7 @@ struct BonesBoostButton: ButtonStyle {
     .onAppear {
       computeRemainingDuration()
       let sound = Bundle.module.path(forResource: "countDown", ofType: "wav")
-        // swiftlint:disable:next force_try
+      // swiftlint:disable:next force_try
       self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
 
     }

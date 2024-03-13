@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonStyles+Shape.swift
 //  
 //
 //  Created by Quentin PIDOUX on 17/11/2023.
@@ -24,7 +24,7 @@ public struct BonesRectangleButton: ButtonStyle {
         RoundedRectangle(bonesRadius: .bones(radius), style: .continuous)
           .fill(Color(.bones(fillColor)))
           .shadow(radius:
-                    configuration.isPressed ? .bones(.none) : .bones(shadow))
+            configuration.isPressed ? .bones(.none) : .bones(shadow))
       }
       .conditionalEffect(
         .pushDown,

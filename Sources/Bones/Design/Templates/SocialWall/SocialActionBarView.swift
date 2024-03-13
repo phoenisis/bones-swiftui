@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialActionBarView.swift
 //
 //
 //  Created by Quentin PIDOUX on 16/10/2023.
@@ -73,30 +73,30 @@ public struct SocialActionBarView: View {
                       BonesIcon(
                         icon: .bones(
                           isLiked
-                          ? .likeFill
-                          : .like
+                            ? .likeFill
+                            : .like
                         ), renderingMode: .template)
-                      .frame(width: 20, height: 20)
-                      .foregroundStyle(
-                        isLiked
-                        ? Color.bones.primary
-                        : Color.bones.textDark
-                      )
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(
+                          isLiked
+                            ? Color.bones.primary
+                            : Color.bones.textDark
+                        )
                       BonesIcon(
                         icon: .bones(.like),
                         renderingMode: .template)
-                      .frame(width: 20, height: 20)
-                      .foregroundStyle(
-                        Color.bones.textDark
-                      )
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(
+                          Color.bones.textDark
+                        )
                     }
                     .changeEffect(
                       .spray(origin: UnitPoint(x: 0.25, y: 0.5)) {
                         Image(systemName: "heart.fill")
                           .foregroundStyle(
                             isLiked
-                            ? Color.bones.primary
-                            : Color.clear
+                              ? Color.bones.primary
+                              : Color.clear
                           )
                       }, value: isLiked)
 
@@ -112,7 +112,7 @@ public struct SocialActionBarView: View {
 //                    alignment: .leading
 //                  )
                 })
-              .animation(.default, value: isLiked)
+                .animation(.default, value: isLiked)
 
               Button(
                 action: {
@@ -184,10 +184,10 @@ struct Preview_SocialActionBarView: View {
       ) { isLiked1.toggle()
         print("like")
       } commentTapped: {}
-    seeLikedTapped: {}
-    shareTapped: {
-      print("share")
-    }
+        seeLikedTapped: {}
+        shareTapped: {
+          print("share")
+        }
       SocialActionBarView(
         isLiked: isLiked2,
         likeCount: 422,
@@ -196,8 +196,8 @@ struct Preview_SocialActionBarView: View {
         isSharable: true,
         isPinned: false
       ) { isLiked2.toggle() }
-    commentTapped: {}
-    seeLikedTapped: { }
+        commentTapped: {}
+        seeLikedTapped: { }
       SocialActionBarView(
         isLiked: isLiked3,
         likeCount: 12_523,
@@ -206,8 +206,8 @@ struct Preview_SocialActionBarView: View {
         isSharable: false,
         isPinned: true
       ) { isLiked3.toggle() }
-    commentTapped: {}
-    seeLikedTapped: { }
+        commentTapped: {}
+        seeLikedTapped: { }
       SocialActionBarView(
         isLiked: isLiked4,
         likeCount: 0,
@@ -216,8 +216,8 @@ struct Preview_SocialActionBarView: View {
         isSharable: false,
         isPinned: false
       ) { isLiked4.toggle() }
-    commentTapped: {}
-    seeLikedTapped: { }
+        commentTapped: {}
+        seeLikedTapped: { }
     }
     .listBackgroundColor()
     .listStyle(.grouped)

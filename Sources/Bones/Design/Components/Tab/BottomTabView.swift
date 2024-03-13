@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  BottomTabView.swift
 //
 //
 //  Created by Quentin PIDOUX on 07/11/2023.
@@ -196,9 +196,9 @@ extension View {
         Color.clear
           .preference(key: SafeAreaInsetsKey.self, value: proxy.safeAreaInsets)
       }
-        .onPreferenceChange(SafeAreaInsetsKey.self) { value in
-          safeInsets.wrappedValue = value
-        }
+      .onPreferenceChange(SafeAreaInsetsKey.self) { value in
+        safeInsets.wrappedValue = value
+      }
     )
   }
 }

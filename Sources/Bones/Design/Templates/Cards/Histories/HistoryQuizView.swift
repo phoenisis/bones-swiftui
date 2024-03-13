@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HistoryQuizView.swift
 //
 //
 //  Created by Quentin PIDOUX on 28/12/2023.
@@ -79,7 +79,7 @@ struct HistoryQuizButtonStyle: ButtonStyle {
           content: {
             if let imageUrl {
               CachedAsyncImage(url: URL(string: imageUrl)) { image in image
-                  .resizable()
+                .resizable()
               } placeholder: {
                 ProgressView()
                   .frame(maxWidth: .infinity, alignment: .center)
@@ -128,8 +128,8 @@ struct HistoryQuizButtonStyle: ButtonStyle {
       .shadow(
         radius: .bones(
           isActive
-          ? configuration.isPressed ? .close : .far
-          : .none
+            ? configuration.isPressed ? .close : .far
+            : .none
         )
       )
     )
@@ -208,8 +208,8 @@ public struct CardStyle: ButtonStyle {
           .shadow(
             radius: .bones(
               isEnabled
-              ? configuration.isPressed ? .reallyClose : .close
-              : .none
+                ? configuration.isPressed ? .reallyClose : .close
+                : .none
             )
           )
       )

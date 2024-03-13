@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ListStyle.swift
 //
 //
 //  Created by Quentin PIDOUX on 07/12/2023.
@@ -64,7 +64,7 @@ public struct BonesSettingsIconLabelStyle<Content: View>: LabelStyle {
 
       trailingContent()
 
-      if let trailingIcon = trailingIcon {
+      if let trailingIcon {
         BonesIcon(icon: .bones(trailingIcon), renderingMode: .template)
           .foregroundStyle(Color.bones.grey4)
           .frame(width: 16, height: 16)

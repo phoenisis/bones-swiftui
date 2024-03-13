@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-  /// Extends the `Font` struct to include custom font styles and tokens.
-  ///
-  /// This extension allows for the creation of a flexible and consistent font system
-  /// within a SwiftUI application, using predefined font styles and tokens.
+/// Extends the `Font` struct to include custom font styles and tokens.
+///
+/// This extension allows for the creation of a flexible and consistent font system
+/// within a SwiftUI application, using predefined font styles and tokens.
 extension Font {
-    /// Represents a custom font style.
-    ///
-    /// This enum allows for the encapsulation of a font style within the application's
-    /// design system, leveraging the `Font.BonesFontToken` to specify the font style.
+  /// Represents a custom font style.
+  ///
+  /// This enum allows for the encapsulation of a font style within the application's
+  /// design system, leveraging the `Font.BonesFontToken` to specify the font style.
   public enum BonesFontStyle {
     case bones(_ style: Font.BonesFontToken)
   }
   
-    /// An enumeration of font style tokens.
-    ///
-    /// Defines a set of font style tokens that represent specific text styles (e.g., headings,
-    /// body text, small text) within the application. This allows for a consistent application
-    /// of font styles across the UI.
+  /// An enumeration of font style tokens.
+  ///
+  /// Defines a set of font style tokens that represent specific text styles (e.g., headings,
+  /// body text, small text) within the application. This allows for a consistent application
+  /// of font styles across the UI.
   public enum BonesFontToken: String, CaseIterable, Identifiable {
     case h1
     case h2
@@ -36,18 +36,18 @@ extension Font {
     case extraSmall
     case extraSmallBold
     
-      /// A unique identifier for each font token.
-      ///
-      /// This property returns the raw value of the enum case, which acts as a unique
-      /// identifier for each font style token, facilitating their use in identifiable contexts.
+    /// A unique identifier for each font token.
+    ///
+    /// This property returns the raw value of the enum case, which acts as a unique
+    /// identifier for each font style token, facilitating their use in identifiable contexts.
     public var id: String { rawValue }
   }
   
-    /// An enumeration of font names.
-    ///
-    /// Defines a comprehensive list of font names to be used in conjunction with font
-    /// styles and tokens. This facilitates the use of custom fonts within the application,
-    /// ensuring consistency and ease of use.
+  /// An enumeration of font names.
+  ///
+  /// Defines a comprehensive list of font names to be used in conjunction with font
+  /// styles and tokens. This facilitates the use of custom fonts within the application,
+  /// ensuring consistency and ease of use.
   enum BonesFontName: String, CaseIterable {
     case interThin       = "Inter-Thin"
     case interExtraLight = "Inter-ExtraLight"
@@ -70,11 +70,11 @@ extension Font {
     case epilogueBlack      = "Epilogue-Black"
   }
   
-    /// Represents the weight of a font.
-    ///
-    /// This enum allows for the specification of font weight in the custom font system,
-    /// facilitating the precise definition of text appearance based on the design system's
-    /// requirements.
+  /// Represents the weight of a font.
+  ///
+  /// This enum allows for the specification of font weight in the custom font system,
+  /// facilitating the precise definition of text appearance based on the design system's
+  /// requirements.
   public enum BonesFontWeight {
     case light
     case medium
@@ -85,18 +85,18 @@ extension Font {
     case black
   }
   
-    /// A struct representing a custom font.
-    ///
-    /// This structure allows for the specification of a font with a custom size and weight,
-    /// facilitating the application of consistent and cohesive font styling throughout the UI.
+  /// A struct representing a custom font.
+  ///
+  /// This structure allows for the specification of a font with a custom size and weight,
+  /// facilitating the application of consistent and cohesive font styling throughout the UI.
   public enum BonesFont {
     case bones(size: CGFloat, weight: Font.BonesFontWeight)
     
-      /// Retrieves the font name based on the specified weight.
-      ///
-      /// This computed property selects an appropriate font name from the `BonesFontName`
-      /// enum based on the specified font weight, allowing for the dynamic application of
-      /// font styles.
+    /// Retrieves the font name based on the specified weight.
+    ///
+    /// This computed property selects an appropriate font name from the `BonesFontName`
+    /// enum based on the specified font weight, allowing for the dynamic application of
+    /// font styles.
     var name: String {
       switch self {
         case .bones(_, let weight):
@@ -119,10 +119,10 @@ extension Font {
       }
     }
     
-      /// The size of the font.
-      ///
-      /// This computed property returns the specified size of the font, allowing for the
-      /// application of custom font sizes throughout the UI.
+    /// The size of the font.
+    ///
+    /// This computed property returns the specified size of the font, allowing for the
+    /// application of custom font sizes throughout the UI.
     var size: CGFloat {
       switch self {
         case .bones(let size, _):
@@ -178,7 +178,7 @@ extension Font {
     Font.loadFontsTTF()
     Font.loadFontsOTF()
     
-      // Define font configurations for different styles.
+    // Define font configurations for different styles.
     let h1: BonesFont = .bones(size: 32, weight: .black)
     let h2: BonesFont = .bones(size: 24, weight: .black)
     let h3: BonesFont = .bones(size: 20, weight: .black)
@@ -189,7 +189,7 @@ extension Font {
     let extraSmall: BonesFont = .bones(size: 10, weight: .regular)
     let extraSmallBold: BonesFont = .bones(size: 10, weight: .bold)
     
-      // Select the appropriate font configuration based on the specified style.
+    // Select the appropriate font configuration based on the specified style.
     return switch style {
       case .bones(style: let style):
         switch style {
@@ -201,20 +201,20 @@ extension Font {
             Font.custom(h3.name, size: h3.size, relativeTo: .title2)
           case .body:
             UIAccessibility.isBoldTextEnabled
-            ? Font.custom(bodyBold.name, size: body.size, relativeTo: .body)
-            : Font.custom(body.name, size: body.size, relativeTo: .body)
+              ? Font.custom(bodyBold.name, size: body.size, relativeTo: .body)
+              : Font.custom(body.name, size: body.size, relativeTo: .body)
           case .bodyBold:
             Font.custom(bodyBold.name, size: bodyBold.size, relativeTo: .body)
           case .small:
             UIAccessibility.isBoldTextEnabled
-            ? Font.custom(smallBold.name, size: small.size, relativeTo: .caption)
-            : Font.custom(small.name, size: small.size, relativeTo: .caption)
+              ? Font.custom(smallBold.name, size: small.size, relativeTo: .caption)
+              : Font.custom(small.name, size: small.size, relativeTo: .caption)
           case .smallBold:
             Font.custom(smallBold.name, size: smallBold.size, relativeTo: .caption)
           case .extraSmall:
             UIAccessibility.isBoldTextEnabled
-            ? Font.custom(extraSmallBold.name, size: extraSmall.size, relativeTo: .caption)
-            : Font.custom(extraSmall.name, size: extraSmall.size, relativeTo: .caption)
+              ? Font.custom(extraSmallBold.name, size: extraSmall.size, relativeTo: .caption)
+              : Font.custom(extraSmall.name, size: extraSmall.size, relativeTo: .caption)
           case .extraSmallBold:
             Font.custom(extraSmallBold.name, size: extraSmallBold.size, relativeTo: .caption)
         }
@@ -228,10 +228,10 @@ extension Font {
 /// This extension provides a convenient method for applying custom fonts to any
 /// SwiftUI view, simplifying the process of font customization throughout an application.
 extension View {
-    /// Applies a custom font to the view based on the specified `BonesFontStyle`.
-    ///
-    /// - Parameter font: The `BonesFontStyle` specifying the font style to use.
-    /// - Returns: The view with the applied custom font.
+  /// Applies a custom font to the view based on the specified `BonesFontStyle`.
+  ///
+  /// - Parameter font: The `BonesFontStyle` specifying the font style to use.
+  /// - Returns: The view with the applied custom font.
   public func font(_ font: Font.BonesFontStyle) -> some View {
     self
       .font(Font.custom(font))

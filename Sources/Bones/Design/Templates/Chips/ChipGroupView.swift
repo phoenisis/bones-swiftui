@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  ChipGroupView.swift
 //
 //
 //  Created by Quentin PIDOUX on 18/10/2023.
@@ -38,7 +38,7 @@ struct ChipGroupView: View {
   public init(selectedIndex: Int, chips: [String]) {
     self.selectedIndex = selectedIndex
     self.chips = chips.enumerated().map { element in
-        .init(title: element.element, id: element.offset)
+      .init(title: element.element, id: element.offset)
     }
   }
 

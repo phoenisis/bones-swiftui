@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonStyles+LargeRow.swift
 //  
 //
 //  Created by Quentin PIDOUX on 02/11/2023.
@@ -55,8 +55,8 @@ struct ButtonLargeRow: View {
     .listRowSeparator(.hidden)
     .listRowBackground(
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-      .fill(Color.bones.white)
-      .shadow(radius: .bones(.close))
+        .fill(Color.bones.white)
+        .shadow(radius: .bones(.close))
     )
   }
 }

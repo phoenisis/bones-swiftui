@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialWallImageView.swift
 //
 //
 //  Created by Quentin PIDOUX on 20/10/2023.
@@ -102,8 +102,8 @@ public struct SocialWallImageView: View {
             .clipShape(RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous))
             .background(
               CachedAsyncImage(url: URL(string: imageUrl)) { image in image.resizable()
-                  .cornerRadius(.bones(.medium))
-                  .blur(radius: 3.0)
+                .cornerRadius(.bones(.medium))
+                .blur(radius: 3.0)
 
               } placeholder: {}
             )
@@ -136,15 +136,14 @@ public struct SocialWallImageView: View {
               if isFullScreenViewVisible {
                 SwiftUIImageViewer(imageUrl: imageUrl)
 
-                .onDisappear {
-                  isImagePresented = false
-                }
-                .background(BackgroundBlurView())
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                  .onDisappear {
+                    isImagePresented = false
+                  }
+                  .background(BackgroundBlurView())
+                  .frame(maxWidth: .infinity, maxHeight: .infinity)
               }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-
             .onAppear {
               isFullScreenViewVisible = true
             }
@@ -158,7 +157,7 @@ public struct SocialWallImageView: View {
           .frame(maxWidth: .infinity)
         }
       })
-    .clipped()
+      .clipped()
   }
 }
 

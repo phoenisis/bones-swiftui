@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonStyles+SocialTagSelection.swift
 //  
 //
 //  Created by Quentin PIDOUX on 08/02/2024.
@@ -71,8 +71,8 @@ struct BonesSocialTagSelectionButton: ButtonStyle {
       .shadow(
         radius: .bones(
           isEnabled
-          ? configuration.isPressed ? .close : .far
-          : .none
+            ? configuration.isPressed ? .close : .far
+            : .none
         )
       )
     )

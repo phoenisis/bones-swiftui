@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HistoryMissionView.swift
 //
 //
 //  Created by Quentin PIDOUX on 28/12/2023.
@@ -95,7 +95,7 @@ struct HistoryMissionButtonStyle: ButtonStyle {
             content: {
               if let members {
                 if members.isEmpty == false {
-                  
+
                   if members.count > 1 {
                     Button(action: { didTap() }, label: {
                       HStack(alignment: .center, spacing: .bones(.medium), content: {
@@ -113,7 +113,7 @@ struct HistoryMissionButtonStyle: ButtonStyle {
                   }
                 }
               }
-              
+
               if let points {
                 Text(points)
                   .font(.custom(.bones(.bodyBold)))
@@ -130,7 +130,6 @@ struct HistoryMissionButtonStyle: ButtonStyle {
       }
     )
     .padding(.bones(.large))
-
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(
       RoundedRectangle(bonesRadius: .bones(.large), style: .continuous)
@@ -138,8 +137,8 @@ struct HistoryMissionButtonStyle: ButtonStyle {
         .shadow(
           radius: .bones(
             isAvailable
-            ? configuration.isPressed ? .close : .far
-            : .none
+              ? configuration.isPressed ? .close : .far
+              : .none
           )
         )
     )

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FloatingButton.swift
 //  
 //
 //  Created by Quentin PIDOUX on 21/11/2023.
@@ -131,14 +131,14 @@ public struct FloatingButton: View {
 
   fileprivate func buttonOffset(at i: Int) -> CGSize {
     isOpen
-    ? CGSize(width: coords[safe: i].x, height: coords[safe: i].y)
-    : CGSize(width: (initialPositions.isEmpty ? 0 : initialPositions[safe: i].x),
-             height: (initialPositions.isEmpty ? 0 : initialPositions[safe: i].y))
+      ? CGSize(width: coords[safe: i].x, height: coords[safe: i].y)
+      : CGSize(width: (initialPositions.isEmpty ? 0 : initialPositions[safe: i].x),
+               height: (initialPositions.isEmpty ? 0 : initialPositions[safe: i].y))
   }
 
   fileprivate func buttonAnimation(at i: Int) -> Animation {
     animation.delay(delays.isEmpty ? Double(0) :
-                      (isOpen ? delays[delays.count - i - 1] : delays[i]))
+      (isOpen ? delays[delays.count - i - 1] : delays[i]))
   }
 
   fileprivate func calculateCoords() {

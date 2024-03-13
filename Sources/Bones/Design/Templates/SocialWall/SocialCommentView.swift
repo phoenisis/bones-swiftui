@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialCommentView.swift
 //
 //
 //  Created by Quentin PIDOUX on 06/12/2023.
@@ -94,30 +94,30 @@ public struct SocialCommentView: View {
                         BonesIcon(
                           icon: .bones(
                             isLiked
-                            ? .likeFill
-                            : .like
+                              ? .likeFill
+                              : .like
                           ), renderingMode: .template)
-                        .frame(width: 20, height: 20)
-                        .foregroundStyle(
-                          isLiked
-                          ? Color.bones.primary
-                          : Color.bones.textDark
-                        )
+                          .frame(width: 20, height: 20)
+                          .foregroundStyle(
+                            isLiked
+                              ? Color.bones.primary
+                              : Color.bones.textDark
+                          )
                         BonesIcon(
                           icon: .bones(.like),
                           renderingMode: .template)
-                        .frame(width: 20, height: 20)
-                        .foregroundStyle(
-                          Color.bones.textDark
-                        )
+                          .frame(width: 20, height: 20)
+                          .foregroundStyle(
+                            Color.bones.textDark
+                          )
                       }
                       .changeEffect(
                         .spray(origin: UnitPoint(x: 0.25, y: 0.5)) {
                           Image(systemName: "heart.fill")
                             .foregroundStyle(
                               isLiked
-                              ? Color.bones.primary
-                              : Color.clear
+                                ? Color.bones.primary
+                                : Color.clear
                             )
                         }, value: isLiked)
                     }
@@ -207,9 +207,9 @@ struct Preview_SocialCommentView: View {
           senderName: "Aurore Maillard",
           createdAt: Date(timeIntervalSince1970: 1688873600),
           comment: """
-Incididunt eiusmod qui ad. Mollit exercitation aliqua exercitation minim velit velit cupidatat aliquip consectetur adipisicing ex laboris. Elit incididunt ex sint eu ut dolor eu veniam anim consectetur id cillum cupidatat.
-Sit nisi culpa nostrud aliqua enim do nostrud cillum occaecat anim. Ad laborum enim tempor consequat anim et enim duis commodo velit ad pariatur est. Incididunt irure in minim pariatur.
-""",
+          Incididunt eiusmod qui ad. Mollit exercitation aliqua exercitation minim velit velit cupidatat aliquip consectetur adipisicing ex laboris. Elit incididunt ex sint eu ut dolor eu veniam anim consectetur id cillum cupidatat.
+          Sit nisi culpa nostrud aliqua enim do nostrud cillum occaecat anim. Ad laborum enim tempor consequat anim et enim duis commodo velit ad pariatur est. Incididunt irure in minim pariatur.
+          """,
           isLiked: isLiked1,
           isUser: false,
           likesCount: likes1Count,

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Buttons+Interface.swift
 //  
 //
 //  Created by Quentin PIDOUX on 03/10/2023.
@@ -15,14 +15,14 @@ extension View {
   /// This function takes a predefined button style and applies it to the view.
   /// - Parameter bonesStyle: An enum case representing a specific button style.
   /// - Returns: A view with a specific button style applied.
-	public func buttonStyle(_ bonesStyle: BonesButtonStyles) -> some View where Self == Button<Text> {
-		switch bonesStyle {
-			case .bones(let style):
-				switch style {
-					case let .text(icon):
-						return AnyView(self.buttonStyle(BonesTextButton(icon: icon)))
-					case .homePlay:
-						return AnyView(self.buttonStyle(BonesHomePlay()))
+  public func buttonStyle(_ bonesStyle: BonesButtonStyles) -> some View where Self == Button<Text> {
+    switch bonesStyle {
+      case .bones(let style):
+        switch style {
+          case let .text(icon):
+            return AnyView(self.buttonStyle(BonesTextButton(icon: icon)))
+          case .homePlay:
+            return AnyView(self.buttonStyle(BonesHomePlay()))
           case let .select(variant):
             switch variant {
               case .fill:
@@ -30,29 +30,29 @@ extension View {
               case .outline:
                 return AnyView(self.buttonStyle(BonesSmallMenuButtonOutline()))
             }
-					case let .small(variant):
-						switch variant {
-							case .fill:
-								return AnyView(self.buttonStyle(BonesSmallButton()))
-							case .outline:
-								return AnyView(self.buttonStyle(BonesSmallButtonOutline()))
-						}
-					case let .medium(variant):
-						switch variant {
-							case let .fill(icon):
-								return AnyView(self.buttonStyle(BonesMediumButton(icon: icon)))
-							case let .outline(icon):
-								return AnyView(self.buttonStyle(BonesMediumButtonOutline(icon: icon)))
-						}
-					case let .large(variant):
-						switch variant {
-							case let .fill(icon, subtitle):
-								return AnyView(self.buttonStyle(BonesLargeButton(icon: icon, subtitle: subtitle)))
-							case let .outline(icon, subtitle):
-								return AnyView(self.buttonStyle(BonesLargeButtonOutline(icon: icon, subtitle: subtitle)))
-						}
-					case let .chip(selected):
-						return AnyView(self.buttonStyle(BonesChipButton(selected: selected ?? false)))
+          case let .small(variant):
+            switch variant {
+              case .fill:
+                return AnyView(self.buttonStyle(BonesSmallButton()))
+              case .outline:
+                return AnyView(self.buttonStyle(BonesSmallButtonOutline()))
+            }
+          case let .medium(variant):
+            switch variant {
+              case let .fill(icon):
+                return AnyView(self.buttonStyle(BonesMediumButton(icon: icon)))
+              case let .outline(icon):
+                return AnyView(self.buttonStyle(BonesMediumButtonOutline(icon: icon)))
+            }
+          case let .large(variant):
+            switch variant {
+              case let .fill(icon, subtitle):
+                return AnyView(self.buttonStyle(BonesLargeButton(icon: icon, subtitle: subtitle)))
+              case let .outline(icon, subtitle):
+                return AnyView(self.buttonStyle(BonesLargeButtonOutline(icon: icon, subtitle: subtitle)))
+            }
+          case let .chip(selected):
+            return AnyView(self.buttonStyle(BonesChipButton(selected: selected ?? false)))
           case let .tracker(variant):
             switch variant {
               case .round(let type):
@@ -92,8 +92,8 @@ extension View {
           case let .boost(startAt, endAt):
             return AnyView(self.buttonStyle(BonesBoostButton(startDate: startAt, endDate: endAt)))
         }
-		}
-	}
+    }
+  }
 
   public func buttonStyle<S>(_ bonesStyle: BonesButtonStyles) -> some View where S : PrimitiveButtonStyle {
     switch bonesStyle {
@@ -201,12 +201,12 @@ public enum BonesButtonStyleToken {
   }
 
   case text(icon: Image.BonesImage?)
-	case homePlay
-	case small(_ variant: SmallToken)
+  case homePlay
+  case small(_ variant: SmallToken)
   case select(_ variant: SmallToken)
-	case medium(_ variant: MediumToken)
-	case large(_ variant: LargeToken)
-	case chip(selected: Bool?)
+  case medium(_ variant: MediumToken)
+  case large(_ variant: LargeToken)
+  case chip(selected: Bool?)
   case boost(startAt: Date?, endAt: Date?)
 
   case tracker(_ variant: BonesTracker)
@@ -222,18 +222,18 @@ public enum BonesButtonStyleToken {
 
   case socialTag(availability: String?, remaining: String?, image: String?, description: String?, date: Date?, points: String?)
 
-	public enum SmallToken {
-		case fill
-		case outline
-	}
+  public enum SmallToken {
+    case fill
+    case outline
+  }
 
-	public enum MediumToken {
+  public enum MediumToken {
     case fill(icon: Image.BonesImage?)
     case outline(icon: Image.BonesImage?)
-	}
+  }
 
-	public enum LargeToken {
+  public enum LargeToken {
     case fill(icon: Image.BonesImage?, subtitle: String?)
     case outline(icon: Image.BonesImage?, subtitle: String?)
-	}
+  }
 }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ExpendingText.swift
 //
 //
 //  Created by Quentin PIDOUX on 03/10/2023.
@@ -94,10 +94,10 @@ public struct ExpandingText: View {
 struct Preview_ExpandingText: View {
   let smallText: String = "Velit aute ut cupidatat incididunt consequat ipsum occaecat dolore laborum proident nostrud."
   let longText: String = """
-In proident sunt pariatur nulla nisi nulla excepteur Lorem officia exercitation. Nostrud et tempor magna sint. Non sit cillum ut culpa quis cupidatat id dolore. Aute ut elit eiusmod velit officia velit in. Qui ad sunt incididunt. Labore commodo esse consequat incididunt in occaecat nulla reprehenderit elit pariatur incididunt.
+  In proident sunt pariatur nulla nisi nulla excepteur Lorem officia exercitation. Nostrud et tempor magna sint. Non sit cillum ut culpa quis cupidatat id dolore. Aute ut elit eiusmod velit officia velit in. Qui ad sunt incididunt. Labore commodo esse consequat incididunt in occaecat nulla reprehenderit elit pariatur incididunt.
 
-Nostrud irure irure duis duis est do occaecat elit irure incididunt ipsum sunt. Eu qui cillum nostrud. Esse nulla ad ut voluptate aliquip proident proident nostrud nisi cillum. Est dolore tempor fugiat ullamco ut sint laboris. Cillum irure tempor est mollit esse voluptate proident velit sit amet ea occaecat culpa consequat. Laborum qui cillum pariatur culpa aute quis. Magna deserunt nulla magna consequat ea amet ut excepteur. Ullamco elit nulla minim tempor fugiat nostrud proident nisi dolor Lorem laborum voluptate.
-"""
+  Nostrud irure irure duis duis est do occaecat elit irure incididunt ipsum sunt. Eu qui cillum nostrud. Esse nulla ad ut voluptate aliquip proident proident nostrud nisi cillum. Est dolore tempor fugiat ullamco ut sint laboris. Cillum irure tempor est mollit esse voluptate proident velit sit amet ea occaecat culpa consequat. Laborum qui cillum pariatur culpa aute quis. Magna deserunt nulla magna consequat ea amet ut excepteur. Ullamco elit nulla minim tempor fugiat nostrud proident nisi dolor Lorem laborum voluptate.
+  """
 
   var body: some View {
     List {

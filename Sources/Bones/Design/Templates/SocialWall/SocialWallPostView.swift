@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SocialWallPostView.swift
 //
 //
 //  Created by Quentin PIDOUX on 31/10/2023.
@@ -116,8 +116,8 @@ public struct SocialWallPostView: View {
             postText,
             font: .body,
             isExpanded: false)
-          .foregroundStyle(Color.bones.textDark)
-          .zIndex(2)
+            .foregroundStyle(Color.bones.textDark)
+            .zIndex(2)
         }
 
         SocialActionBarView(
@@ -165,8 +165,8 @@ public struct SocialWallPostView: View {
       }
     )
     .frame(minHeight: postImage != nil
-           ? UIScreen.main.bounds.width
-           : 100)
+      ? UIScreen.main.bounds.width
+      : 100)
 
     .padding(.bones(.large))
     .background(

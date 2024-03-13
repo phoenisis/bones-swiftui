@@ -23,9 +23,9 @@ public class Haptic {
 
   /// Generates notification feedback of the specified type.
   /// - Parameter feedbackType: The type of notification feedback. A member of `UINotificationFeedbackGenerator.FeedbackType`.
-	public class func notify(_ feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+  public class func notify(_ feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
     DispatchQueue.main.async {
       UINotificationFeedbackGenerator().notificationOccurred(feedbackType)
     }
-	}
+  }
 }
