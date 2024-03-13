@@ -1,13 +1,11 @@
 //
-//  ColorModifier.swift
+//  ColorPreview.swift
 //
 //
 //  Created by Quentin PIDOUX on 25/09/2023.
 //
 
 import SwiftUI
-
-
 
 /// A collection of static color values.
 ///
@@ -60,17 +58,6 @@ struct Preview_Colors: View {
       }
     }
     .listBackgroundColor()
-  }
-}
-
-/// Provides the capability to apply a tint to any view.
-public extension View {
-  /// Sets the tint color of the view.
-  ///
-  /// - Parameter bonesTint: An optional `BonesColor` to use as the tint.
-  /// - Returns: A view with the applied tint color.
-  @inlinable func tint(_ bonesTint: BonesColor?) -> some View {
-    self.tint(bonesTint != nil ? Color(bonesTint!) : nil)
   }
 }
 

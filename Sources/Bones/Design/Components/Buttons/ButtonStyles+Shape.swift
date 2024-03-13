@@ -10,9 +10,9 @@ import SwiftUI
 public struct BonesRectangleButton: ButtonStyle {
   var radius: CGFloat.BonesRadius
   var fillColor: Color.BonesColorToken
-  var shadow: ShadowToken
+  var shadow: ShadowStyle.BonesShadowToken
 
-  public init(radius: CGFloat.BonesRadius, fillColor: Color.BonesColorToken, shadow: ShadowToken) {
+  public init(radius: CGFloat.BonesRadius, fillColor: Color.BonesColorToken, shadow: ShadowStyle.BonesShadowToken) {
     self.radius = radius
     self.fillColor = fillColor
     self.shadow = shadow

@@ -20,7 +20,7 @@ public struct PointsView: View {
         .font(.custom(.bones(.bodyBold)))
         .padding()
         .background(
-          BonesEarnPointShape()
+          BonesPointsShape()
             .fill(Color.bones.primary)
         )
         .frame(maxWidth: .infinity, alignment: .trailing)

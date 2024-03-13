@@ -151,3 +151,14 @@ fileprivate extension Color {
     self.init(red: red, green: green, blue: blue)
   }
 }
+
+/// Provides the capability to apply a tint to any view.
+public extension View {
+  /// Sets the tint color of the view.
+  ///
+  /// - Parameter bonesTint: An optional `BonesColor` to use as the tint.
+  /// - Returns: A view with the applied tint color.
+  @inlinable func tint(_ bonesTint: BonesColor?) -> some View {
+    self.tint(bonesTint != nil ? Color(bonesTint!) : nil)
+  }
+}

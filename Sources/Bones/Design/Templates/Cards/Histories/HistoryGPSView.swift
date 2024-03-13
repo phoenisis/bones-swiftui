@@ -89,7 +89,7 @@ struct HistoryGPSButtonStyle: ButtonStyle {
                   .font(.custom(.bones(.bodyBold)))
                   .padding()
                   .background(
-                    BonesEarnPointShape()
+                    BonesPointsShape()
                       .fill(Color.bones.primary)
                   )
               }
@@ -100,7 +100,7 @@ struct HistoryGPSButtonStyle: ButtonStyle {
             .font(.custom(.bones(.bodyBold)))
             .padding()
             .background(
-              BonesEarnPointShape()
+              BonesPointsShape()
                 .fill(Color.bones.primary)
             )
             .frame(maxWidth: .infinity, alignment: .trailing)

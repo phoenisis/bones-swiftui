@@ -124,7 +124,5 @@ Button("Tap me") {
 
 ## Shapes
 ```swift
-BonesRightArrowShape()
-BonesRightObsidianShape()
 BonesObsidianProfileShape()
 ```

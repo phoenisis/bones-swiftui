@@ -31,7 +31,7 @@ public struct HistoryWalkView: View {
             .font(.custom(.bones(.bodyBold)))
             .padding()
             .background(
-              BonesEarnPointShape()
+              BonesPointsShape()
                 .fill(Color.bones.primary)
             )
         }

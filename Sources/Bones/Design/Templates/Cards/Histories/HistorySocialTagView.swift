@@ -134,7 +134,7 @@ struct HistorySocialTagButtonStyle: ButtonStyle {
                 .font(.custom(.bones(.bodyBold)))
                 .padding()
                 .background(
-                  BonesEarnPointShape()
+                  BonesPointsShape()
                     .fill(Color.bones.primary)
                 )
             }

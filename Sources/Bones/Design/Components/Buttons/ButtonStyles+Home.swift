@@ -79,7 +79,7 @@ struct HomeCardView: View {
         .frame(width: 115)
         .padding(.bones(.large))
         .background(
-          BonesEarnPointShape()
+          BonesPointsShape()
             .fill(Color.bones.AQILevel1)
             .frame(width: 115)
             .aspectRatio(1.5, contentMode: .fit)
