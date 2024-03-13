@@ -20,12 +20,6 @@ public struct BonesFullPreview: View {
           }
           .font(.custom(.bones(.body)))
 
-          NavigationLink("Fonts") {
-            Preview_Fonts()
-              .navigationTitle("Fonts")
-          }
-          .font(.custom(.bones(.body)))
-
           NavigationLink("Sizes") {
             Preview_Sizes()
               .navigationTitle("Sizes")

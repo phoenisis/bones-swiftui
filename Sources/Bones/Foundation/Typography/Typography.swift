@@ -130,4 +130,111 @@ extension Font {
       }
     }
   }
+  
+  /// Loads TrueType Fonts (TTF) from the application bundle.
+  ///
+  /// This method iterates through all `BonesFontName` cases, attempts to locate the TTF font files
+  /// in the module bundle, and registers them with the system for use within the application.
+  static func loadFontsTTF() {
+    BonesFontName.allCases
+      .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "ttf") }
+      .compactMap { $0 }
+      .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
+  }
+  
+  /// Loads OpenType Fonts (OTF) from the application bundle.
+  ///
+  /// Similar to `loadFontsTTF`, this method locates and registers OTF font files
+  /// for all `BonesFontName` cases, making them available for use within the app.
+  static func loadFontsOTF() {
+    BonesFontName.allCases
+      .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "otf") }
+      .compactMap { $0 }
+      .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
+  }
+  
+  /// Creates a custom font based on the provided `BonesFont`, size, and relative text style.
+  ///
+  /// - Parameters:
+  ///   - font: The `BonesFont` enum value specifying the font and its weight.
+  ///   - size: The size of the font.
+  ///   - relativeTo: The `Font.TextStyle` to which the font size is relative.
+  /// - Returns: A `Font` configured with the specified custom font, size, and relative style.
+  static func custom(_ font: BonesFont, size: CGFloat, relativeTo: Font.TextStyle) -> Font {
+    Font.loadFontsTTF()
+    Font.loadFontsOTF()
+    return Font
+      .custom(font.name, size: size)
+  }
+  
+  /// Creates a custom font based on a predefined `BonesFontStyle`.
+  ///
+  /// This method maps predefined font styles to specific font configurations,
+  /// taking into account accessibility settings like bold text.
+  ///
+  /// - Parameter style: The `BonesFontStyle` specifying the font style to use.
+  /// - Returns: A `Font` configured for the specified style.
+  public static func custom(_ style: BonesFontStyle) -> Font {
+    Font.loadFontsTTF()
+    Font.loadFontsOTF()
+    
+      // Define font configurations for different styles.
+    let h1: BonesFont = .bones(size: 32, weight: .black)
+    let h2: BonesFont = .bones(size: 24, weight: .black)
+    let h3: BonesFont = .bones(size: 20, weight: .black)
+    let body: BonesFont = .bones(size: 16, weight: .medium)
+    let bodyBold: BonesFont = .bones(size: 16, weight: .bold)
+    let small: BonesFont = .bones(size: 12, weight: .regular)
+    let smallBold: BonesFont = .bones(size: 12, weight: .bold)
+    let extraSmall: BonesFont = .bones(size: 10, weight: .regular)
+    let extraSmallBold: BonesFont = .bones(size: 10, weight: .bold)
+    
+      // Select the appropriate font configuration based on the specified style.
+    return switch style {
+      case .bones(style: let style):
+        switch style {
+          case .h1:
+            Font.custom(h1.name, size: h1.size, relativeTo: .largeTitle)
+          case .h2:
+            Font.custom(h2.name, size: h2.size, relativeTo: .title)
+          case .h3:
+            Font.custom(h3.name, size: h3.size, relativeTo: .title2)
+          case .body:
+            UIAccessibility.isBoldTextEnabled
+            ? Font.custom(bodyBold.name, size: body.size, relativeTo: .body)
+            : Font.custom(body.name, size: body.size, relativeTo: .body)
+          case .bodyBold:
+            Font.custom(bodyBold.name, size: bodyBold.size, relativeTo: .body)
+          case .small:
+            UIAccessibility.isBoldTextEnabled
+            ? Font.custom(smallBold.name, size: small.size, relativeTo: .caption)
+            : Font.custom(small.name, size: small.size, relativeTo: .caption)
+          case .smallBold:
+            Font.custom(smallBold.name, size: smallBold.size, relativeTo: .caption)
+          case .extraSmall:
+            UIAccessibility.isBoldTextEnabled
+            ? Font.custom(extraSmallBold.name, size: extraSmall.size, relativeTo: .caption)
+            : Font.custom(extraSmall.name, size: extraSmall.size, relativeTo: .caption)
+          case .extraSmallBold:
+            Font.custom(extraSmallBold.name, size: extraSmallBold.size, relativeTo: .caption)
+        }
+    }
+  }
 }
+
+// MARK: View Extension
+/// Extends `View` to easily apply custom fonts based on `BonesFontStyle`.
+///
+/// This extension provides a convenient method for applying custom fonts to any
+/// SwiftUI view, simplifying the process of font customization throughout an application.
+extension View {
+    /// Applies a custom font to the view based on the specified `BonesFontStyle`.
+    ///
+    /// - Parameter font: The `BonesFontStyle` specifying the font style to use.
+    /// - Returns: The view with the applied custom font.
+  public func font(_ font: Font.BonesFontStyle) -> some View {
+    self
+      .font(Font.custom(font))
+  }
+}
+
