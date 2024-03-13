@@ -6,7 +6,6 @@
 //
 
 import MapKit
-import Polyline
 import SwiftUI
 
 public struct BonesMapView: View {
