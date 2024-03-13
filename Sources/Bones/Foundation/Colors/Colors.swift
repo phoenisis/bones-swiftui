@@ -8,7 +8,7 @@
 import SwiftUI
 
   /// A global dictionary to map `BonesColorToken` to hexadecimal color strings.
-public var bonesColors: [Color.BonesColorToken: String] = [:]
+var bonesColors: [Color.BonesColorToken: String] = [:]
 
   /// An enumeration to encapsulate color styles within the application.
 public enum BonesColor { case bones(Color.BonesColorToken) }

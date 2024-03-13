@@ -12,7 +12,7 @@ import Foundation
   /// This variable allows for the assignment of specific spacing values to the predefined
   /// `CGFloat.BonesSpacing` categories, facilitating a consistent spacing system across
   /// an application.
-public var bonesSpacings: [CGFloat.BonesSpacing: CGFloat] = [:]
+var bonesSpacings: [CGFloat.BonesSpacing: CGFloat] = [:]
 
   /// An enumeration representing different spacing sizes.
   ///
