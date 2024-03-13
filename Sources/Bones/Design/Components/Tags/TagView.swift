@@ -25,7 +25,7 @@ public struct TagView: View {
   }
 
   let tagName: String?
-  let icon: BonesIconToken?
+  let icon: Image.BonesImage?
   let iconUrl: String?
   let style: TagStyle
 
@@ -81,7 +81,7 @@ public struct TagView: View {
   ///   - tagName: The name displayed in the tag.
   ///   - icon: An optional icon displayed within the tag.
   ///   - style: The style applied to the tag.
-  public init(_ tagName: String?, icon: BonesIconToken?, iconUrl: String? = nil, style: TagStyle) {
+  public init(_ tagName: String?, icon: Image.BonesImage?, iconUrl: String? = nil, style: TagStyle) {
     self.tagName = tagName.localized
     self.icon = icon
     self.iconUrl = iconUrl

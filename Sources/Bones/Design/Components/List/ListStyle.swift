@@ -17,11 +17,11 @@ public struct BonesSettingsIconLabelStyle<Content: View>: LabelStyle {
 
   var background: Color
   var foreground: Color
-  var trailingIcon: BonesIconToken?
+  var trailingIcon: Image.BonesImage?
   var trailingContent: () -> Content
 
   public init(_ style: Style, 
-              trailingIcon: BonesIconToken? = nil,
+              trailingIcon: Image.BonesImage? = nil,
               @ViewBuilder trailingContent: @escaping () -> Content ) {
     switch style {
       case .primary:
@@ -76,7 +76,7 @@ public struct BonesSettingsIconLabelStyle<Content: View>: LabelStyle {
 
 extension BonesSettingsIconLabelStyle where Content == EmptyView {
   public init(_ style: Style,
-              trailingIcon: BonesIconToken? = nil) {
+              trailingIcon: Image.BonesImage? = nil) {
     self.init(style, trailingIcon: trailingIcon, trailingContent: { EmptyView() })
   }
 }

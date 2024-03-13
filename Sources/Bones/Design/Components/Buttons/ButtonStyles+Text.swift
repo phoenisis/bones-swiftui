@@ -14,7 +14,7 @@ struct BonesTextButton: ButtonStyle {
 	@Environment(\.isEnabled) private var isEnabled
 
   /// An optional icon that appears next to the button’s text.
-	let icon: BonesIconToken?
+  let icon: Image.BonesImage?
 
   /// Creates the view of the button based on the button's configuration.
   /// - Parameter configuration: The current configuration of the button.

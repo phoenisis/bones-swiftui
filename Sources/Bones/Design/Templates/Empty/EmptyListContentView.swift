@@ -8,14 +8,14 @@
 import SwiftUI
 
 public struct EmptyListContentView: View {
-  let image: BonesIconToken?
+  let image: Image.BonesImage?
   let title: LocalizedStringKey
   let description: LocalizedStringKey?
   let buttonTitle: LocalizedStringKey?
 
   let buttonDidTap: (() -> Void)?
 
-  public init(image: BonesIconToken?, title: LocalizedStringKey, description: LocalizedStringKey?, buttonTitle: LocalizedStringKey?, buttonDidTap: ( () -> Void)?) {
+  public init(image: Image.BonesImage?, title: LocalizedStringKey, description: LocalizedStringKey?, buttonTitle: LocalizedStringKey?, buttonDidTap: ( () -> Void)?) {
     self.image = image
     self.title = title
     self.description = description

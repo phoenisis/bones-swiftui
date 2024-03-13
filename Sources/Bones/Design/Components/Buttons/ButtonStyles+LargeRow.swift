@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ButtonLargeRow: View {
   var imageUrl: String?
-  var icon: BonesIconToken?
+  var icon: Image.BonesImage?
 
   var body: some View {
     HStack(alignment: .center, spacing: .bones(.medium), content: {

@@ -13,7 +13,7 @@ import SwiftUI
 /// The button can also have an optional icon and subtitle.
 struct BonesLargeButton: ButtonStyle {
 	@Environment(\.isEnabled) private var isEnabled
-	let icon: BonesIconToken?
+  let icon: Image.BonesImage?
 	let subtitle: String?
 
   /// Makes and returns the body configuration of the button style.
@@ -103,7 +103,7 @@ struct BonesLargeButton: ButtonStyle {
 /// The button can also be formatted conditionally based on whether it is enabled.
 struct BonesLargeButtonOutline: ButtonStyle {
 	@Environment(\.isEnabled) private var isEnabled
-	let icon: BonesIconToken?
+  let icon: Image.BonesImage?
 	let subtitle: String?
 
   /// Makes and returns the body configuration of the button style.

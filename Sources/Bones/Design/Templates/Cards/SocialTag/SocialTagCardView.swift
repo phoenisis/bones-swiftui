@@ -11,9 +11,9 @@ public struct SocialTagCardView: ButtonStyle {
   public struct Tag {
     let title: String
     let image: String?
-    let icon: BonesIconToken?
+    let icon: Image.BonesImage?
 
-    public init(title: String, image: String?, icon: BonesIconToken?) {
+    public init(title: String, image: String?, icon: Image.BonesImage?) {
       self.title = title
       self.image = image
       self.icon = icon

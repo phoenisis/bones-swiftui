@@ -13,7 +13,7 @@ import SwiftUI
 /// The appearance adapts based on whether the button is enabled or pressed.
 struct BonesMediumButton: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
-  let icon: BonesIconToken?
+  let icon: Image.BonesImage?
 
   /// Creates the view of the button based on its configuration.
   ///
@@ -91,7 +91,7 @@ struct BonesMediumButton: ButtonStyle {
 /// while maintaining similar display options such as icon and subtitle.
 struct BonesMediumButtonOutline: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
-  let icon: BonesIconToken?
+  let icon: Image.BonesImage?
 
   /// Creates the view of the button based on its configuration.
   ///

@@ -33,8 +33,19 @@ public struct BonesFullPreview: View {
           .font(.custom(.bones(.body)))
 
           NavigationLink("Icons") {
-            Preview_Icons()
-              .navigationTitle("Icons")
+            List {
+              ForEach(Image.BonesImage.allCases) { icon in
+                HStack {
+                  Text(icon.id.toWords)
+                    .font(.custom(.bones(.body)))
+                  Spacer()
+                  BonesIcon(icon: .bones(icon))
+                    .frame(width: 24, height: 24)
+                }
+              }
+            }
+            .listBackgroundColor()
+            .navigationTitle("Icons")
           }
           .font(.custom(.bones(.body)))
 

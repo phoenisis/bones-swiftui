@@ -26,7 +26,7 @@ struct BonesSmallMenuButtonFill: ButtonStyle {
   /// The icon to display in the button.
   ///
   /// Defaults to `.select` if no icon is provided.
-  let icon: BonesIconToken = .select
+  let icon: Image.BonesImage = .select
 
   /// Creates a view representing the body of a button.
   ///
@@ -101,7 +101,7 @@ struct BonesSmallMenuButtonFill: ButtonStyle {
 
 struct BonesSmallMenuButtonOutline: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
-  let icon: BonesIconToken = .select
+  let icon: Image.BonesImage = .select
 
   func makeBody(configuration: Configuration) -> some View {
     if isEnabled {

@@ -192,7 +192,7 @@ public enum BonesButtonStyleToken {
   }
 
   public enum BonesNavBarStyleToken {
-    case icon(_ icon: BonesIconToken)
+    case icon(_ icon: Image.BonesImage)
     case text
   }
 
@@ -200,7 +200,7 @@ public enum BonesButtonStyleToken {
     case rectangle(CGFloat.BonesRadius, fillColor: BonesColorToken, shadow: ShadowToken)
   }
 
-  case text(icon: BonesIconToken?)
+  case text(icon: Image.BonesImage?)
 	case homePlay
 	case small(_ variant: SmallToken)
   case select(_ variant: SmallToken)
@@ -228,12 +228,12 @@ public enum BonesButtonStyleToken {
 	}
 
 	public enum MediumToken {
-		case fill(icon: BonesIconToken?)
-		case outline(icon: BonesIconToken?)
+    case fill(icon: Image.BonesImage?)
+    case outline(icon: Image.BonesImage?)
 	}
 
 	public enum LargeToken {
-		case fill(icon: BonesIconToken?, subtitle: String?)
-		case outline(icon: BonesIconToken?, subtitle: String?)
+    case fill(icon: Image.BonesImage?, subtitle: String?)
+    case outline(icon: Image.BonesImage?, subtitle: String?)
 	}
 }

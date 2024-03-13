@@ -26,7 +26,7 @@ struct BonesNavbarIconButton: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
 
   /// The icon token from BonesIconToken that represents the icon.
-  let icon: BonesIconToken
+  let icon: Image.BonesImage
   /// Size of the icon.
   let iconSize: Double = 16
   /// Opacity of the background circle.
@@ -95,7 +95,7 @@ struct BonesNavbarButton: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
 
   /// The icon token from BonesIconToken that represents the icon.
-  let icon: BonesIconToken = .add
+  let icon: Image.BonesImage = .add
   /// Size of the icon.
   let iconSize: Double = 10
   /// Opacity of the background circle.
