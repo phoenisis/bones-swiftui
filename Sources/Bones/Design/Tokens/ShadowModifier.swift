@@ -113,7 +113,7 @@ public extension View {
   ///   - radius: Style of the shadow, defined in `BonesShadowStyle`. Defaults to `.bones(.close)`.
   ///
   /// - Returns: A view with an applied shadow.
-  func shadow(color: Color = .bones.black,
+  func shadow(color: Color = Color.bones.black,
 										 radius: BonesShadowStyle = .bones(.close)) -> some View {
 		switch radius { case let .bones(token ):
 				return self
