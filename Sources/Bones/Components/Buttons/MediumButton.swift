@@ -38,7 +38,6 @@ struct BonesMediumButton: ButtonStyle {
       }
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .background(
         RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
           .fill(Color.bones.primary)
@@ -75,7 +74,6 @@ struct BonesMediumButton: ButtonStyle {
       }
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .background(
         RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
           .fill(Color.bones.grey3)
@@ -117,7 +115,6 @@ struct BonesMediumButtonOutline: ButtonStyle {
       }
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .foregroundStyle(Color.bones.textDark)
       .background(
         RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
@@ -158,7 +155,6 @@ struct BonesMediumButtonOutline: ButtonStyle {
       }
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .background(
         RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
           .fill(Color.bones.grey3)

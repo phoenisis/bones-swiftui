@@ -20,7 +20,7 @@ public struct BonesDefaultTextFieldStyle: TextFieldStyle {
     configuration
       .font(.bones(.bodyBold))
       .foregroundStyle(Color.bones.textDark)
-      .applyButtonMinHeight(minHeight: 40)
+      .frame(minHeight: 40)
       .padding(.horizontal, .bones(.large))
       .padding(.vertical, .bones(.medium))
       .background(
@@ -59,7 +59,7 @@ public struct BonesSearchTextFieldStyle: TextFieldStyle {
     }
     .font(.bones(.bodyBold))
     .foregroundStyle(Color.bones.textDark)
-    .applyButtonMinHeight(minHeight: 40)
+    .frame(minHeight: 40)
     .padding(.horizontal, .bones(.large))
     .padding(.vertical, .bones(.medium))
     .background(
@@ -109,7 +109,7 @@ public struct BonesSecureTextFieldStyle: TextFieldStyle {
       })
     })
     .frame(alignment: .leading)
-    .applyButtonMinHeight(minHeight: 40)
+    .frame(minHeight: 40)
     .padding(.horizontal, .bones(.large))
     .padding(.vertical, .bones(.medium))
     .foregroundStyle(Color.bones.textDark)

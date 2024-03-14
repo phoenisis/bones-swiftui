@@ -91,7 +91,6 @@ struct BonesCardMobilityButton: ButtonStyle {
              ),
              value: configuration.isPressed
            )
-           .applyButtonMinHeight()
   }
 }
 

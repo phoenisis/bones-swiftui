@@ -48,7 +48,6 @@ struct BonesTextButton: ButtonStyle {
       ),
       value: configuration.isPressed
     )
-    .applyButtonMinHeight()
   }
 }
 

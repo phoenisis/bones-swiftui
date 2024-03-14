@@ -202,7 +202,6 @@ struct BonesBoostButton: ButtonStyle {
             : Color.bones.textDark
         )
         .cornerRadius(.bones(.large))
-        .applyButtonMinHeight()
         .shadow(
           radius: isEnabled 
             ? configuration.isPressed ? .bones(.close) : .bones(.far)

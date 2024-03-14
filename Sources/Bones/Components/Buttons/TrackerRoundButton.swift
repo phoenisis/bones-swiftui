@@ -147,7 +147,6 @@ public struct BonesTrackerRoundButton: ButtonStyle {
         ),
         value: configuration.isPressed
       )
-      .applyButtonMinHeight()
   }
 }
 

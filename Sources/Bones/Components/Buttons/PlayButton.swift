@@ -70,7 +70,6 @@ struct BonesPlayButton: ButtonStyle {
       ),
       value: configuration.isPressed
     )
-    .applyButtonMinHeight()
   }
 }
 

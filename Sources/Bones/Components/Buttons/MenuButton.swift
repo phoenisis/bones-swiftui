@@ -53,7 +53,6 @@ struct BonesSmallMenuButtonFill: ButtonStyle {
       .minimumScaleFactor(0.5)
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .background(
         Capsule(style: .continuous)
           .fill(Color.bones.primary)
@@ -88,7 +87,6 @@ struct BonesSmallMenuButtonFill: ButtonStyle {
       .minimumScaleFactor(0.5)
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .background(
         Capsule(style: .continuous)
           .fill(Color.bones.grey3)
@@ -122,7 +120,6 @@ struct BonesSmallMenuButtonOutline: ButtonStyle {
       .minimumScaleFactor(0.5)
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .foregroundStyle(Color.bones.textDark)
       .background(
         Capsule(style: .continuous)
@@ -161,7 +158,6 @@ struct BonesSmallMenuButtonOutline: ButtonStyle {
       .minimumScaleFactor(0.5)
       .padding(.vertical, .bones(.medium))
       .padding(.horizontal, .bones(.large))
-      .applyButtonMinHeight()
       .foregroundStyle(Color.bones.grey6)
       .background(
         Capsule(style: .continuous)

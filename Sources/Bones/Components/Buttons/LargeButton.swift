@@ -64,7 +64,6 @@ struct BonesLargeButton: ButtonStyle {
         ),
         value: configuration.isPressed
       )
-      .applyButtonMinHeight()
     } else {
       VStack(
         alignment: .center,
@@ -92,7 +91,6 @@ struct BonesLargeButton: ButtonStyle {
       .background(Color.bones.grey3)
       .foregroundStyle(Color.bones.grey6)
       .cornerRadius(.bones(.small))
-      .applyButtonMinHeight()
     }
   }
 }
