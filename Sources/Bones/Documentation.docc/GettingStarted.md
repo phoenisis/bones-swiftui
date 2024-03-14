@@ -62,7 +62,7 @@ Bones.overrideSpacing(.small, with: 10)
 ### Import the Bones package
 @TutorialReference(tutorial: "doc:01-01-hello_bones")
 
-Include Orbit package in your package or project and add `import Bones` to a SwiftUI file to access Orbit foundations and components.
+Include Bones package in your package or project and add `import Bones` to a SwiftUI file to access Bones foundations and components.
 ```swift
 import Bones
 ```
