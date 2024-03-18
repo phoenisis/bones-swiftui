@@ -12,6 +12,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
   @Environment(\.cardLayout) private var cardLayout
   @Environment(\.idealSize) private var idealSize
   @Environment(\.textColor) private var textColor
+  @Environment(\.backgroundColor) private var backgroundColor
   
   private let title: String
   private let description: String
@@ -56,7 +57,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
           Text(title)
             .font(.custom(.bones(.h3)))
-            .textColor(.bones.textDark)
+            .foregroundStyle(textColor)
             .accessibilityIdentifier(.cardTitle)
           
           if title.isEmpty == false {
@@ -70,7 +71,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
         
         HStack(alignment: .firstTextBaseline, spacing: 0) {
           Text(description)
-            .textColor(descriptionColor)
+            .foregroundStyle(textColor)
             .accessibilityIdentifier(.cardDescription)
           
           if title.isEmpty {
@@ -94,12 +95,8 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
   
   @ViewBuilder private var resolvedBackground: some View {
     RoundedRectangle(bonesRadius: .bones(radius), style: .continuous)
-      .fill(Color.bones.white)
+      .fill(backgroundColor)
       .shadow(radius: .bones(shadowStyle))
-  }
-  
-  private var descriptionColor: Color? {
-    textColor ?? nil
   }
   
   private var isHeaderEmpty: Bool {
@@ -152,11 +149,10 @@ public extension BonesCard {
 
 // MARK: - Identifiers
 public extension AccessibilityID {
-  
-  static let cardTitle                = Self(rawValue: "Bones.card.title")
-  static let cardDescription          = Self(rawValue: "Bones.card.description")
-  static let cardFooter               = Self(rawValue: "Bones.card.footer")
-  static let cardAction               = Self(rawValue: "Bones.card.action")
+  static let cardTitle = Self(rawValue: "Bones.card.title")
+  static let cardDescription = Self(rawValue: "Bones.card.description")
+  static let cardFooter = Self(rawValue: "Bones.card.footer")
+  static let cardAction = Self(rawValue: "Bones.card.action")
 }
 
 // MARK: - Types
@@ -237,7 +233,6 @@ struct CardPreviews: PreviewProvider {
           Button("Edit") {}
             .buttonStyle(.bones(.medium(.fill(icon: nil))))
         }
-        .textColor(.bones.textDark)
       }
     }
     .previewDisplayName()
