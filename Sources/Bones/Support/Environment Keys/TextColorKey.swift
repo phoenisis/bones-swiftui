@@ -1,5 +1,5 @@
 //
-//  textColor.swift
+//  TextColorKey.swift
 //  
 //
 //  Created by Quentin PIDOUX on 14/03/2024.

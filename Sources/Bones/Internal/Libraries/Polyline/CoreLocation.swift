@@ -1,4 +1,4 @@
-// Polyline.swift
+// CoreLocation.swift
 //
 // Copyright (c) 2015 Raphaël Mor
 //
