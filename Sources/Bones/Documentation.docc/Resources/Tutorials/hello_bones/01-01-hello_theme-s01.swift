@@ -8,7 +8,7 @@ struct ContentView: View {
   }
 
   init() {
-    Bones(
+    Bones.configure(
       colors: [
         .primary: "#1ac91d",
         .primaryForeground: "#000000",

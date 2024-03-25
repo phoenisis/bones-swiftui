@@ -123,7 +123,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
 // MARK: - Inits
 public extension BonesCard {
   
-  /// Creates Bones ``Card`` component.
+  /// Creates Bones `Card` component.
   init(
     _ title: String = "",
     description: String = "",
@@ -276,7 +276,6 @@ struct CardPreviews: PreviewProvider {
     }
     .cardLayout(.fill)
     .backgroundStyle(.clear)
-    .padding(.vertical, -.BonesSpacing.medium.value)
     .previewDisplayName()
   }
   

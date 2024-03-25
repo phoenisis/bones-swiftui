@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 /// An extension on `View` to easily apply the sharing modifier.
-extension View {
+public extension View {
   /// Applies the `SnapAndShareView` modifier to enable sharing of the view's snapshot.
   ///
   /// - Parameter previewText: An optional text to be used as a label or preview.

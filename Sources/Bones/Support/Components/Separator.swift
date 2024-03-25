@@ -46,7 +46,7 @@ public struct Separator: View {
         
         Text(label)
           .font(.custom(.bones(.body)))
-          .textColor(textColor ?? .bones.textDark)
+          .textColor(textColor)
           .fontWeight(.medium)
           .multilineTextAlignment(.center)
           .layoutPriority(1)

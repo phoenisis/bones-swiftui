@@ -18,7 +18,7 @@ public extension View {
   /// Set the Bones ``CardLayout`` for this view.
   ///
   /// - Parameters:
-  ///   - layout: A layout that will be used by all ``Card`` components in the view hierarchy.
+  ///   - layout: A layout that will be used by all `Card` components in the view hierarchy.
   func cardLayout(_ layout: CardLayout) -> some View {
     environment(\.cardLayout, layout)
   }

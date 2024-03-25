@@ -8,7 +8,9 @@ struct ContentView: View {
   }
 
   init() {
-    Bones.overrideColor(.primary, with: "#f7bc6f")
+    Bones.update(
+      .color(.primary, with: "#f7bc6f")
+    )
   }
 }
 

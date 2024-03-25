@@ -1,0 +1,44 @@
+@Tutorial(time: 5) {
+  @Intro(title: "Theme") {
+    This "Theme Bones" tutorial will show how to custom Bones components in your SwiftUI code.
+    
+    @Image(source: 01-01-hello_theme-s01.png, alt: "A snapshot of SwiftUI code next to a preview canvas showing mapping of Bones components between code and canvas")
+  }
+  
+  @Section(title: "Configure Colors and spacings used by Bones Components") {
+    @ContentAndMedia {
+      Bones uses a set of colors and spacings for all its textual components.
+      
+      If you want, you can set up your custom colors and spacing.
+      
+    }
+    
+    @Steps {
+      @Step {
+        Add an initializer where you will tell Bones which colors and spacing to use.
+        
+        For this demo project, the initializer can be added to this sample view. In a real application, this code would be run only once, near the application start, also for convinience, we will change the text label to a button.
+        
+        @Code(name: "ContentView.swift", file: 01-01-hello_theme-s01.swift) {
+          @Image(source: 01-01-hello_theme-s01.png, alt: "A screenshot from the Xcode preview as it would appear on iPhone, with the button, Hello, World!, centered in the middle of the display.")
+        }
+      }
+      
+      @Step {
+        On the other hand, you can also override only the primary color
+        
+        @Code(name: "ContentView.swift", file: 01-01-hello_theme-s02.swift) {
+          @Image(source: 01-01-hello_theme-s02.png, alt: "A screenshot from the Xcode preview as it would appear on iPhone, with the button, Hello, World!, centered in the middle of the display.")
+        }
+      }
+      
+      @Step {
+        And only override the large spacing
+        
+        @Code(name: "ContentView.swift", file: 01-01-hello_theme-s03.swift) {
+          @Image(source: 01-01-hello_theme-s03.png, alt: "A screenshot from the Xcode preview as it would appear on iPhone, with the button, Hello, World!, centered in the middle of the display.")
+        }
+      }
+    }
+  }
+}

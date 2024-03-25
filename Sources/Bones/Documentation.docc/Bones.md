@@ -9,12 +9,18 @@ Bones is an open-source design system created for specific needs of Kiwi.com and
 
 This library allows you to integrate the Bones Design System into your iOS SwiftUI project.
 
+### Featured
+
+@Links(visualStyle: detailedGrid) {
+  - <doc:GettingStarted>
+}
+
 ## Topics
 ### Essentials
-
 - <doc:GettingStarted>
 
-[//]: # (- <doc:Tutorials>)
+### Tutorials
+- <doc:Tutorials>
 
 [//]: # ()
 [//]: # (### Components)
