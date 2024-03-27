@@ -3,18 +3,54 @@ on:
   push:
     branches:
       - '**'
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build_deploy_site:
-    runs-on: ubuntu-latest
+  # One deployment deploy job since we're just deploying
+  deploy:
     environment:
+      # Must set to this for deploying to GitHub Pages
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    permissions:
-      pages: write
-      contents: read
-      id-token: write
-
+    runs-on: macos-14
     steps:
-    - name: deploy static site
-      uses: kiarashvosough1999/docC-github-pages-deploy@v1.0.0
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: List Xcode installations
+        run: sudo ls -1 /Applications | grep "Xcode"
+      - name: Force Xcode 15.2
+        run: sudo xcode-select -s "/Applications/Xcode_15.2.app"
+      - name: Build DocC
+        run: |
+          swift package resolve;
+
+          xcodebuild docbuild -workspace 'Project.xcworkspace' -scheme Project -derivedDataPath /tmp/docbuild -destination 'platform=iOS Simulator,name=iPhone 12';
+
+          echo "Archiving documentation..."
+
+          $(xcrun --find docc) process-archive \
+            transform-for-static-hosting /tmp/docbuild/Build/Products/Debug-iphonesimulator/Project.doccarchive \
+            --output-path docs \
+            --hosting-base-path '';
+
+          echo "** Archived documentation**"
+
+          echo "<script>window.location.href += \"tutorials/table-of-contents\"</script>" > docs/index.html;
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload only docs directory
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
