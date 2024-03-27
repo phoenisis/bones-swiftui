@@ -241,3 +241,25 @@ public struct BonesIcon: View {
       .scaledToFit()
   }
 }
+
+public extension BonesIcon {
+  enum Size: Equatable {
+    /// Size 16.
+    case small
+    /// Size 20.
+    case normal
+    /// Size 24.
+    case large
+    /// Size 28.
+    case xLarge
+    
+    public var value: CGFloat {
+      switch self {
+        case .small: 16
+        case .normal: 20
+        case .large: 24
+        case .xLarge: 28
+      }
+    }
+  }
+}

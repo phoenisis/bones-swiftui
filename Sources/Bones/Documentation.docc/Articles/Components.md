@@ -1,12 +1,12 @@
-> [!NOTE]
-> Main documentation is available [here](../README.md).
-
 # 🧩 Components
+
 Components are groups of elements that work together to create a reusable, functional, and specific UI. They are the building blocks of a design system. They are also the most important part of a design system because they are the most reusable and flexible.
+
+## Overview
 
 Below are some examples showcasing how to use design Molecules in the Bones compared to regular SwiftUI vanilla syntax if there is any equivalent
 
-## 💬 TextFields
+### 💬 TextFields
 **🍦 Vanilla**
 ```swift
 TextField("Placeholder", text: $text)
@@ -28,7 +28,7 @@ BoneSecureField("Placeholder", text: $text)
 > [!NOTE]
 > `BoneSecureField` add the show and hide password functionality.
 
-## 📱 Buttons
+### 📱 Buttons
 **🍦 Vanilla**
 ```swift
 Button("Tap me") { /* Action to perform on tap */ }
@@ -56,7 +56,7 @@ Button("") { /* Action to perform on tap */ }
   .buttonStyle(.bones(.tracker(.round(.play))))
 ``` 
 
-## Avatars
+### Avatars
 An avatar is an image that represents a user, a group, or a bot. It can be used as a profile picture or as a way to visually distinguish between users.
 
 **Usage**
@@ -64,7 +64,7 @@ An avatar is an image that represents a user, a group, or a bot. It can be used 
 BonesAvatarView(size: .small, avatarType: .user, imageUrl: nil)
 ```
 
-## Tags
+### Tags
 A tag is a small piece of information that is attached to a larger piece of information. It is used to provide additional context or to highlight important information.
 ```Swift
 TagView("Placeholder", icon: nil, style: .primary)

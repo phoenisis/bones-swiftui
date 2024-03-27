@@ -1,14 +1,15 @@
-> [!NOTE]
-> Main documentation is available [here](../README.md).
-
 # 🎨 Tokens
+
 Design tokens are the atoms of a design system — the smallest pieces, like colors, fonts, spacings, and shadows. Instead of hard coding these values, tokens allow for a more scalable, consistent, and maintainable system. By defining these tokens, it becomes easier to ensure that the design and the implementation remain synchronized.
+
+
+## Overview
 
 In the Bones, tokens are used to define and encapsulate fundamental design decisions. These can be easily overridden or extended for different projects, themes, or platforms, ensuring flexibility while maintaining consistency.
 
 Below are some examples showcasing how to use design tokens in the Bones compared to regular SwiftUI vanilla syntax
 
-## 🖋 Fonts
+### 🖋 Fonts
 **🍦 Vanilla**
 ```swift
 Text("Hello, World!")
@@ -22,7 +23,7 @@ Text("Hello, World!")
   .foregroundStyle(Color(.bones(.primary)))
 ```
 
-## 🌈 Colors
+### 🌈 Colors
 **🍦 Vanilla**
 ```swift
 let primaryColor = Color(.green)
@@ -34,7 +35,7 @@ let primaryColor = Color(.bones(.primary))
 let secondaryColor = Color.bones.secondary
 ```
 
-#### 🖼 Images 
+##### 🖼 Images 
 **🍦 Vanilla**
 ```swift 
 Image(.add)
@@ -44,7 +45,7 @@ Image(.add)
 Image(.bones(.add))
 ```
 
-## 📏 Padding
+### 📏 Padding
 **🍦 Vanilla**
 ```swift
 Text("Hello, World!")
@@ -68,7 +69,7 @@ VStack(spacing: .bones(.small)) {}
 VStack(alignment: .trailing, spacing: .bones(.small)) {}
 ```
 
-## 🌀 Radius
+### 🌀 Radius
 **🍦 Vanilla**
 ```swift
 VStack {}
@@ -85,7 +86,7 @@ VStack {}
   .radius(.bones(.medium))
 ```
 
-## 🌑 Shadow
+### 🌑 Shadow
 **🍦 Vanilla**
 ```swift
 VStack {}
@@ -113,16 +114,17 @@ VStack {}
   .shadow(color: Color.bones.black, radius: .bones(.far))
 ```
 
-## Haptic Feedback
+### Haptic Feedback
 **🦴 Bones**
 ```swift
 Button("Tap me") {
-    // Action to perform on tap
+// Action to perform on tap
 }
 .haptic(.medium)
 ```
 
-## Shapes
+### Shapes
 ```swift
 BonesObsidianProfileShape()
 ```
+

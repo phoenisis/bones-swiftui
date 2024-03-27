@@ -1,7 +1,5 @@
-> [!NOTE]
-> Main documentation is available [here](../README.md).
-
 # 🧱 Templates
+
 Templates are groups of elements that work together to create a reusable, functional, and specific UI. They are the building blocks of a design system. They are also the most important part of a design system because they are the most reusable and flexible.
 
 ## Chips group
@@ -106,12 +104,12 @@ ExpandingText(
 )
 ```
 
-# ♦️ Cards
+## ♦️ Cards
 Cards are surfaces that display content and actions on a single topic. They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.
 
 In some case Cards are set as button style when the only action is to tap on the card.
 
-## Mobility card
+### Mobility card
 Code example:
 ```swift
 Button("title card") { /* Action to perform on tap */ }
