@@ -64,7 +64,7 @@ extension View {
               case .mobility(let imageUrl):
                 return AnyView(self.buttonStyle(BonesCardMobilityButton(imageUrl: imageUrl)))
             }
-            
+                        
           case let .navBar(variant):
             switch variant {
               case .icon(let icon):

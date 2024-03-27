@@ -53,7 +53,7 @@ public enum BonesButtonStyleToken {
   case shape(_ variant: BonesButtonShapeToken)
   
   case socialTag(availability: String?, remaining: String?, image: String?, description: String?, date: Date?, points: String?)
-  
+    
   public enum SmallToken {
     case fill
     case outline
