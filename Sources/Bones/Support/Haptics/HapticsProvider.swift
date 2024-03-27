@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// A utility to provide haptic feedback in iOS applications.
 public enum HapticsProvider {

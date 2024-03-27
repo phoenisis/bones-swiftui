@@ -6,7 +6,9 @@
 //
 
 import CoreGraphics
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Predefiend Bones border widths.
 public enum BorderWidth {

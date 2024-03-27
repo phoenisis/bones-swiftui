@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Extends `UIImage` to conform to `Transferable` for sharing purposes.
 extension UIImage: Transferable {

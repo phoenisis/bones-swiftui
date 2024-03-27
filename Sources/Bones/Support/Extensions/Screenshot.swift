@@ -5,7 +5,9 @@
 //  Created by Quentin PIDOUX on 22/01/2024.
 //
 
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Extends `UIView` to include a screenshot capability.
 public extension UIView {
