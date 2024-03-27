@@ -1,53 +1,56 @@
-name: worksapce
+name: Build Swift DocC and publish on GitHub Pages
 on:
   push:
     branches:
       - '**'
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  # Build target specifies which target in your Swift Package to build documentation for.
+  # To build all targets, remove this env variable,
+  # and remove --target arg in the building step below.
+  BUILD_TARGET: PackageDescription
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  # One deployment deploy job since we're just deploying
-  deploy:
-    environment:
-      # Must set to this for deploying to GitHub Pages
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
-    container: swift:5.10-jammy
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Build DocC
-        run: |
-          swift package resolve;
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-          xcodebuild docbuild -workspace 'Project.xcworkspace' -scheme Project -derivedDataPath /tmp/docbuild -destination 'platform=iOS Simulator,name=iPhone 12';
+    - name: Set up Swift environment
+      uses: swift-actions/setup-swift@v2
+      with:
+        swift-version: '5.10'
+    - name: Get swift version
+      run: swift --version # Swift 5.1.0
 
-          echo "Archiving documentation..."
+    # Build the DocC website using swiftPM.
+    - name: Build docs with SwiftPM
+      run: |
+        swift package --allow-writing-to-directory ./docs \
+        generate-documentation --target ${BUILD_TARGET} \
+        --output-path ./docs \
+        --disable-indexing \
+        --transform-for-static-hosting \
+        --hosting-base-path swift-package-manager
 
-          $(xcrun --find docc) process-archive \
-            transform-for-static-hosting /tmp/docbuild/Build/Products/Debug-iphonesimulator/Project.doccarchive \
-            --output-path docs \
-            --hosting-base-path '';
-
-          echo "** Archived documentation**"
-
-          echo "<script>window.location.href += \"tutorials/table-of-contents\"</script>" > docs/index.html;
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload only docs directory
-          path: 'docs'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - name: Commit and push generated documentation
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git switch gh-pages
+        git add ./docs
+        git commit -a -m "Generated Swift DocC"
+        git push origin gh-pages
