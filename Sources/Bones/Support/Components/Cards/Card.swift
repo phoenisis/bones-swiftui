@@ -1,5 +1,5 @@
 //
-//  BonesCard.swift
+//  Card.swift
 //  
 //
 //  Created by Quentin PIDOUX on 14/03/2024.

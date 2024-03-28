@@ -7,7 +7,7 @@
 
 import SwiftUI
 #if canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 /// Extends `UIFont` to support loading and using custom fonts defined for SwiftUI `Font`.

@@ -6,7 +6,7 @@
 //
 
 #if canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 /// Extends `UIView` to include a screenshot capability.

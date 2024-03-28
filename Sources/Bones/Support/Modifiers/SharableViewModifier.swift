@@ -7,7 +7,7 @@
 
 import SwiftUI
 #if canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 /// An extension on `View` to easily apply the sharing modifier.
