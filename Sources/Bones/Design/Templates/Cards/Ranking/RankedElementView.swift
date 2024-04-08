@@ -127,13 +127,15 @@ public struct RankedElementView: View {
     .frame(height: isHighlighted ? 94 : 88)
     .listRowBackground(
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .fill(Color.bones.white)
+        .fill(
+          Color.bones.white
+            .shadow(.bones.drop(isHighlighted ? .far : .none))
+        )
         .overlay(
           RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
             .stroke(Color.bones.primary, lineWidth: isHighlighted ? 2 : 0)
         )
         .padding(.horizontal, .bones(isHighlighted ? .medium : .large))
-        .shadow(radius: .bones( isHighlighted ? .far : .none ))
     )
     .foregroundStyle(Color.bones.textDark)
     .listRowSeparator(.hidden)

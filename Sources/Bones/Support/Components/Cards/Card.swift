@@ -95,8 +95,10 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
   
   @ViewBuilder private var resolvedBackground: some View {
     RoundedRectangle(bonesRadius: .bones(radius), style: .continuous)
-      .fill(backgroundColor)
-      .shadow(radius: .bones(shadowStyle))
+      .fill(
+        backgroundColor
+          .shadow(.bones.drop(shadowStyle))
+      )
   }
   
   private var isHeaderEmpty: Bool {

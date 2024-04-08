@@ -29,6 +29,8 @@ struct BonesNavbarIconButton: ButtonStyle {
   let icon: Image.BonesImage
   /// Size of the icon.
   let iconSize: Double = 16
+  /// Size of the icon pressed.
+  var iconSizePressed: Double { get {iconSize/1.15} }
   /// Opacity of the background circle.
   let backgroundOpacity: Double = 0.1
   /// Size of the circular frame.
@@ -45,15 +47,34 @@ struct BonesNavbarIconButton: ButtonStyle {
         .fill(Color.bones.primary.opacity(backgroundOpacity))
         .frame(width: frameSize, height: frameSize)
         .overlay(alignment: .center, content: {
-          BonesIcon(icon: .bones(icon), fontWeight: .black, renderingMode: .template)
-            .frame(width: iconSize, height: iconSize)
-            .foregroundStyle(Color.bones.primary)
+          BonesIcon(icon: .bones(icon), fontWeight: .bold, renderingMode: .template)
+            .frame(
+              width: configuration.isPressed ? iconSizePressed : iconSize,
+              height: configuration.isPressed ? iconSizePressed : iconSize
+            )
+            .foregroundStyle(configuration.isPressed ? Color.bones.primaryForeground : Color.bones.primary)
+            .animation(.default, value: configuration.isPressed)
         })
-        .overlay(
+        .background(
           Circle()
-            .stroke(lineWidth: 2.0)
-            .fill(Color.bones.primary)
+            .fill(
+              .ultraThinMaterial
+                .shadow(.bones.drop(configuration.isPressed ? .none : .reallyClose))
+            )
+            .overlay(content: {
+              configuration.isPressed
+              ? AnyView(
+                Circle()
+                  .fill(
+                    Color.bones.primary.opacity(0.5)
+                  )
+              )
+              : AnyView(Color.clear)
+             })
+          
+          
         )
+        .animation(.default, value: configuration.isPressed)
         .conditionalEffect(
           .pushDown,
           condition: configuration.isPressed

@@ -106,8 +106,10 @@ VStack {}
   .shadow(radius: .bones(.none))
 VStack {}
   .frame(width: 100, height: 100)
-  .fill(Color.bones.primary)
-  .shadow(radius: .bones(.close))
+  .fill(
+    Color.bones.primary
+      .shadow(.bones.drop(.close))
+  )
 VStack {}
   .frame(width: 100, height: 100)
   .fill(Color.bones.primary)

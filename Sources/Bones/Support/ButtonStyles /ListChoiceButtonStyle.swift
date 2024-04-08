@@ -43,7 +43,7 @@ public struct ListChoiceButtonStyle: ButtonStyle {
     }
   }
   
-  /// Create button style for Orbit `ListChoice` component.
+  /// Create button style for Bones `ListChoice` component.
   public init() {}
 }
 

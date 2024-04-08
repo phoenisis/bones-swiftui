@@ -89,8 +89,10 @@ struct TeamMemberViewButtonStyle: ButtonStyle {
               .padding(.bones(.medium))
               .background(
                 Circle()
-                  .fill(Color.bones.white)
-                  .shadow(radius: .bones(.close))
+                  .fill(
+                    Color.bones.white
+                      .shadow(.bones.drop(.close))
+                  )
               )
               .padding(.leading, -8)
               .padding(.top, -8)

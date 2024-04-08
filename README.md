@@ -1,4 +1,4 @@
-[![OS](https://img.shields.io/badge/iOS_>16-000000?style=fla&logo=ios&logoColor=white)](https://apple.com/) [![Language](https://img.shields.io/badge/Swift_5.9-FA7343?style=fla&logo=swift&logoColor=white)](https://swift.org/download/) [![Framework](https://img.shields.io/badge/SwiftUI_-4497ed?style=fla&logo=swift&logoColor=white)](https://developer.apple.com/documentation/swiftui/)
+[![OS](https://img.shields.io/badge/iOS_>17-000000?style=fla&logo=ios&logoColor=white)](https://apple.com/) [![Language](https://img.shields.io/badge/Swift_5.9-FA7343?style=fla&logo=swift&logoColor=white)](https://swift.org/download/) [![Framework](https://img.shields.io/badge/SwiftUI_-4497ed?style=fla&logo=swift&logoColor=white)](https://developer.apple.com/documentation/swiftui/)
 
 > [!IMPORTANT]
 > 🚨 This current version of Bones is still in development. It is not yet ready for production use.

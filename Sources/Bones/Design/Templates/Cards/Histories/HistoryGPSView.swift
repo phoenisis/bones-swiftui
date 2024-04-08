@@ -111,11 +111,13 @@ struct HistoryGPSButtonStyle: ButtonStyle {
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(
       RoundedRectangle(bonesRadius: .bones(.large), style: .continuous)
-        .fill(Color.bones.white)
-        .shadow(radius: .bones(
-          isAvailable 
-            ? configuration.isPressed ? .close : .far
-            : .none)
+        .fill(
+          Color.bones.white
+            .shadow(.bones.drop(
+              isAvailable
+              ? configuration.isPressed ? .close : .far
+              : .none)
+            )
         )
     )
     .opacity(isHidden ? 0.5 : 1)

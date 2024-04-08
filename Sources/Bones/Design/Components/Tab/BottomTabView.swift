@@ -65,7 +65,6 @@ struct TabBottomView: View {
             .overlay(alignment: .center) {
               Button("Move") {}
                 .buttonStyle(.bones(.homePlay))
-                .shadow(radius: .bones(.close))
                 .padding(.bottom, 44)
             }
           } else {
@@ -87,8 +86,10 @@ struct TabBottomView: View {
     .animation(.default, value: selectedIndex)
     .background(
       UnevenRoundedRectangle(topLeadingRadius: .large, topTrailingRadius: .large)
-        .fill(Color.bones.white)
-        .shadow(radius: .bones(.far))
+        .fill(
+          Color.bones.white
+            .shadow(.bones.drop(.far))
+          )
     )
   }
 }

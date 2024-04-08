@@ -48,8 +48,13 @@ public struct BonesMapView: View {
         }
       })
       .aspectRatio(1.5, contentMode: .fit)
-      .cornerRadius(.bones(.large))
-      .shadow(radius: .bones(.close))
+      .background(
+        RoundedRectangle(bonesRadius: .bones(.large), style: .continuous)
+          .fill(
+            Color.bones.white
+              .shadow(.bones.drop(.close))
+          )
+      )
       .opacity(isMapPresented ? 0 : 1)
       .fullScreenCover(isPresented: $isMapPresented) {
         UIKitMapView(mapType: mapType, polyline: polyline, allowHits: true)
@@ -105,10 +110,12 @@ public struct BonesMapView: View {
                         }
                       )
                       .tint(.bones(.primary))
-                      .foregroundStyle(Color.bones.primary)
                       .background(
                         RoundedRectangle(bonesRadius: .bones(.small))
-                          .fill(.ultraThinMaterial)
+                          .fill(
+                            .ultraThinMaterial
+                              .shadow(.bones.drop(.reallyClose))
+                          )
                       )
                       .frame(width: 40)
                     }

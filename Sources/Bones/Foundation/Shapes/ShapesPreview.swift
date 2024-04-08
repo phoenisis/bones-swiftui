@@ -12,8 +12,10 @@ struct Previews_ShapeStyles : View {
     List {
       Section {
         BonesShieldShape()
-          .fill(Color.bones.primary)
-          .shadow(radius: .bones(.close))
+          .fill(
+            Color.bones.primary
+              .shadow(.bones.drop(.close))
+          )
           .frame(width: 50, height: 50)
       } header: {
         Text("Shield")
@@ -22,8 +24,10 @@ struct Previews_ShapeStyles : View {
       }
       Section {
         BonesBubbleDownShape()
-          .fill(Color.bones.primary)
-          .shadow(radius: .bones(.close))
+          .fill(
+            Color.bones.primary
+              .shadow(.bones.drop(.close))
+          )
           .frame(width: 50, height: 50)
       } header: {
         Text("Bubble down")
@@ -33,8 +37,10 @@ struct Previews_ShapeStyles : View {
 
       Section {
         BonesObsidianProfileShape()
-          .fill(Color.bones.primary)
-          .shadow(radius: .bones(.close))
+          .fill(
+            Color.bones.primary
+              .shadow(.bones.drop(.close))
+          )
           .frame(height: 100)
           .frame(maxWidth: .infinity)
       } header: {
@@ -45,8 +51,10 @@ struct Previews_ShapeStyles : View {
 
       Section {
         BonesPointsShape()
-          .fill(Color.bones.primary)
-          .shadow(radius: .bones(.close))
+          .fill(
+            Color.bones.primary
+              .shadow(.bones.drop(.close))
+          )
           .frame(height: 100)
           .frame(maxWidth: .infinity)
       } header: {

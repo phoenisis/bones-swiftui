@@ -72,8 +72,11 @@ struct BonesNavigationButton: ButtonStyle {
     .frame(height: 48)
     .background(
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .fill(isEnabled ? Color.bones.primary : Color.bones.grey3)
-        .shadow(radius: .bones( isEnabled ? .far : .none))
+        .fill(
+          isEnabled
+          ? Color.bones.primary.shadow(.bones.drop(.far))
+          : Color.bones.grey3.shadow(.bones.drop(.none))
+        )
     )
     .foregroundStyle(isEnabled ? Color.bones.primaryForeground : Color.bones.grey6)
     .frame(maxWidth: .infinity, alignment: isLeading ? .leading : .trailing)

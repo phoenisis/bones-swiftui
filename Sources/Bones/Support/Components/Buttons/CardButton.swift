@@ -26,7 +26,7 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   public init(
     description: String,
     showBorder: Bool,
-    titleStyle: Font,
+    titleStyle: Font = .custom(.bones(.h3)),
     radius: CGFloat.BonesRadius,
     @ViewBuilder content: () -> Content,
     @ViewBuilder footer: () -> Footer = { EmptyView() },
@@ -71,14 +71,14 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
     .padding(.horizontal, .bones(.small))
     .conditionalEffect(
       .pushDown,
-      condition: configuration.isPressed
+      condition: configuration.isPressed && isEnabled
     )
     .animation(.default, value: configuration.isPressed)
     .changeEffect(
       .feedback(
         hapticImpact: .light
       ),
-      value: configuration.isPressed
+      value: configuration.isPressed && isEnabled
     )
   }
   
@@ -115,10 +115,21 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   }
   
   @ViewBuilder private func resolvedBackground(_ configuration: Configuration) -> some View {
-    RoundedRectangle(bonesRadius: .bones(radius), style: .continuous)
-      .fill(backgroundColor)
-      .shadow(radius: .bones(configuration.isPressed ? .close : .far))
-      .animation(.default, value: configuration.isPressed)
+    RoundedRectangle(
+      bonesRadius: .bones(radius),
+      style: .continuous
+    )
+    .fill(backgroundColor
+      .shadow(.bones
+        .drop(
+          isEnabled
+          ? configuration.isPressed ? .close : .far
+          : .none
+        )
+      )
+    )
+    
+    .animation(.default, value: configuration.isPressed)
   }
   
   private var isHeaderEmpty: Bool {
@@ -139,5 +150,115 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   
   private var isFooterEmpty: Bool {
     footer is EmptyView
+  }
+}
+
+
+// MARK: - Previews
+struct ButtonCardPreviews: PreviewProvider {
+  
+  static var previews: some View {
+    PreviewWrapper {
+      standalone
+        .screenLayout()
+      
+      content
+        .screenLayout()
+      
+      standaloneIdealSize
+        .padding(.bones(.medium))
+      
+      snapshot
+    }
+    .background(Color.bones.AQILevel1)
+    .previewLayout(.sizeThatFits)
+  }
+  
+  @ViewBuilder static var content: some View {
+    cardWithFillLayoutContentNoHeader
+    cardWithOnlyCustomContent
+    clear
+  }
+  
+  static var standalone: some View {
+    ScrollView {
+      VStack(spacing: .bones(.medium)) {
+        Button("button title") {}
+          .buttonStyle(
+            BonesCardButton(
+              description: "Description",
+              showBorder: true,
+              radius: .large,
+              content: {
+                contentPlaceholder
+              }
+            )
+          )
+        
+        Button("button title") {}
+          .buttonStyle(
+            BonesCardButton(
+              description: "Description",
+              showBorder: true,
+              radius: .large,
+              content: {
+                contentPlaceholder
+              }
+            )
+          )
+          .disabled(true)
+      }
+    }
+    .previewDisplayName()
+  }
+  
+  static var standaloneIdealSize: some View {
+    HStack(spacing: .bones(.large)) {
+      BonesCard("Card", description: "Intrinsic") {
+        intrinsicContentPlaceholder
+      }
+      
+      Spacer(minLength: 0)
+    }
+    .idealSize()
+    .previewDisplayName()
+  }
+  
+  static var cardWithFillLayoutContentNoHeader: some View {
+    BonesCard {
+      contentPlaceholder
+      contentPlaceholder
+    }
+    .cardLayout(.fill)
+    .previewDisplayName()
+  }
+  
+  static var cardWithOnlyCustomContent: some View {
+    BonesCard {
+      contentPlaceholder
+      contentPlaceholder
+    }
+    .previewDisplayName()
+  }
+  
+  static var clear: some View {
+    BonesCard(
+      "Card without borders and background",
+      showBorder: false
+    ) {
+      Text("lorem")
+    }
+    .cardLayout(.fill)
+    .backgroundStyle(.clear)
+    .previewDisplayName()
+  }
+  
+  @ViewBuilder static var snapshot: some View {
+    VStack(spacing: .bones(.medium)) {
+      standalone
+      standaloneIdealSize
+    }
+    .screenLayout()
+    .background(Color.bones.background)
   }
 }

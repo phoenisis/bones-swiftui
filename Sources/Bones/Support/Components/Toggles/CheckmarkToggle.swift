@@ -24,7 +24,10 @@ struct CheckmarkToggleStyle: ToggleStyle {
         .frame(width: 51, height: 31, alignment: .center)
         .overlay(
           Circle()
-            .foregroundColor(.white)
+            .fill(
+              Color.white
+                .shadow(.bones.drop(.reallyClose))
+            )
             .padding(.all, 3)
             .overlay(
               Image(systemName: configuration.isOn ? "checkmark" : "xmark")
@@ -34,10 +37,8 @@ struct CheckmarkToggleStyle: ToggleStyle {
                 .frame(width: 8, height: 8, alignment: .center)
                 .foregroundColor(configuration.isOn ? onColor : offColor)
                 .animation(Animation.easeInOut(duration: 0.1), value: configuration.isOn)
-
             )
             .offset(x: configuration.isOn ? 11 : -11, y: 0)
-            .shadow(radius: .bones(.close))
             .animation(Animation.easeInOut(duration: 0.1), value: configuration.isOn)
         )
         .onTapGesture { configuration.isOn.toggle() }

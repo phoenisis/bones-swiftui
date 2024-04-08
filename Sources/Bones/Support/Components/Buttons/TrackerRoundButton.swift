@@ -129,8 +129,14 @@ public struct BonesTrackerRoundButton: ButtonStyle {
       .frame(width: buttonSize, height: buttonSize)
       .background(
         Circle()
-          .fill(backgroundColor)
-          .shadow(radius: .bones(configuration.isPressed ? .none : .far))
+          .fill(
+            backgroundColor
+              .shadow(
+                .bones.drop(
+                  configuration.isPressed ? .none : .far
+                )
+              )
+          )
           .overlay(content: {
             Circle()
               .stroke(strokeColor, lineWidth: 2.0)

@@ -275,10 +275,16 @@ public struct SocialTagCardView: ButtonStyle {
     .padding(.bones(.large))
     .background(
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .fill(Color.bones.white)
-        .shadow(radius: .bones(isEnabled
-            ? isClickable ? .close : .none
-            : .none))
+        .fill(
+          Color.bones.white
+            .shadow(
+              .bones.drop(
+                isEnabled
+                ? isClickable ? .close : .none
+                : .none
+              )
+            )
+        )
     )
     .opacity(isEnabled ? 1 : 0.3)
     .padding(.horizontal, (isExpanded && isExpandable) ? 0 : 16)
