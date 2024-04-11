@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct SocialCommentView: View {
+public struct CardSocialWallComment: View {
   var senderImage: String?
   var senderName: String
   var createdAt: Date
@@ -154,7 +154,7 @@ struct Preview_SocialCommentView: View {
         GridItem(.flexible(minimum: 0, maximum: .infinity))
       ], spacing: 16) {
         //    List {
-        SocialCommentView(
+        CardSocialWallComment(
           senderImage: "https://picsum.photos/200/300",
           senderName: "Suzon Lemoine",
           createdAt: Date(timeIntervalSince1970: 1678972600),
@@ -172,7 +172,7 @@ struct Preview_SocialCommentView: View {
           didDeleteTapped: {}
         )
 
-        SocialCommentView(
+        CardSocialWallComment(
           senderImage: "https://picsum.photos/250",
           senderName: "Aurore Maillard",
           createdAt: Date(timeIntervalSince1970: 1688873600),
@@ -193,7 +193,7 @@ struct Preview_SocialCommentView: View {
           didDeleteTapped: {}
         )
 
-        SocialCommentView(
+        CardSocialWallComment(
           senderImage: "https://picsum.photos/300",
           senderName: "Stanislas Clement",
           createdAt: Date(timeIntervalSince1970: 1678972600),

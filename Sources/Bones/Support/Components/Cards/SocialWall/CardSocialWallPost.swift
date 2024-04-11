@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A SwiftUI view representing a social wall with likes by view feature.
-public struct SocialWallCardPostView: View {
+public struct CardSocialWallPost: View {
   let userImage: String?
   let senderImage: String?
   let senderName: String
@@ -186,7 +186,7 @@ struct Preview_SocialWallPostView: View {
         ],
         spacing: 16,
         content: {
-          SocialWallCardPostView(
+          CardSocialWallPost(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -223,7 +223,7 @@ struct Preview_SocialWallPostView: View {
             }
           )
 
-          SocialWallCardPostView(
+          CardSocialWallPost(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -257,7 +257,7 @@ struct Preview_SocialWallPostView: View {
             didTapLikesBy: {}
           )
 
-          SocialWallCardPostView(
+          CardSocialWallPost(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -291,7 +291,7 @@ struct Preview_SocialWallPostView: View {
             didTapLikesBy: {}
           )
 
-          SocialWallCardPostView(
+          CardSocialWallPost(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
