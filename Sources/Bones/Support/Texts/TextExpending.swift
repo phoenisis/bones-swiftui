@@ -1,5 +1,5 @@
 //
-//  ExpendingText.swift
+//  TextExpending.swift
 //
 //
 //  Created by Quentin PIDOUX on 03/10/2023.
@@ -11,7 +11,7 @@ import SwiftUI
 ///
 /// The text content is displayed, by default, in a truncated form, showing a maximum of 3 lines by defaults.
 /// If the text is truncated, a "Show More" button will appear allowing the content to be expanded.
-public struct ExpandingText: View {
+public struct TextExpandingView: View {
   let text: String
   let showMoreText: String
   let fontToken: Font.BonesFontToken
@@ -31,13 +31,13 @@ public struct ExpandingText: View {
     font: Font.BonesFontToken,
     lineNumber: Int = 3,
     isExpanded: Bool = false,
-    showMoreText: String = "show more"
+    showMoreText: String = "social_post_show_more_text"
   ) {
     self.text = text
     self.fontToken = font
     self.lineNumber = lineNumber
     self.isExpanded = isExpanded
-    self.showMoreText = showMoreText
+    self.showMoreText = showMoreText.localized
   }
 
   public var body: some View {
@@ -102,8 +102,8 @@ struct Preview_ExpandingText: View {
   var body: some View {
     List {
       Section {
-        ExpandingText(smallText, font: .body, isExpanded: false)
-        ExpandingText(longText, font: .body, isExpanded: false)
+        TextExpandingView(smallText, font: .body, isExpanded: false)
+        TextExpandingView(longText, font: .body, isExpanded: false)
       } header: {
         Text("Body")
           .font(.bones(.bodyBold))
@@ -111,7 +111,7 @@ struct Preview_ExpandingText: View {
       }
 
       Section {
-        ExpandingText(longText, font: .body, isExpanded: true)
+        TextExpandingView(longText, font: .body, isExpanded: true)
       } header: {
         Text("Body expended")
           .font(.bones(.bodyBold))
@@ -119,8 +119,8 @@ struct Preview_ExpandingText: View {
       }
 
       Section {
-        ExpandingText(smallText, font: .h1, isExpanded: false)
-        ExpandingText(longText, font: .h1, isExpanded: false)
+        TextExpandingView(smallText, font: .h1, isExpanded: false)
+        TextExpandingView(longText, font: .h1, isExpanded: false)
       } header: {
         Text("H1")
           .font(.bones(.bodyBold))

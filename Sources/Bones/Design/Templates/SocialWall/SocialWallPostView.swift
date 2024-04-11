@@ -112,7 +112,7 @@ public struct SocialWallPostView: View {
         }
 
         if let postText {
-          ExpandingText(
+          TextExpandingView(
             postText,
             font: .body,
             isExpanded: false)

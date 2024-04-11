@@ -48,7 +48,7 @@ public enum BonesButtonStyleToken {
   
   case navigation
   
-  case quiz(style: QuizButton.ButtonStyle, isSelected: Bool, imageUrl: String?)
+  case quiz(style: BonesQuizButtonStyle.ButtonStyle, isSelected: Bool, imageUrl: String?)
   
   case shape(_ variant: BonesButtonShapeToken)
   

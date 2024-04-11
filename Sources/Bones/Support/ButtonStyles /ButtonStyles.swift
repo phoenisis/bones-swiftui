@@ -83,7 +83,7 @@ extension View {
             return AnyView(self.buttonStyle(BonesNavigationButton(isOpen: false, isLeading: false)))
             
           case .quiz(style: let style, isSelected: let isSelected, imageUrl: let imageUrl):
-            return AnyView(self.buttonStyle(QuizButton(style: style, isSelected: isSelected, imageUrl: imageUrl)))
+            return AnyView(self.buttonStyle(BonesQuizButtonStyle(style: style, isSelected: isSelected, imageUrl: imageUrl)))
             
           case let .socialTag(availability, remaining, image, description, date, points):
             return AnyView(self.buttonStyle(BonesSocialTagSelectionButton(availability: availability, remaining: remaining, image: image, description: description, date: date, points: points)))
@@ -163,7 +163,7 @@ extension View {
             return AnyView(self.buttonStyle(BonesNavigationButton(isOpen: false, isLeading: false)))
             
           case let .quiz(style, isSelected, imageUrl):
-            return AnyView(self.buttonStyle(QuizButton(style: style, isSelected: isSelected, imageUrl: imageUrl)))
+            return AnyView(self.buttonStyle(BonesQuizButtonStyle(style: style, isSelected: isSelected, imageUrl: imageUrl)))
             
           case let .socialTag(availability, remaining, image, description, date, points):
             return AnyView(self.buttonStyle(BonesSocialTagSelectionButton(availability: availability, remaining: remaining, image: image, description: description, date: date, points: points)))

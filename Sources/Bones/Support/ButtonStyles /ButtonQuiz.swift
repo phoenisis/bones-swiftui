@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct QuizButton: ButtonStyle {
+public struct BonesQuizButtonStyle: ButtonStyle {
   public enum ButtonStyle {
     case `default`
     case success
@@ -182,35 +182,35 @@ struct QuizButtonViewContainer: View {
   @State private var isDefault4ButtonSelected: Bool = false
   @State private var isDefaultLongButtonSelected: Bool = false
 
-  @State private var button1Style: QuizButton.ButtonStyle = .default
-  @State private var button2Style: QuizButton.ButtonStyle = .default
-  @State private var button3Style: QuizButton.ButtonStyle = .default
-  @State private var button4Style: QuizButton.ButtonStyle = .default
-  @State private var button5Style: QuizButton.ButtonStyle = .default
+  @State private var button1Style: BonesQuizButtonStyle.ButtonStyle = .default
+  @State private var button2Style: BonesQuizButtonStyle.ButtonStyle = .default
+  @State private var button3Style: BonesQuizButtonStyle.ButtonStyle = .default
+  @State private var button4Style: BonesQuizButtonStyle.ButtonStyle = .default
+  @State private var button5Style: BonesQuizButtonStyle.ButtonStyle = .default
 
   var body: some View {
     List {
       Section {
         Button("Cody Fisher success") {
         }
-        .buttonStyle(QuizButton(style: .success, isSelected: isDefaultButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: .success, isSelected: isDefaultButtonSelected, imageUrl: nil))
         .listRowBackground(Color.clear)
 
         Button("Cody Fisher success unselected") {
         }
-        .buttonStyle(QuizButton(style: .unSelectedSuccess, isSelected: isDefaultButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: .unSelectedSuccess, isSelected: isDefaultButtonSelected, imageUrl: nil))
         .listRowBackground(Color.clear)
 
 
         Button("Cody Fisher failure") {
         }
-        .buttonStyle(QuizButton(style: .failure, isSelected: isDefaultButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: .failure, isSelected: isDefaultButtonSelected, imageUrl: nil))
         .listRowBackground(Color.clear)
 
 
         Button("Cody Fisher unselected") {
         }
-        .buttonStyle(QuizButton(style: .unSelected, isSelected: isDefaultButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: .unSelected, isSelected: isDefaultButtonSelected, imageUrl: nil))
         .listRowBackground(Color.clear)
 
       } header: {
@@ -226,7 +226,7 @@ struct QuizButtonViewContainer: View {
             button1Style = .default
           }
         }
-        .buttonStyle(QuizButton(style: button1Style, isSelected: isDefaultButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: button1Style, isSelected: isDefaultButtonSelected, imageUrl: nil))
         .animation(.default, value: button1Style)
         .listRowBackground(Color.clear)
 
@@ -238,7 +238,7 @@ struct QuizButtonViewContainer: View {
             button2Style = .default
           }
         }
-        .buttonStyle(QuizButton(style: button2Style, isSelected: isDefault2ButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: button2Style, isSelected: isDefault2ButtonSelected, imageUrl: nil))
         .animation(.default, value: button2Style)
         .listRowBackground(Color.clear)
 
@@ -250,7 +250,7 @@ struct QuizButtonViewContainer: View {
             button3Style = .default
           }
         }
-        .buttonStyle(QuizButton(style: button3Style, isSelected: isDefault3ButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: button3Style, isSelected: isDefault3ButtonSelected, imageUrl: nil))
         .animation(.default, value: button3Style)
         .listRowBackground(Color.clear)
 
@@ -262,7 +262,7 @@ struct QuizButtonViewContainer: View {
             button4Style = .default
           }
         }
-        .buttonStyle(QuizButton(style: button4Style, isSelected: isDefault4ButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: button4Style, isSelected: isDefault4ButtonSelected, imageUrl: nil))
         .animation(.default, value: button4Style)
         .listRowBackground(Color.clear)
 
@@ -275,7 +275,7 @@ struct QuizButtonViewContainer: View {
             button5Style = .default
           }
         }
-        .buttonStyle(QuizButton(style: button5Style, isSelected: isDefaultLongButtonSelected, imageUrl: nil))
+        .buttonStyle(BonesQuizButtonStyle(style: button5Style, isSelected: isDefaultLongButtonSelected, imageUrl: nil))
         .animation(.default, value: button5Style)
         .listRowBackground(Color.clear)
       }
