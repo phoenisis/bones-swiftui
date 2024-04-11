@@ -83,7 +83,7 @@ public struct QuizButton: ButtonStyle {
               )
               .padding(.trailing, -8)
               .transition(
-                .movingParts.pop(Color.bones.primary)
+                .movingParts.pop(Color.bones.success)
               )
           default:
             EmptyView()
