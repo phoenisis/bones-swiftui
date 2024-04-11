@@ -123,8 +123,8 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
       .shadow(.bones
         .drop(
           isEnabled
-          ? configuration.isPressed ? .close : .far
-          : .none
+            ? configuration.isPressed ? .close : .far
+            : .none
         )
       )
     )

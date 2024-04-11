@@ -85,11 +85,14 @@ struct TabBottomView: View {
     .frame(maxWidth: .infinity)
     .animation(.default, value: selectedIndex)
     .background(
-      UnevenRoundedRectangle(topLeadingRadius: .large, topTrailingRadius: .large)
-        .fill(
-          Color.bones.white
-            .shadow(.bones.drop(.far))
-          )
+      UnevenRoundedRectangle(
+        topLeadingRadius: .large,
+        topTrailingRadius: .large
+      )
+      .fill(
+        Color.bones.white
+          .shadow(.bones.drop(.far))
+      )
     )
   }
 }

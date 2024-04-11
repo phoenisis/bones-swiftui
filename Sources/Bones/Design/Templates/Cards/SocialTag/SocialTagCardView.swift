@@ -280,8 +280,8 @@ public struct SocialTagCardView: ButtonStyle {
             .shadow(
               .bones.drop(
                 isEnabled
-                ? isClickable ? .close : .none
-                : .none
+                  ? isClickable ? .close : .none
+                  : .none
               )
             )
         )

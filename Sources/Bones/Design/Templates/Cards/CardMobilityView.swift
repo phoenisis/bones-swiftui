@@ -80,11 +80,11 @@ struct BonesCardMobilityButton: ButtonStyle {
                )
            })
            .background(
-            RoundedRectangle(bonesRadius: .bones(.medium))
-              .fill(
-                Color.white
-                .shadow(.bones.drop(configuration.isPressed ? .reallyClose : .close))
-              )
+             RoundedRectangle(bonesRadius: .bones(.medium))
+               .fill(
+                 Color.white
+                   .shadow(.bones.drop(configuration.isPressed ? .reallyClose : .close))
+               )
            )
            .conditionalEffect(
              .pushDown,

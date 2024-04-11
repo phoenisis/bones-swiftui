@@ -115,8 +115,8 @@ struct HistoryGPSButtonStyle: ButtonStyle {
           Color.bones.white
             .shadow(.bones.drop(
               isAvailable
-              ? configuration.isPressed ? .close : .far
-              : .none)
+                ? configuration.isPressed ? .close : .far
+                : .none)
             )
         )
     )

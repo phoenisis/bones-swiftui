@@ -1,0 +1,16 @@
+#name: Building and deploying Documentation
+#
+#on:
+#  push:
+#    branches:
+#    - *
+#
+#jobs:
+#  steps:
+#    - uses: fwcd/swift-docc-action@v1
+#    with:
+#      target: Bones
+#      output: ./docs
+#      hosting-base-path: yourproject
+#      disable-indexing: 'true'
+#      transform-for-static-hosting: 'true'

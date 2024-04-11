@@ -63,16 +63,16 @@ struct BonesNavbarIconButton: ButtonStyle {
             )
             .overlay(content: {
               configuration.isPressed
-              ? AnyView(
-                Circle()
-                  .fill(
-                    Color.bones.primary.opacity(0.5)
-                  )
-              )
-              : AnyView(Color.clear)
-             })
-          
-          
+                ? AnyView(
+                  Circle()
+                    .fill(
+                      Color.bones.primary.opacity(0.5)
+                    )
+                )
+                : AnyView(Color.clear)
+            })
+
+
         )
         .animation(.default, value: configuration.isPressed)
         .conditionalEffect(

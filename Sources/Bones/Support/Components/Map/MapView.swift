@@ -80,36 +80,17 @@ public struct BonesMapView: View {
                         alignment: .center,
                         spacing: .bones(.small),
                         content: {
-                          Button(
-                            action: {
-                              didTapOnMap()
-                            },label: {
-                              if isSatellitePresented == false {
-                                Image(systemName: "map.fill")
-                              } else {
-                                Image(systemName: "map")
-                              }
-                            }
-                          )
-                          .frame(height: 40)
+                          Button("") { didTapOnMap() }
+                            .buttonStyle(StackedButton( isSatellitePresented ? .map : .mapFill))
+                            .disabled(isSatellitePresented == false)
 
                           Divider()
 
-                          Button(
-                            action: {
-                              didTapOnSatellite()
-                            },label: {
-                              if isSatellitePresented {
-                                Image(systemName: "globe.europe.africa.fill")
-                              } else {
-                                Image(systemName: "globe.europe.africa")
-                              }
-                            }
-                          )
-                          .frame(height: 40)
+                          Button("") { didTapOnSatellite() }
+                            .buttonStyle(StackedButton( isSatellitePresented ? .globFill : .glob))
+                            .disabled(isSatellitePresented)
                         }
                       )
-                      .tint(.bones(.primary))
                       .background(
                         RoundedRectangle(bonesRadius: .bones(.small))
                           .fill(
@@ -443,5 +424,54 @@ open class GradientPathRenderer: MKOverlayPathRenderer {
       .map { (value) -> CGFloat in
         return CGFloat(value)
       }
+  }
+}
+
+
+fileprivate struct StackedButton: ButtonStyle {
+  /// The icon token from BonesIconToken that represents the icon.
+  let icon: Image.BonesImage
+  /// Size of the icon.
+  let iconSize: Double = 16
+  /// Size of the icon pressed.
+  var iconSizePressed: Double { get {iconSize/1.15} }
+  /// Opacity of the background circle.
+  let backgroundOpacity: Double = 0
+  /// Size of the circular frame.
+  let frameSize: Double = 40
+
+  init(_ icon: Image.BonesImage) {
+    self.icon = icon
+  }
+
+  /// Creates the visual representation of a button with `BonesNavbarButton` style.
+  ///
+  /// - Parameter configuration: The properties of the button, like its label.
+  ///
+  /// - Returns: A view that represents the body of a button.
+  func makeBody(configuration: Configuration) -> some View {
+    Rectangle()
+      .fill(Color.bones.primary.opacity(backgroundOpacity))
+      .frame(width: frameSize, height: frameSize)
+      .overlay(alignment: .center, content: {
+        BonesIcon(icon: .bones(icon), fontWeight: .bold, renderingMode: .template)
+          .frame(
+            width: configuration.isPressed ? iconSizePressed : iconSize,
+            height: configuration.isPressed ? iconSizePressed : iconSize
+          )
+          .foregroundStyle(configuration.isPressed ? Color.bones.primaryForeground : Color.bones.primary)
+          .animation(.default, value: configuration.isPressed)
+      })
+      .conditionalEffect(
+        .pushDown,
+        condition: configuration.isPressed
+      )
+      .animation(.default, value: configuration.isPressed)
+      .changeEffect(
+        .feedback(
+          hapticImpact: .light
+        ),
+        value: configuration.isPressed
+      )
   }
 }

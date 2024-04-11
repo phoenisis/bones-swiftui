@@ -17,22 +17,24 @@ struct BonesPlayButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     ZStack(alignment: .center) {
       Circle()
-        .fill(Color.bones.primary)
-        .frame(width: 64, height: 64)
-        .shadow(
-          radius: configuration.isPressed
-            ? .bones(.close)
-            : .bones(.far)
+        .fill(
+          Color.bones.primary
+            .shadow(.bones.drop(configuration.isPressed
+                ? .reallyClose
+                : .close)
+            )
         )
+        .frame(width: 64, height: 64)
 
       Circle()
-        .fill(Color.bones.primary)
-        .frame(width: 56, height: 56)
-        .shadow(
-          radius: configuration.isPressed
-            ? .bones(.close)
-            : .bones(.far)
+        .fill(
+          Color.bones.primary
+            .shadow(.bones.drop(configuration.isPressed
+                ? .close
+                : .far)
+            )
         )
+        .frame(width: 56, height: 56)
 
       VStack(
         alignment: .center,
@@ -42,11 +44,6 @@ struct BonesPlayButton: ButtonStyle {
           .renderingMode(.template)
           .resizable()
           .scaledToFit()
-          .shadow(
-            radius: configuration.isPressed
-              ? .bones(.close)
-              : .bones(.far)
-          )
         configuration.label
           .font(.bones(.smallBold))
           .minimumScaleFactor(0.5)
@@ -57,11 +54,6 @@ struct BonesPlayButton: ButtonStyle {
     .conditionalEffect(
       .pushDown,
       condition: configuration.isPressed
-    )
-    .shadow(
-      radius: configuration.isPressed
-        ? .bones(.none)
-        : .bones(.far)
     )
     .animation(.default, value: configuration.isPressed)
     .changeEffect(

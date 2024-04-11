@@ -68,6 +68,10 @@ extension Image {
     case shieldLock
     case joinTeam
     case leaveTeam
+    case map
+    case mapFill
+    case glob
+    case globFill
     
     // Custom icons, loaded from image assets
     case bolt
@@ -186,6 +190,14 @@ extension Image {
             self.init(systemName: "person.fill.badge.plus")
           case .leaveTeam:
             self.init(systemName: "person.badge.minus")
+          case .map:
+            self.init(systemName: "map")
+          case .mapFill:
+            self.init(systemName: "map.fill")
+          case .glob:
+            self.init(systemName: "globe.europe.africa")
+          case .globFill:
+            self.init(systemName: "globe.europe.africa.fill")
             
           // MARK: Custom
           case .bolt:
