@@ -1,5 +1,5 @@
 //
-//  HistorySocialTagView.swift
+//  CardHistorySocialTag.swift
 //
 //
 //  Created by Quentin PIDOUX on 28/12/2023.
@@ -28,7 +28,7 @@ public struct CardHistorySocialTag: View {
     self.isHidden = isHidden
     self.didTap = didTap
   }
-  
+
   @ViewBuilder var header: some View {
     if let imageUrl {
       CachedAsyncImage(
@@ -57,7 +57,7 @@ public struct CardHistorySocialTag: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundStyle(Color.bones.grey4)
                 .transition(.movingParts.snapshot)
-              
+
             @unknown default:
               EmptyView()
           }
@@ -68,7 +68,7 @@ public struct CardHistorySocialTag: View {
       .padding(.top, .bones(.medium))
     }
   }
-  
+
   @ViewBuilder var content: some View {
     VStack {
       HStack(
@@ -87,7 +87,7 @@ public struct CardHistorySocialTag: View {
           }
         }
       )
-      
+
       if let description {
         Text(description)
           .font(.custom(.bones(.bodyBold)))
@@ -95,7 +95,7 @@ public struct CardHistorySocialTag: View {
       }
     }
   }
-  
+
   @ViewBuilder var footer: some View {
     HStack(
       alignment: .center,

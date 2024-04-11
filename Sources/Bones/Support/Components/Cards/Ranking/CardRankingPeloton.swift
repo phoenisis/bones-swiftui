@@ -1,5 +1,5 @@
 //
-//  RankingPelotonView.swift
+//  CardRankingPeloton.swift
 //
 //
 //  Created by Quentin PIDOUX on 24/11/2023.
@@ -7,52 +7,7 @@
 
 import SwiftUI
 
-public struct CardHostView<Content: View>: View {
-  var title: String
-  var buttonTitle: String?
-  var isSharable: Bool
-  var content: () -> Content
-
-  var didTapButton: (() -> Void)?
-
-  public var body: some View {
-    VStack(alignment: .leading,content: {
-      HStack(alignment: .top, spacing: .bones(.medium), content: {
-        Text(title)
-          .font(.custom(.bones(.h3)))
-          .frame(maxWidth: .infinity, alignment: .leading)
-
-        if isSharable {
-          Button(action: {}, label: {
-            BonesIcon(icon: .bones(.share))
-              .frame(width: 24, height: 24)
-          })
-        }
-      })
-      content()
-
-      if let buttonTitle {
-        HStack(content: {
-          Button(buttonTitle) { didTapButton?() }
-            .buttonStyle(.bones(.medium(.outline(icon: .arrowRight))))
-        })
-        .frame(maxWidth: .infinity, alignment: .trailing)
-      }
-    })
-
-    .foregroundStyle(Color.bones.textDark)
-    .padding(.bones(.large))
-    .listRowBackground(
-      RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .fill(Color.bones.white)
-        .frame(maxWidth: .infinity)
-        .padding(.bones(.medium))
-    )
-    .listRowSeparator(.hidden)
-  }
-}
-
-public struct RankingPelotonView: View {
+public struct CardRankingPeloton: View {
   public struct PelotonItem: Equatable {
     var title: String
     var imageUrl: String?
@@ -111,8 +66,8 @@ public struct RankingPelotonView: View {
     self.medals = medals.sorted(by: { $0.1 > $1.1 })
   }
 
-  fileprivate func heading() -> some View {
-    return HStack(alignment: .top, spacing: .bones(.medium), content: {
+  @ViewBuilder var heading: some View {
+    HStack(alignment: .top, spacing: .bones(.medium), content: {
       Text(description)
         .font(.custom(.bones(.bodyBold)))
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -129,7 +84,55 @@ public struct RankingPelotonView: View {
       }
     })
     .frame(maxWidth: .infinity, alignment: .leading)
+  }
 
+  @ViewBuilder var footer: some View {
+    if medals.count > 1 && (medals.first?.1 ?? 0 > 1) {
+      VStack(
+        alignment: .leading,
+        spacing: .bones(.medium),
+        content: {
+          Text("ranking_peloton_medals_title")
+            .font(.custom(.bones(.bodyBold)))
+
+          LazyVGrid(
+            columns: columnsMedals,
+            alignment: .center,
+            spacing: 16
+          ) {
+            ForEach(medals, id: \.0) { medal in
+              HStack(
+                alignment: .center,
+                spacing: .bones(.medium),
+                content: {
+                  CachedAsyncImage(url: URL(string: medal.0)) { image in image.resizable()
+                    .scaledToFit()
+                    .frame(width: 70, height: 70)
+                  } placeholder: {
+                    ZStack(alignment: .center) {
+                      ProgressView()
+                    }
+                    .foregroundStyle(Color.bones.grey4)
+                  }
+                  .frame(width: 70, height: 70)
+
+                  HStack(
+                    alignment: .center,
+                    spacing: 0,
+                    content: {
+                      Text("x")
+                        .font(.custom(.bones(.bodyBold)))
+                      Text(medal.1, format: .number)
+                        .font(.custom(.bones(.bodyBold)))
+                    }
+                  )
+                }
+              )
+            }
+          }
+        }
+      )
+    }
   }
 
   fileprivate func shieldImage(url: String?, isHighlighted: Bool) -> some View {
@@ -252,71 +255,27 @@ public struct RankingPelotonView: View {
   }
 
   public var body: some View {
-    CardHostView(
-      title: title,
-      buttonTitle: nil,
-      isSharable: false,
+    BonesCard(
+      title,
+      shadowStyle: .none,
       content: {
-        VStack(
-          alignment: .leading,
-          spacing: .bones(.large),
-          content: {
-            heading()
-            peloton(showShield: showShield)
-
-            if medals.count > 1 && medals.first?.1 ?? 0 > 1 {
-              VStack(alignment: .leading, spacing: .bones(.medium), content: {
-                Text("ranking_peloton_medals_title")
-                  .font(.custom(.bones(.bodyBold)))
-
-                LazyVGrid(
-                  columns: columnsMedals,
-                  alignment: .center,
-                  spacing: 16
-                ) {
-                  ForEach(medals, id: \.0) { medal in
-                    HStack(
-                      alignment: .center,
-                      spacing: .bones(.medium),
-                      content: {
-                        CachedAsyncImage(url: URL(string: medal.0)) { image in image.resizable()
-                          .scaledToFit()
-                          .frame(width: 70, height: 70)
-                        } placeholder: {
-                          ZStack(alignment: .center) {
-                            ProgressView()
-                          }
-                          .foregroundStyle(Color.bones.grey4)
-                        }
-                        .frame(width: 70, height: 70)
-
-                        HStack(
-                          alignment: .center,
-                          spacing: 0,
-                          content: {
-                            Text("x")
-                              .font(.custom(.bones(.bodyBold)))
-                            Text(medal.1, format: .number)
-                              .font(.custom(.bones(.bodyBold)))
-                          }
-                        )
-                      }
-                    )
-                  }
-                }
-              })
-
-            }
-          })
-          .padding(.bottom, .bones(.large))
-      })
+        heading
+        peloton(showShield: showShield)
+      }, footer: {
+        footer
+      }
+    )
+    .backgroundColor(.bones.white)
+    .listRowInsets(EdgeInsets(top: .BonesSpacing.small.value, leading: .BonesSpacing.medium.value, bottom: .BonesSpacing.small.value, trailing: .BonesSpacing.medium.value))
+    .listRowSeparator(.hidden)
+    .listRowBackground(Color.clear)
   }
 }
 
 
 #Preview {
   List {
-    RankingPelotonView(
+    CardRankingPeloton(
       title: "Ranking Peloton",
       description: "Elle a gagné une médaille Incroyable",
       imageUrl: "https://picsum.photos/200/300",
@@ -342,7 +301,7 @@ public struct RankingPelotonView: View {
 
 
 
-    RankingPelotonView(
+    CardRankingPeloton(
       title: "Consequat dolore esse commodo et do pariatur incididunt commodo duis ad id anim ullamco laborum.",
       description: "Labore culpa nostrud ipsum irure exercitation nostrud. Esse fugiat dolor non voluptate nostrud velit amet.",
       imageUrl: "https://picsum.photos/200/300",
@@ -369,7 +328,7 @@ public struct RankingPelotonView: View {
       ]
     )
 
-    RankingPelotonView(
+    CardRankingPeloton(
       title: "Consequat dolore esse commodo et do pariatur incididunt commodo duis ad id anim ullamco laborum.",
       description: "Labore culpa nostrud ipsum irure exercitation nostrud. Esse fugiat dolor non voluptate nostrud velit amet.",
       imageUrl: "https://picsum.photos/200/300",
@@ -390,7 +349,7 @@ public struct RankingPelotonView: View {
                           isHighlighted: true)
     )
 
-    RankingPelotonView(
+    CardRankingPeloton(
       title: "Consequat dolore esse commodo et do pariatur incididunt commodo duis ad id anim ullamco laborum.",
       description: "Labore culpa nostrud ipsum irure exercitation nostrud. Esse fugiat dolor non voluptate nostrud velit amet.",
       imageUrl: "https://picsum.photos/200/300",
