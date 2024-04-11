@@ -25,7 +25,7 @@ import SwiftUI
 /// ```
 ///
 /// - Author: Quentin PIDOUX
-public struct SocialWallLikesByView: View {
+struct SocialWallLikesByView: View {
   /// An array of URLs for the avatar images.
   let images : [String]
   /// The text description.
@@ -40,7 +40,7 @@ public struct SocialWallLikesByView: View {
   ///   - text: The text description to display next to the avatars.
   ///   - imageLimites: The maximum number of avatar images to display. Default is 3.
   ///   - didTap: The action to execute when the button is tapped.
-  public init(
+  init(
     images       : [String],
     text         : String,
     imageLimites : Int = 3,
@@ -51,7 +51,7 @@ public struct SocialWallLikesByView: View {
     self.didTap = didTap
   }
 
-  public var body: some View {
+  var body: some View {
     Button(action: {
       HapticsProvider.sendHapticFeedback(.light())
       didTap()

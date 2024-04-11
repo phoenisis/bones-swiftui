@@ -11,7 +11,7 @@ import SwiftUI
 ///
 /// This structure provides a view that is used to display the sender's information including image, name, and team,
 /// along with interaction handlers such as tap actions for the user, team, and more options.
-public struct SocialWallSenderView: View {
+ struct SocialWallSenderView: View {
   let imageUrl: String?
   let userName: String
   let userTeam: String?
@@ -36,7 +36,7 @@ public struct SocialWallSenderView: View {
   ///   - userTeamTapped: An action to perform when the team is tapped.
   ///   - moreTapped: An action to perform when the more options button is tapped.
 
-  public init(
+  init(
     imageUrl: String?,
     userName: String,
     userTeam: String?,

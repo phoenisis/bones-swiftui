@@ -11,7 +11,7 @@ import SwiftUI
 ///
 /// A `SocialActionBarView` is a horizontal grid of action buttons including like, comment, share, and pin.
 /// Each action comes with a specific icon and action handler.
-public struct SocialActionBarView: View {
+struct SocialActionBarView: View {
   private let columnGrid = [
     GridItem(.fixed(60)),
     GridItem(.fixed(60))
@@ -39,7 +39,7 @@ public struct SocialActionBarView: View {
   ///   - isPinned: A boolean indicating whether the content is pinned.
   ///   - likedTapped: A closure executed when the like action is tapped.
   ///   - shareTapped: An optional closure executed when the share action is tapped.
-  public init(isLiked: Bool, likeCount: Int, commentCount: Int, points: String?, isSharable: Bool, isPinned: Bool, likedTapped: @escaping () -> Void, commentTapped: @escaping () -> Void, seeLikedTapped: @escaping () -> Void, shareTapped: (() -> Void)? = nil) {
+  init(isLiked: Bool, likeCount: Int, commentCount: Int, points: String?, isSharable: Bool, isPinned: Bool, likedTapped: @escaping () -> Void, commentTapped: @escaping () -> Void, seeLikedTapped: @escaping () -> Void, shareTapped: (() -> Void)? = nil) {
     self.isLiked = isLiked
     self.isPinned = isPinned
     self.isSharable = isSharable

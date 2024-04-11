@@ -16,7 +16,7 @@ import SwiftUI
 ///   "https://example.com/image.jpg"
 /// )
 /// ```
-public struct SocialWallImageView: View {
+struct SocialWallImageView: View {
   let imageUrl  : String?
   let postTagName: String?
   let points: String?
@@ -31,7 +31,7 @@ public struct SocialWallImageView: View {
   ///   - imageUrl: The URL of the image to display.
   ///   - tagName: An optional tag name to display on the image.
   ///   - tagPoints: An optional points tag to display on the image.
-  public init(_ imageUrl : String?,
+  init(_ imageUrl : String?,
               postTagName: String?,
               points: String?,
               didDoubleTap: @escaping (() -> Void)) {
@@ -41,7 +41,7 @@ public struct SocialWallImageView: View {
     self.didDoubleTap = didDoubleTap
   }
 
-  public var body: some View {
+  var body: some View {
     VStack(
       alignment: .leading,
       spacing: .bones(.small),
