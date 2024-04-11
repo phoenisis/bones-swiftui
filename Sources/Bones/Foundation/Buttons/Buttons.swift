@@ -19,10 +19,6 @@ public enum BonesButtonStyleToken {
     case round(_ type: BonesTrackerRoundButton.ButtonType)
   }
   
-  public enum BonesCardToken {
-    case mobility(_ imageUrl: String?)
-  }
-  
   public enum BonesNavBarStyleToken {
     case icon(_ icon: Image.BonesImage)
     case text
@@ -42,7 +38,6 @@ public enum BonesButtonStyleToken {
   case boost(startAt: Date?, endAt: Date?)
   
   case tracker(_ variant: BonesTracker)
-  case card(_ variant: BonesCardToken)
   
   case navBar(_ variant: BonesNavBarStyleToken)
   

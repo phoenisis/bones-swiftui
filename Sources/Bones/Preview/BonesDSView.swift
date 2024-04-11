@@ -84,11 +84,6 @@ public struct BonesFullPreview: View {
               .navigationTitle("Tag")
           }
           .font(.custom(.bones(.body)))
-
-          NavigationLink("Cards") {
-            Preview_CardStyles()
-              .navigationTitle("Cards")
-          }
         } header: {
           Text("Components")
             .font(.custom(.bones(.bodyBold)))

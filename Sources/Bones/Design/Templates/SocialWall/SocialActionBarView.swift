@@ -105,12 +105,6 @@ public struct SocialActionBarView: View {
                         .lineLimit(1)
                     }
                   }
-//                  .frame(
-//                    width: commentCount > 0
-//                    ? 80
-//                    : 40,
-//                    alignment: .leading
-//                  )
                 })
                 .animation(.default, value: isLiked)
 
@@ -127,10 +121,6 @@ public struct SocialActionBarView: View {
                         .lineLimit(1)
                     }
                   }
-//                  .frame(
-//                    width: 80,
-//                    alignment: .leading
-//                  )
                 }
               )
             }

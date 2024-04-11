@@ -1,5 +1,5 @@
 //
-//  ChipGroupView.swift
+//  TopNavigationButtonView.swift
 //
 //
 //  Created by Quentin PIDOUX on 18/10/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// `ChipGroupView`
+/// `TopNavigationButtonView`
 /// A SwiftUI view that presents a horizontal, scrollable group of chips.
 ///
 /// Each chip in the group is clickable, and the group is scrollable to allow navigation
@@ -17,9 +17,9 @@ import SwiftUI
 ///   The chips are displayed in a horizontal ScrollView, allowing for a dynamic number of
 ///   chips that can exceed the screen width.
 
-struct ChipGroupView: View {
+struct TopNavigationButtonView: View {
   /// `Chip`
-  /// Represents an individual chip within a `ChipGroupView`.
+  /// Represents an individual chip within a `TopNavigationButtonView`.
   ///
   /// Each chip has a title and a unique identifier.
   struct Chip: Identifiable {
@@ -30,7 +30,7 @@ struct ChipGroupView: View {
   @State var selectedIndex: Int // Index of the currently selected chip.
   @State var chips: [Chip] // Collection of chips to be displayed.
 
-  /// Creates a new instance of `ChipGroupView`.
+  /// Creates a new instance of `TopNavigationButtonView`.
   ///
   /// - Parameters:
   ///   - selectedIndex: The index of the initially selected chip.
@@ -68,12 +68,12 @@ struct ChipGroupView: View {
 }
 
 /// `Preview_ChipGroupView`
-/// A preview provider to visualize the `ChipGroupView` within the canvas during design time.
+/// A preview provider to visualize the `TopNavigationButtonView` within the canvas during design time.
 struct Preview_ChipGroupView: View {
   var body: some View {
     List {
       Section {
-        ChipGroupView(
+        TopNavigationButtonView(
           selectedIndex: 0,
           chips: [
             "consequat labore",
@@ -81,7 +81,7 @@ struct Preview_ChipGroupView: View {
           ]
         )
 
-        ChipGroupView(
+        TopNavigationButtonView(
           selectedIndex: 0,
           chips: [
             "enim adipisicing",

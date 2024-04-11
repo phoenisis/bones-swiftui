@@ -58,12 +58,6 @@ extension View {
               case .round(let type):
                 return AnyView(self.buttonStyle(BonesTrackerRoundButton(buttonType: type)))
             }
-            
-          case let .card(variant):
-            switch variant {
-              case .mobility(let imageUrl):
-                return AnyView(self.buttonStyle(BonesCardMobilityButton(imageUrl: imageUrl)))
-            }
                         
           case let .navBar(variant):
             switch variant {
@@ -138,13 +132,7 @@ extension View {
               case .round(let type):
                 return AnyView(self.buttonStyle(BonesTrackerRoundButton(buttonType: type)))
             }
-            
-          case let .card(variant):
-            switch variant {
-              case .mobility(let imageUrl):
-                return AnyView(self.buttonStyle(BonesCardMobilityButton(imageUrl: imageUrl)))
-            }
-            
+                        
           case let .navBar(variant):
             switch variant {
               case .icon(let icon):
