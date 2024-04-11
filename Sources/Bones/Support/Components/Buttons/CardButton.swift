@@ -14,28 +14,37 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   @Environment(\.textColor) private var textColor
   @Environment(\.backgroundColor) private var backgroundColor
   
+  private let isAvailable: Bool
   private let description: String
   private let showBorder: Bool
   private let titleStyle: Font
+  private let descriptionStyle: Font
   private let radius: CGFloat.BonesRadius
+  private let shadowStyle: ShadowStyle.BonesShadowToken
   
   @ViewBuilder private let content: Content
   @ViewBuilder private let footer: Footer
   @ViewBuilder private let topAction: TopAction
   
   public init(
-    description: String,
-    showBorder: Bool,
-    titleStyle: Font = .custom(.bones(.h3)),
-    radius: CGFloat.BonesRadius,
+    description: String = "",
+    showBorder: Bool = false,
+    titleStyle: Font.BonesFontStyle = .bones(.h3),
+    descriptionStyle: Font.BonesFontStyle = .bones(.body),
+    radius: CGFloat.BonesRadius = .large,
+    shadowStyle: ShadowStyle.BonesShadowToken = .close,
+    isAvailable: Bool = true,
     @ViewBuilder content: () -> Content,
     @ViewBuilder footer: () -> Footer = { EmptyView() },
     @ViewBuilder topAction: () -> TopAction = { EmptyView() }
   ) {
     self.description = description
     self.showBorder = showBorder
-    self.titleStyle = titleStyle
+    self.titleStyle = Font.custom(titleStyle)
+    self.descriptionStyle = Font.custom(descriptionStyle)
     self.radius = radius
+    self.shadowStyle = shadowStyle
+    self.isAvailable = isAvailable
     self.content = content()
     self.footer = footer()
     self.topAction = topAction()
@@ -58,11 +67,10 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
       
       if isFooterEmpty == false {
         VStack(alignment: cardLayout.alignment, spacing: cardLayout.spacing) {
-          Separator(color: .bones.grey4)
           footer
         }
         .padding([.horizontal, .bottom], cardLayout.padding)
-        .padding(.top, isContentEmpty ? cardLayout.padding : 0)
+        .padding(.top, (isContentEmpty && isFooterEmpty) ? cardLayout.padding : 0)
         .accessibilityIdentifier(.cardFooter)
       }
     }
@@ -71,14 +79,14 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
     .padding(.horizontal, .bones(.small))
     .conditionalEffect(
       .pushDown,
-      condition: configuration.isPressed && isEnabled
+      condition: configuration.isPressed && (isEnabled && isAvailable)
     )
     .animation(.default, value: configuration.isPressed)
     .changeEffect(
       .feedback(
         hapticImpact: .light
       ),
-      value: configuration.isPressed && isEnabled
+      value: configuration.isPressed && (isEnabled && isAvailable)
     )
   }
   
@@ -98,10 +106,13 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
           topTrailingAction
         }
         
-        HStack(alignment: .firstTextBaseline, spacing: 0) {
-          Text(description)
-            .foregroundStyle(textColor)
-            .accessibilityIdentifier(.cardDescription)
+        if description.isEmpty == false {
+          HStack(alignment: .firstTextBaseline, spacing: 0) {
+            Text(description)
+              .font(descriptionStyle)
+              .foregroundStyle(textColor)
+              .accessibilityIdentifier(.cardDescription)
+          }
         }
       }
       .padding(.bones(.medium))
@@ -122,8 +133,8 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
     .fill(backgroundColor
       .shadow(.bones
         .drop(
-          isEnabled
-            ? configuration.isPressed ? .close : .far
+          (isEnabled && isAvailable)
+            ? configuration.isPressed ? .reallyClose : shadowStyle
             : .none
         )
       )

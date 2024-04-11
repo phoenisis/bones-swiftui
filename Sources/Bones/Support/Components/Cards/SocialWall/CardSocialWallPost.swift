@@ -1,5 +1,5 @@
 //
-//  SocialWallCardPostView.swift
+//  CardSocialWallPost.swift
 //
 //
 //  Created by Quentin PIDOUX on 31/10/2023.

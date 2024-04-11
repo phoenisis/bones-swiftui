@@ -1,5 +1,5 @@
 //
-//  SocialCommentCardView.swift
+//  CardSocialWallComment.swift
 //
 //
 //  Created by Quentin PIDOUX on 06/12/2023.

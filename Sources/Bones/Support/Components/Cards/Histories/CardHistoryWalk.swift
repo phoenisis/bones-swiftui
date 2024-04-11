@@ -1,5 +1,5 @@
 //
-//  HistoryWalkView.swift
+//  CardHistoryWalk.swift
 //
 //
 //  Created by Quentin PIDOUX on 28/12/2023.

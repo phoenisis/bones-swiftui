@@ -11,7 +11,7 @@ import SwiftUI
 ///
 /// This structure provides a view that is used to display the sender's information including image, name, and team,
 /// along with interaction handlers such as tap actions for the user, team, and more options.
- struct SocialWallSenderView: View {
+struct SocialWallSenderView: View {
   let imageUrl: String?
   let userName: String
   let userTeam: String?

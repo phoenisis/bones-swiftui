@@ -32,9 +32,9 @@ struct SocialWallImageView: View {
   ///   - tagName: An optional tag name to display on the image.
   ///   - tagPoints: An optional points tag to display on the image.
   init(_ imageUrl : String?,
-              postTagName: String?,
-              points: String?,
-              didDoubleTap: @escaping (() -> Void)) {
+       postTagName: String?,
+       points: String?,
+       didDoubleTap: @escaping (() -> Void)) {
     self.imageUrl  = imageUrl
     self.postTagName = postTagName
     self.points = points
