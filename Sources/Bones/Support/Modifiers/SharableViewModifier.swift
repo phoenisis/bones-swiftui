@@ -38,7 +38,7 @@ struct SnapAndShareView: ViewModifier {
               .padding(.bones(.medium))
               .allowsTightening(false)
           }
-          .zIndex(5)
+          .zIndex(99)
         }
     } else {
       content

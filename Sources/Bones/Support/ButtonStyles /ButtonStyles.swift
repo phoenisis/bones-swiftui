@@ -19,6 +19,8 @@ extension View {
     switch bonesStyle {
       case .bones(let style):
         switch style {
+          case let .defaultText(line):
+            return AnyView(self.buttonStyle(BonesDefaultTextButton(lineNumber: line)))
           case let .text(icon):
             return AnyView(self.buttonStyle(BonesTextButton(icon: icon)))
           case .homePlay:
@@ -93,6 +95,8 @@ extension View {
     switch bonesStyle {
       case .bones(let style):
         switch style {
+          case let .defaultText(line):
+            return AnyView(self.buttonStyle(BonesDefaultTextButton(lineNumber: line)))
           case let .text(icon):
             return AnyView(self.buttonStyle(BonesTextButton(icon: icon)))
           case .homePlay:

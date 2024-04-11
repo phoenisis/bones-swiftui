@@ -1,5 +1,5 @@
 //
-//  SocialWallPostView.swift
+//  SocialWallCardPostView.swift
 //
 //
 //  Created by Quentin PIDOUX on 31/10/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A SwiftUI view representing a social wall with likes by view feature.
-public struct SocialWallPostView: View {
+public struct SocialWallCardPostView: View {
   let userImage: String?
   let senderImage: String?
   let senderName: String
@@ -74,106 +74,97 @@ public struct SocialWallPostView: View {
   }
 
   public var body: some View {
-    VStack(
-      alignment: .leading,
-      spacing: .bones(.medium),
-      content: {
-        SocialWallSenderView(
-          imageUrl      : senderImage,
-          userName      : senderName,
-          userTeam      : senderTeam,
-          createdAt     : createdAt,
-          isMoreVisible : isMoreActionVisible
-        ) {
-          didTapUserName()
-        } userTeamTapped: {
-          didTapUserTeam()
-        } moreTapped: {
-          didTapSenderMore()
-        }
-        .zIndex(10)
-
-        if let postImage {
-          SocialWallImageView(
-            postImage,
-            postTagName: postTagName,
-            points: postTagPoints,
-            didDoubleTap: {
-              didTapLike()
-            }
-          )
-          .changeEffect(
-            .spray(origin: UnitPoint(x: 0.25, y: 0.5)) {
-              Image(systemName: "heart.fill")
-                .foregroundStyle(Color.bones.primary)
-            }, value: isLiked)
-          .clipped()
-          .zIndex(1)
-        }
-
-        if let postText {
-          TextExpandingView(
-            postText,
-            font: .body,
-            isExpanded: false)
-            .foregroundStyle(Color.bones.textDark)
-            .zIndex(2)
-        }
-
-        SocialActionBarView(
-          isLiked: isLiked,
-          likeCount: likesCount,
-          commentCount: commentsCount,
+    BonesCard("", 
+              description: "",
+              showBorder: false, 
+              radius: .medium,
+              shadowStyle: .close,
+              titleStyle: .bones(.small)
+    ) {
+      if let postImage {
+        SocialWallImageView(
+          postImage,
+          postTagName: postTagName,
           points: postTagPoints,
-          isSharable: isSharable,
-          isPinned: isPinned
-        ) {
-          didTapLike()
-        } commentTapped: {
-          didTapComment()
-        } seeLikedTapped: {
-          didTapLikesBy()
-        } shareTapped: {
-          didTapShare()
-        }
-        .zIndex(2)
-
-        Button(action: {
-          didTapNewComment()
-        }, label: {
-          HStack(
-            alignment: .center,
-            spacing: .bones(.medium),
-            content: {
-              if let userImage {
-                BonesAvatarView(size: .medium, avatarType: .user, imageUrl: userImage)
-              }
-              Text("SOCIAL_ADD_POST_COMMENT")
-                .font(.custom(.bones(.small)))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundStyle(Color.bones.textDark)
-                .padding(.bones(.medium))
-                .background(
-                  RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-                    .fill(Color.bones.grey1)
-                )
-            }
-          )
-        })
-        .padding(.top, .bones(.medium))
-        .zIndex(2)
+          didDoubleTap: {
+            didTapLike()
+          }
+        )
+        .changeEffect(
+          .spray(origin: UnitPoint(x: 0.25, y: 0.5)) {
+            Image(systemName: "heart.fill")
+              .foregroundStyle(Color.bones.primary)
+          }, value: isLiked)
+        .clipped()
+        .zIndex(1)
       }
-    )
-    .frame(minHeight: postImage != nil
-      ? UIScreen.main.bounds.width
-      : 100)
 
-    .padding(.bones(.large))
-    .background(
-      RoundedRectangle(bonesRadius: .bones(.large), style: .continuous)
-        .fill(Color.bones.white)
-    )
-    .frame(maxWidth: .infinity, alignment: .leading)
+      if let postText {
+        TextExpandingView(
+          postText,
+          font: .body,
+          isExpanded: false)
+          .foregroundStyle(Color.bones.textDark)
+          .zIndex(2)
+      }
+    } footer: {
+      SocialActionBarView(
+        isLiked: isLiked,
+        likeCount: likesCount,
+        commentCount: commentsCount,
+        points: postTagPoints,
+        isSharable: isSharable,
+        isPinned: isPinned
+      ) {
+        didTapLike()
+      } commentTapped: {
+        didTapComment()
+      } seeLikedTapped: {
+        didTapLikesBy()
+      } shareTapped: {
+        didTapShare()
+      }
+      .zIndex(2)
+
+      Button(action: {
+        didTapNewComment()
+      }, label: {
+        HStack(
+          alignment: .center,
+          spacing: .bones(.medium),
+          content: {
+            if let userImage {
+              BonesAvatarView(size: .medium, avatarType: .user, imageUrl: userImage)
+            }
+            Text("SOCIAL_ADD_POST_COMMENT")
+              .font(.custom(.bones(.small)))
+              .frame(maxWidth: .infinity, alignment: .leading)
+              .foregroundStyle(Color.bones.textDark)
+              .padding(.bones(.medium))
+              .background(
+                RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
+                  .fill(Color.bones.grey1)
+              )
+          }
+        )
+      })
+      .zIndex(2)
+    } topAction: {
+      SocialWallSenderView(
+        imageUrl      : senderImage,
+        userName      : senderName,
+        userTeam      : senderTeam,
+        createdAt     : createdAt,
+        isMoreVisible : isMoreActionVisible
+      ) {
+        didTapUserName()
+      } userTeamTapped: {
+        didTapUserTeam()
+      } moreTapped: {
+        didTapSenderMore()
+      }
+      .zIndex(10)
+    }
     .listRowBackground(Color.clear)
     .listRowInsets(EdgeInsets())
     .listRowSeparator(.hidden)
@@ -195,7 +186,7 @@ struct Preview_SocialWallPostView: View {
         ],
         spacing: 16,
         content: {
-          SocialWallPostView(
+          SocialWallCardPostView(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -232,7 +223,7 @@ struct Preview_SocialWallPostView: View {
             }
           )
 
-          SocialWallPostView(
+          SocialWallCardPostView(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -266,7 +257,7 @@ struct Preview_SocialWallPostView: View {
             didTapLikesBy: {}
           )
 
-          SocialWallPostView(
+          SocialWallCardPostView(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",
@@ -300,7 +291,7 @@ struct Preview_SocialWallPostView: View {
             didTapLikesBy: {}
           )
 
-          SocialWallPostView(
+          SocialWallCardPostView(
             userImage: "https://picsum.photos/100",
             senderImage: "https://picsum.photos/200",
             senderName: "Romane Pierre",

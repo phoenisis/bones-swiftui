@@ -18,6 +18,7 @@ public struct SocialWallSenderView: View {
   let createdAt: Date
 
   let isMoreVisible: Bool
+  let isInlineLayout: Bool
 
   let userTapped: () -> Void
   let userTeamTapped: () -> Void
@@ -41,6 +42,7 @@ public struct SocialWallSenderView: View {
     userTeam: String?,
     createdAt: Date,
     isMoreVisible: Bool = true,
+    isInlineLayout: Bool = false,
     userTapped: @escaping () -> Void,
     userTeamTapped: @escaping () -> Void,
     moreTapped: @escaping () -> Void
@@ -50,6 +52,7 @@ public struct SocialWallSenderView: View {
     self.userTeam = userTeam
     self.createdAt = createdAt
     self.isMoreVisible = isMoreVisible
+    self.isInlineLayout = isInlineLayout
     self.userTapped = userTapped
     self.userTeamTapped = userTeamTapped
     self.moreTapped = moreTapped
@@ -63,40 +66,7 @@ public struct SocialWallSenderView: View {
       alignment: .leading,
       spacing: .bones(.medium),
       content: {
-        HStack(
-          alignment: .center,
-          spacing: .bones(.medium),
-          content: {
-            Button(action: {
-              userTapped()
-            }, label: {
-              BonesAvatarView(
-                size: .large,
-                avatarType: .user,
-                imageUrl: imageUrl
-              )
-            })
-
-            Button(action: {
-              userTapped()
-            }, label: {
-              Text(userName)
-                .font(.custom(.bones(.bodyBold)))
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            })
-
-            .frame(maxWidth: .infinity, alignment: .leading)
-            if isMoreVisible {
-              Button(action: {
-                moreTapped()
-              }, label: {
-                BonesIcon(icon: .bones(.more), renderingMode: .template)
-                  .frame(width: 16, height: 16)
-              })
-            }
-          }
-        )
+        user
 
         HStack(alignment: .center, content: {
           if let userTeam {
@@ -109,17 +79,59 @@ public struct SocialWallSenderView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             })
           }
-          Text(createdAt, formatter: RelativeDateTimeFormatter())
-            .font(.custom(.bones(.small)))
-            .foregroundStyle(Color.bones.textDark)
+          if isInlineLayout == false {
+            Text(createdAt, formatter: RelativeDateTimeFormatter())
+              .font(.custom(.bones(.smallBold)))
+              .foregroundStyle(Color.bones.grey4)
+          }
         })
-
       }
     )
-    .minimumScaleFactor(0.99)
-    .dynamicTypeSize(.xSmall ... .accessibility1)
     .foregroundStyle(Color.bones.textDark)
     .frame(maxWidth: .infinity, alignment: .leading)
+    .minimumScaleFactor(0.99)
+    .dynamicTypeSize(.xSmall ... .accessibility3)
+  }
+
+  @ViewBuilder var user: some View {
+    HStack(
+      alignment: .center,
+      spacing: .bones(.medium),
+      content: {
+        Button(action: {
+          userTapped()
+        }, label: {
+          BonesAvatarView(
+            size: .large,
+            avatarType: .user,
+            imageUrl: imageUrl
+          )
+        })
+
+        Button(action: {
+          userTapped()
+        }, label: {
+          Text(userName)
+            .font(.custom(.bones(.bodyBold)))
+        })
+        .buttonStyle(.bones(.defaultText(1)))
+        .frame(maxWidth: .infinity, alignment: .leading)
+
+        if isInlineLayout {
+          Text(createdAt, formatter: RelativeDateTimeFormatter())
+            .font(.custom(.bones(.smallBold)))
+            .foregroundStyle(Color.bones.grey4)
+        }
+        if isMoreVisible {
+          Button(action: {
+            moreTapped()
+          }, label: {
+            BonesIcon(icon: .bones(.more), renderingMode: .template)
+              .frame(width: 16, height: 16)
+          })
+        }
+      }
+    )
   }
 }
 

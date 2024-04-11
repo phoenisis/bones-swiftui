@@ -18,6 +18,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
   private let description: String
   private let showBorder: Bool
   private let titleStyle: Font
+  private let descriptionStyle: Font
   private let radius: CGFloat.BonesRadius
   private let shadowStyle: ShadowStyle.BonesShadowToken
   @ViewBuilder private let content: Content
@@ -38,8 +39,8 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
       
       if isFooterEmpty == false {
         VStack(alignment: cardLayout.alignment, spacing: cardLayout.spacing) {
-          Separator(color: .bones.grey4)
           footer
+            .tint(textColor)
         }
         .padding([.horizontal, .bottom], cardLayout.padding)
         .padding(.top, isContentEmpty ? cardLayout.padding : 0)
@@ -55,10 +56,12 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
     if isHeaderEmpty == false {
       VStack(alignment: .leading, spacing: .bones(.medium)) {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-          Text(title)
-            .font(.custom(.bones(.h3)))
-            .foregroundStyle(textColor)
-            .accessibilityIdentifier(.cardTitle)
+          if title.isEmpty == false {
+            Text(title)
+              .font(titleStyle)
+              .foregroundStyle(textColor)
+              .accessibilityIdentifier(.cardTitle)
+          }
           
           if title.isEmpty == false {
             if idealSize.horizontal != true {
@@ -68,9 +71,14 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
             topTrailingAction
           }
         }
+
+        if title.isEmpty {
+          topTrailingAction
+        }
         
         HStack(alignment: .firstTextBaseline, spacing: 0) {
           Text(description)
+            .font(descriptionStyle)
             .foregroundStyle(textColor)
             .accessibilityIdentifier(.cardDescription)
           
@@ -78,8 +86,6 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
             if idealSize.horizontal != true {
               Spacer(minLength: .BonesSpacing.small.value)
             }
-            
-            topTrailingAction
           }
         }
       }
@@ -132,7 +138,8 @@ public extension BonesCard {
     showBorder: Bool = true,
     radius: CGFloat.BonesRadius = .medium,
     shadowStyle: ShadowStyle.BonesShadowToken = .close,
-    titleStyle: Font = .custom(.bones(.h3)),
+    titleStyle: Font.BonesFontStyle = .bones(.h3),
+    descriptionStyle: Font.BonesFontStyle = .bones(.body),
     @ViewBuilder content: () -> Content,
     @ViewBuilder footer: () -> Footer = { EmptyView() },
     @ViewBuilder topAction: () -> TopAction = { EmptyView() }
@@ -142,7 +149,8 @@ public extension BonesCard {
     self.showBorder = showBorder
     self.radius = radius
     self.shadowStyle = shadowStyle
-    self.titleStyle = titleStyle
+    self.titleStyle = Font.custom(titleStyle)
+    self.descriptionStyle = Font.custom(descriptionStyle)
     self.content = content()
     self.footer = footer()
     self.topAction = topAction()

@@ -28,6 +28,7 @@ public enum BonesButtonStyleToken {
     case rectangle(CGFloat.BonesRadius, fillColor: Color.BonesColorToken, shadow: ShadowStyle.BonesShadowToken)
   }
   
+  case defaultText(_ line: Int? = nil)
   case text(icon: Image.BonesImage?)
   case homePlay
   case small(_ variant: SmallToken)
