@@ -43,7 +43,7 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
             .tint(textColor)
         }
         .padding([.horizontal, .bottom], cardLayout.padding)
-        .padding(.top, isContentEmpty ? cardLayout.padding : 0)
+        .padding(.top, (isContentEmpty && isFooterEmpty == false) ? cardLayout.padding : 0)
         .accessibilityIdentifier(.cardFooter)
       }
     }
@@ -76,15 +76,17 @@ public struct BonesCard<Content: View, Footer: View, TopAction: View>: View {
           topTrailingAction
         }
         
-        HStack(alignment: .firstTextBaseline, spacing: 0) {
-          Text(description)
-            .font(descriptionStyle)
-            .foregroundStyle(textColor)
-            .accessibilityIdentifier(.cardDescription)
-          
-          if title.isEmpty {
-            if idealSize.horizontal != true {
-              Spacer(minLength: .BonesSpacing.small.value)
+        if description.isEmpty == false {
+          HStack(alignment: .firstTextBaseline, spacing: 0) {
+            Text(description)
+              .font(descriptionStyle)
+              .foregroundStyle(textColor)
+              .accessibilityIdentifier(.cardDescription)
+            
+            if title.isEmpty {
+              if idealSize.horizontal != true {
+                Spacer(minLength: .BonesSpacing.small.value)
+              }
             }
           }
         }
