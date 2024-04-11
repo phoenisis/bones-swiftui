@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ImageLargeView: View {
+public struct BonesImageLargeView: View {
   let imageUrl  : String?
   let points: String?
 
@@ -144,27 +144,27 @@ public struct ImageLargeView: View {
 struct Preview_ImageLargeView: View {
   public var body: some View {
     List {
-      ImageLargeView(
+      BonesImageLargeView(
         nil,
         points: "123 pts"
       )
 
-      ImageLargeView(
+      BonesImageLargeView(
         "https://picsum.photos/1000/400",
         points: "123 pts"
       )
 
-      ImageLargeView(
+      BonesImageLargeView(
         "https://picsum.photos/600",
         points: "123 pts"
       )
 
-      ImageLargeView(
+      BonesImageLargeView(
         "https://picsum.photos/550",
         points: "123 pts"
       )
 
-      ImageLargeView(
+      BonesImageLargeView(
         "https://picsum.photos/700",
         points: nil
       )

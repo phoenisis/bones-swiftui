@@ -1,5 +1,5 @@
 //
-//  AvatarGroupView.swift
+//  AvatarGroup.swift
 //  
 //
 //  Created by Quentin PIDOUX on 19/10/2023.
@@ -27,8 +27,6 @@ public struct AvatarGroupView: View {
   /// Computed property that determines the spacing between avatar images.
   var spacing: CGFloat { 
     presented ? (size.rawValue/1.5) * -1 : -size.rawValue
-//    -size.rawValue
-//    (size.rawValue/1.5) * -1
   }
   @State var presented: Bool = true
 
