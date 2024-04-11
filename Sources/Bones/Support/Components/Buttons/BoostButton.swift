@@ -251,7 +251,7 @@ struct Preview_BonesBoostButton: View {
 
   var body: some View {
     List {
-      EmptyListContentView(image: .bolt, title: "boost button", description: nil, buttonTitle: nil, buttonDidTap: {})
+      BonesEmptyListContentView(image: .bolt, title: "boost button", description: nil, buttonTitle: nil, buttonDidTap: {})
     }
     .listStyle(.grouped)
     .listBackgroundColor()

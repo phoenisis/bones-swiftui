@@ -1,5 +1,5 @@
 //
-//  EmptyListContentView.swift
+//  List+EmptyContent.swift
 //  
 //
 //  Created by Quentin PIDOUX on 30/11/2023.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-public struct EmptyListContentView: View {
+public struct BonesEmptyListContentView: View {
   let image: Image.BonesImage?
   let title: LocalizedStringKey
   let description: LocalizedStringKey?
   let buttonTitle: LocalizedStringKey?
-
+  
   let buttonDidTap: (() -> Void)?
-
+  
   public init(image: Image.BonesImage?, title: LocalizedStringKey, description: LocalizedStringKey?, buttonTitle: LocalizedStringKey?, buttonDidTap: ( () -> Void)?) {
     self.image = image
     self.title = title
@@ -22,7 +22,7 @@ public struct EmptyListContentView: View {
     self.buttonTitle = buttonTitle
     self.buttonDidTap = buttonDidTap
   }
-
+  
   fileprivate func emptyContent() -> some View {
     VStack(
       alignment: .center,
@@ -40,7 +40,7 @@ public struct EmptyListContentView: View {
           .font(.custom(.bones(.body)))
           .multilineTextAlignment(.center)
       }
-
+      
       if let buttonTitle {
         Button(buttonTitle) {
           buttonDidTap?()
@@ -49,13 +49,9 @@ public struct EmptyListContentView: View {
       }
     }
   }
-
+  
   public var body: some View {
-    if #available(iOS 17.0, *) {
-      ContentUnavailableView {
-        emptyContent()
-      }
-    } else {
+    ContentUnavailableView {
       emptyContent()
     }
   }
