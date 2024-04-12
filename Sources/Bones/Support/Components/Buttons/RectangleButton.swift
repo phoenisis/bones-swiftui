@@ -24,7 +24,7 @@ public struct BonesRectangleButton: ButtonStyle {
         RoundedRectangle(bonesRadius: .bones(radius), style: .continuous)
           .fill(
             Color(.bones(fillColor))
-              .shadow(.bones.drop(configuration.isPressed ? .none : shadow))
+              .shadow(.bones.drop(configuration.isPressed ? shadow.lowerShadow : shadow))
           )
       }
       .conditionalEffect(

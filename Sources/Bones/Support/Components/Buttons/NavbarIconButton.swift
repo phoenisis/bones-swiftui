@@ -59,7 +59,7 @@ struct BonesNavbarIconButton: ButtonStyle {
           Circle()
             .fill(
               .ultraThinMaterial
-                .shadow(.bones.drop(configuration.isPressed ? .none : .reallyClose))
+                .shadow(.bones.drop(configuration.isPressed ? .reallyClose.lowerShadow : .reallyClose))
             )
             .overlay(content: {
               configuration.isPressed

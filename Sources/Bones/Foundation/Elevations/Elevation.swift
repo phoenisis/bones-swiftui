@@ -23,15 +23,15 @@ public extension ShadowStyle {
 
     public var id: String {
       switch self {
-        case .none: return "none"
-        case .reallyClose: return "reallyClose"
-        case .close: return "close"
-        case .medium: return "medium"
-        case .far: return "far"
+        case .none: "none"
+        case .reallyClose: "reallyClose"
+        case .close: "close"
+        case .medium: "medium"
+        case .far: "far"
       }
     }
-    
-    public func lowerShadow() -> BonesShadowToken {
+
+    public var lowerShadow: BonesShadowToken {
       switch self {
         case .none: .none
         case .reallyClose: .none
