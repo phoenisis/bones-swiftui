@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-/// A global dictionary to map `BonesColorToken` to hexadecimal color strings.
-var bonesColors: [Color.BonesColorToken: String] = [:]
-
+extension BonesConfig {
+  /// A global dictionary to map `BonesColorToken` to hexadecimal color strings.
+  public static var colors: [Color.BonesColorToken: String] = [:]
+}
+  
 /// An enumeration to encapsulate color styles within the application.
 public enum BonesColor { case bones(Color.BonesColorToken) }
 
@@ -69,9 +71,11 @@ extension Color {
   public init(_ color: BonesColor) {
     switch color {
       case .bones(let colorToken):
-        let colorCustom = Color.init(hex: bonesColors[colorToken])
-        
-        self = colorCustom ?? Color("B.\(colorToken.rawValue)", bundle: .module)
+        if let colorCustom = Color.init(hex: BonesConfig.colors[colorToken]) {
+          self = colorCustom
+        } else {
+          self = Color("B.\(colorToken.rawValue)", bundle: .module)
+        }   
     }
   }
   

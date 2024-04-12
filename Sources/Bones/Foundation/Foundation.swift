@@ -24,8 +24,8 @@ public final class Bones {
     colors: [Color.BonesColorToken: String] = [:],
     spacing: [CGFloat.BonesSpacing: CGFloat] = [:]
   ) {
-    bonesColors = colors
-    bonesSpacings = spacing
+    BonesConfig.colors = colors
+    BonesConfig.spacings = spacing
   }
   
   /// Overrides specific color tokens or spacing values.
@@ -39,13 +39,13 @@ public final class Bones {
     Task { @MainActor in
       switch type {
         case let .colors(colors):
-          bonesColors.merge(colors) { _, new  in new }
+          BonesConfig.colors.merge(colors) { _, new  in new }
         case let .color(color, value):
-          bonesColors[color] = value
+          BonesConfig.colors[color] = value
         case let .spacings(spacings):
-          bonesSpacings.merge(spacings) { _, new  in new }
+          BonesConfig.spacings.merge(spacings) { _, new  in new }
         case let .spacing(spacing, value):
-          bonesSpacings[spacing] = value
+          BonesConfig.spacings[spacing] = value
       }
     }
   }
@@ -58,4 +58,10 @@ public final class Bones {
     case spacings([CGFloat.BonesSpacing: CGFloat])
     case spacing(CGFloat.BonesSpacing, with: CGFloat)
   }
+}
+
+
+public class BonesConfig {
+  public static let shared = BonesConfig()
+  private init() {}
 }

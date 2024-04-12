@@ -7,13 +7,15 @@
 
 import Foundation
 
-/// A dictionary to define custom spacing values for different spacing categories.
-///
-/// This variable allows for the assignment of specific spacing values to the predefined
-/// `CGFloat.BonesSpacing` categories, facilitating a consistent spacing system across
-/// an application.
-var bonesSpacings: [CGFloat.BonesSpacing: CGFloat] = [:]
-
+extension BonesConfig {
+  /// A dictionary to define custom spacing values for different spacing categories.
+  ///
+  /// This variable allows for the assignment of specific spacing values to the predefined
+  /// `CGFloat.BonesSpacing` categories, facilitating a consistent spacing system across
+  /// an application.
+  public static var spacings: [CGFloat.BonesSpacing: CGFloat] = [:]
+}
+  
 /// An enumeration representing different spacing sizes.
 ///
 /// This enum provides a standardized way to define and use spacing sizes within the
@@ -52,12 +54,12 @@ extension CGFloat {
     /// each size category if not explicitly defined.
     public var value: CGFloat {
       switch self {
-        case .none: return bonesSpacings[.none] ?? 0
-        case .small:  return bonesSpacings[.small] ?? 4
-        case .medium: return bonesSpacings[.medium] ?? 16
-        case .xMedium: return bonesSpacings[.xMedium] ?? 24
-        case .large: return bonesSpacings[.large] ?? 32
-        case .xLarge: return bonesSpacings[.xLarge] ?? 64
+        case .none: return BonesConfig.spacings[.none] ?? 0
+        case .small:  return BonesConfig.spacings[.small] ?? 4
+        case .medium: return BonesConfig.spacings[.medium] ?? 16
+        case .xMedium: return BonesConfig.spacings[.xMedium] ?? 24
+        case .large: return BonesConfig.spacings[.large] ?? 32
+        case .xLarge: return BonesConfig.spacings[.xLarge] ?? 64
       }
     }
 

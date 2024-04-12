@@ -7,12 +7,14 @@
 
 import Foundation
 
-/// A dictionary to define custom radius values for different spacing categories.
-///
-/// This variable can be used to assign specific radius values to the predefined
-/// `CGFloat.BonesSpacing` categories. It allows for a flexible definition of radius
-/// sizes across an application, supporting a consistent design system.
-public var bonesRadius: [CGFloat.BonesSpacing: CGFloat] = [:]
+extension BonesConfig {
+  /// A dictionary to define custom radius values for different spacing categories.
+  ///
+  /// This variable can be used to assign specific radius values to the predefined
+  /// `CGFloat.BonesSpacing` categories. It allows for a flexible definition of radius
+  /// sizes across an application, supporting a consistent design system.
+  static var radius: [CGFloat.BonesRadius: CGFloat] = [:]
+}
 
 /// An enumeration representing different radius sizes.
 ///
@@ -51,10 +53,10 @@ extension CGFloat {
     /// default values for each size category if not explicitly defined.
     public var rawValue: CGFloat {
       switch self {
-        case .none: return bonesRadius[.none] ?? 0
-        case .small:  return bonesRadius[.small] ?? 4
-        case .medium: return bonesRadius[.medium] ?? 8
-        case .large: return bonesRadius[.large] ?? 16
+        case .none: return BonesConfig.radius[.none] ?? 0
+        case .small:  return BonesConfig.radius[.small] ?? 4
+        case .medium: return BonesConfig.radius[.medium] ?? 8
+        case .large: return BonesConfig.radius[.large] ?? 16
       }
     }
 
