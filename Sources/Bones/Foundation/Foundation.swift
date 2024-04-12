@@ -59,9 +59,3 @@ public final class Bones {
     case spacing(CGFloat.BonesSpacing, with: CGFloat)
   }
 }
-
-
-public class BonesConfig {
-  public static let shared = BonesConfig()
-  private init() {}
-}
