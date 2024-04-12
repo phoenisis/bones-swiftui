@@ -7,7 +7,7 @@
 <p align="center">Design System libraries for iOS applications</p>
 
 ## 🌐 Introduction
-Bones Design System is the framework that helps our ecosystem design and develop consistent, high-quality experiences. It consists of rules, principles, and guidelines likes used to design the Squadeasy interface.
+Bones Design System is the framework that helps our ecosystem design and develop consistent, high-quality experiences. It consists of rules, principles, and guidelines likes used to design.
 
 To help developers avoid any design mistakes, we prefix all our design system elements with the `bones` keyword. We also prefer to scope any type into a `bones` namespace enum.
 

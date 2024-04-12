@@ -1,6 +1,6 @@
 # Getting Started with Bones
 
-Bones is a SwiftUI component library which provides developers tools to build interface with Squadeasy like interface.
+Bones is a SwiftUI component library which provides developers tools to build interface.
 
 ## Overview
 
