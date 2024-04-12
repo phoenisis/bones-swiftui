@@ -51,10 +51,10 @@ extension CGFloat {
     /// default values for each size category if not explicitly defined.
     public var rawValue: CGFloat {
       switch self {
-        case .none: return bonesSpacings[.none] ?? 0
-        case .small:  return bonesSpacings[.small] ?? 4
-        case .medium: return bonesSpacings[.medium] ?? 8
-        case .large: return bonesSpacings[.large] ?? 16
+        case .none: return bonesRadius[.none] ?? 0
+        case .small:  return bonesRadius[.small] ?? 4
+        case .medium: return bonesRadius[.medium] ?? 8
+        case .large: return bonesRadius[.large] ?? 16
       }
     }
 

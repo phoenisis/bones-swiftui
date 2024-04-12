@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var fontsTTFLoaded: Bool = false
+var fontsOTFLoaded: Bool = false
 /// Extends the `Font` struct to include custom font styles and tokens.
 ///
 /// This extension allows for the creation of a flexible and consistent font system
@@ -136,10 +138,14 @@ extension Font {
   /// This method iterates through all `BonesFontName` cases, attempts to locate the TTF font files
   /// in the module bundle, and registers them with the system for use within the application.
   static func loadFontsTTF() {
+    guard !fontsTTFLoaded else { return }
+    
     BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "ttf") }
       .compactMap { $0 }
       .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
+    
+    fontsTTFLoaded = true
   }
   
   /// Loads OpenType Fonts (OTF) from the application bundle.
@@ -147,10 +153,14 @@ extension Font {
   /// Similar to `loadFontsTTF`, this method locates and registers OTF font files
   /// for all `BonesFontName` cases, making them available for use within the app.
   static func loadFontsOTF() {
+    guard !fontsOTFLoaded else { return }
+    
     BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "otf") }
       .compactMap { $0 }
       .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
+    
+    fontsOTFLoaded = true
   }
   
   /// Creates a custom font based on the provided `BonesFont`, size, and relative text style.

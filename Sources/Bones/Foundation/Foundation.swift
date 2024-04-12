@@ -36,15 +36,17 @@ public final class Bones {
    - Parameter type: An `OverrideType` specifying the modification to be made.
    */
   public class func update(_ type: Bones.ThemeComponent) {
-    switch type {
-      case let .colors(colors):
-        bonesColors.merge(colors) { _, new  in new }
-      case let .color(color, value):
-        bonesColors[color] = value
-      case let .spacings(spacings):
-        bonesSpacings.merge(spacings) { _, new  in new }
-      case let .spacing(spacing, value):
-        bonesSpacings[spacing] = value
+    Task { @MainActor in
+      switch type {
+        case let .colors(colors):
+          bonesColors.merge(colors) { _, new  in new }
+        case let .color(color, value):
+          bonesColors[color] = value
+        case let .spacings(spacings):
+          bonesSpacings.merge(spacings) { _, new  in new }
+        case let .spacing(spacing, value):
+          bonesSpacings[spacing] = value
+      }
     }
   }
   

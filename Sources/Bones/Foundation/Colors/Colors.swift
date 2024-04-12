@@ -68,10 +68,10 @@ extension Color {
   /// - Parameter color: The `BonesColor` enum specifying the desired color token.
   public init(_ color: BonesColor) {
     switch color {
-      case .bones(let colorType):
-        let colorCustom = Color.init(hex: bonesColors[colorType])
+      case .bones(let colorToken):
+        let colorCustom = Color.init(hex: bonesColors[colorToken])
         
-        self = colorCustom ?? Color("B.\(colorType.rawValue)", bundle: .module)
+        self = colorCustom ?? Color("B.\(colorToken.rawValue)", bundle: .module)
     }
   }
   
