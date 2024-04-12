@@ -3,7 +3,9 @@
 
 @_exported import Pow
 
-public class BonesConfig {
+/// `BonesConfig` is a singleton class used to configure the Bones framework.
+/// It provides a shared instance that can be accessed globally.
+public struct BonesConfig {
   public static let shared = BonesConfig()
   private init() {}
 }
