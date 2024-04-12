@@ -1,11 +1,10 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-@_exported import Pow
-
-/// `BonesConfig` is a singleton class used to configure the Bones framework.
-/// It provides a shared instance that can be accessed globally.
-public struct BonesConfig {
+/// `BonesConfig` provides a centralized configuration instance for the Bones framework.
+/// It allows easy access to framework-wide settings and configurations..
+public final class BonesConfig {
+  /// Shared instance of `BonesConfig` for global access.
   public static let shared = BonesConfig()
   private init() {}
 }
