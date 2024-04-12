@@ -30,6 +30,16 @@ public extension ShadowStyle {
         case .far: return "far"
       }
     }
+    
+    public func lowerShadow() -> BonesShadowToken {
+      switch self {
+        case .none: .none
+        case .reallyClose: .none
+        case .close: .reallyClose
+        case .medium: .close
+        case .far: .medium
+      }
+    }
   }
 
   /// Provides a convenient way to access predefined shadow styles.
