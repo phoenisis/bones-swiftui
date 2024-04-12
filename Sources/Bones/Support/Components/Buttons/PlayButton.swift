@@ -19,9 +19,12 @@ struct BonesPlayButton: ButtonStyle {
       Circle()
         .fill(
           Color.bones.primary
-            .shadow(.bones.drop(configuration.isPressed
-                ? .reallyClose
-                : .close)
+            .shadow(
+              .bones.drop(
+                configuration.isPressed
+                  ? .close.lowerShadow
+                  : .close
+              )
             )
         )
         .frame(width: 64, height: 64)
@@ -29,9 +32,12 @@ struct BonesPlayButton: ButtonStyle {
       Circle()
         .fill(
           Color.bones.primary
-            .shadow(.bones.drop(configuration.isPressed
-                ? .close
-                : .far)
+            .shadow(
+              .bones.drop(
+                configuration.isPressed
+                  ? .far.lowerShadow
+                  : .far
+              )
             )
         )
         .frame(width: 56, height: 56)

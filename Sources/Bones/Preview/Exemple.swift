@@ -17,8 +17,8 @@ struct SwiftUIViewTest: View {
   }
 
   init() {
-    Bones.update(.color(.primary, with: "#f7bc6f"))
-    Bones.update(.spacing(.medium, with: 64))
+    Bones.update(.color(.primary, withColor: "#f7bc6f"))
+    Bones.update(.spacing(.medium, withPading: 64))
   }
 }
 

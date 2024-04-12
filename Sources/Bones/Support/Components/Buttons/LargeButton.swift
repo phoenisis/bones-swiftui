@@ -50,7 +50,7 @@ struct BonesLargeButton: ButtonStyle {
       .cornerRadius(.bones(.small))
       .shadow(
         radius: configuration.isPressed
-          ? .bones(.none)
+          ? .bones(.close.lowerShadow)
           : .bones(.close)
       )
       .conditionalEffect(
@@ -142,7 +142,7 @@ struct BonesLargeButtonOutline: ButtonStyle {
       )
       .shadow(
         radius: configuration.isPressed
-          ? .bones(.none)
+          ? .bones(.close.lowerShadow)
           : .bones(.close)
       )
       .conditionalEffect(

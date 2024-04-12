@@ -72,7 +72,7 @@ struct BonesSocialTagSelectionButton: ButtonStyle {
       .shadow(
         radius: .bones(
           isEnabled
-            ? configuration.isPressed ? .close : .far
+            ? configuration.isPressed ? .far.lowerShadow : .far
             : .none
         )
       )

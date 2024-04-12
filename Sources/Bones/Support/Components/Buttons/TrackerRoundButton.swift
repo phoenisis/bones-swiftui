@@ -133,7 +133,7 @@ public struct BonesTrackerRoundButton: ButtonStyle {
             backgroundColor
               .shadow(
                 .bones.drop(
-                  configuration.isPressed ? .none : .far
+                  configuration.isPressed ? .far.lowerShadow : .far
                 )
               )
           )
