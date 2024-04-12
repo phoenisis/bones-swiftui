@@ -14,6 +14,7 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   @Environment(\.textColor) private var textColor
   @Environment(\.backgroundColor) private var backgroundColor
   
+  private let showTitle: Bool
   private let isAvailable: Bool
   private let description: String
   private let showBorder: Bool
@@ -28,6 +29,7 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
   
   public init(
     description: String = "",
+    showTitle: Bool = false,
     showBorder: Bool = false,
     titleStyle: Font.BonesFontStyle = .bones(.h3),
     descriptionStyle: Font.BonesFontStyle = .bones(.body),
@@ -38,6 +40,7 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
     @ViewBuilder footer: () -> Footer = { EmptyView() },
     @ViewBuilder topAction: () -> TopAction = { EmptyView() }
   ) {
+    self.showTitle = showTitle
     self.description = description
     self.showBorder = showBorder
     self.titleStyle = Font.custom(titleStyle)
@@ -95,7 +98,7 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
       VStack(alignment: .leading, spacing: .bones(.medium)) {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
           configuration.label
-            .font(.custom(.bones(.h3)))
+            .font(titleStyle)
             .foregroundStyle(textColor)
             .accessibilityIdentifier(.cardTitle)
           
@@ -139,12 +142,20 @@ public struct BonesCardButton<Content: View, Footer: View, TopAction: View>: But
         )
       )
     )
+    .overlay(content: {
+      RoundedRectangle(
+        bonesRadius: .bones(radius),
+        style: .continuous
+      )
+      .stroke(lineWidth: showBorder ? 2 : 0)
+      .foregroundStyle(Color.bones.primary)
+    })
     
     .animation(.default, value: configuration.isPressed)
   }
   
   private var isHeaderEmpty: Bool {
-    if topAction.isEmpty, description.isEmpty {
+    if topAction.isEmpty, showTitle == false {
       return true
     } else {
       return false
@@ -198,7 +209,7 @@ struct ButtonCardPreviews: PreviewProvider {
           .buttonStyle(
             BonesCardButton(
               description: "Description",
-              showBorder: true,
+              showBorder: false,
               radius: .large,
               content: {
                 contentPlaceholder

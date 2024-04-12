@@ -1,5 +1,5 @@
 //
-//  RankedElementView.swift
+//  CardRankedElement.swift
 //
 //
 //  Created by Quentin PIDOUX on 27/11/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct RankedElementView: View {
+public struct CardRankedElement: View {
   public struct Medal {
     let image: String
     let name: String
@@ -30,7 +30,16 @@ public struct RankedElementView: View {
 
   let isHighlighted: Bool
 
-  public init(title: String, rank: Int?, imageUrl: String?, showImage: Bool = true, points: String?, medals: [Medal], isHighlighted: Bool = false) {
+  let didTap: () -> Void
+
+  var defaultEdgeInsets: EdgeInsets {
+    EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24)
+  }
+  var highlightEdgeInsets: EdgeInsets {
+    EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+  }
+
+  public init(title: String, rank: Int?, imageUrl: String?, showImage: Bool = true, points: String?, medals: [Medal], isHighlighted: Bool = false, didTap: @escaping () -> Void) {
     self.title = title
     self.rank = rank
     self.imageUrl = imageUrl
@@ -38,9 +47,31 @@ public struct RankedElementView: View {
     self.points = points
     self.medals = Array(medals.sorted { $0.count > $1.count }.prefix(8))
     self.isHighlighted = isHighlighted
+    self.didTap = didTap
   }
 
   public var body: some View {
+    Button(title) { didTap() }
+      .buttonStyle(
+        BonesCardButton(
+          showTitle: title.isEmpty == false,
+          showBorder: isHighlighted,
+          titleStyle: .bones(.bodyBold),
+          shadowStyle: isHighlighted ? .far : .close,
+          content: {
+            content
+          }, topAction: {
+            header
+          }
+        )
+      )
+      .backgroundColor(.bones.white)
+      .listRowSeparator(.hidden)
+      .listRowBackground(Color.clear)
+      .listRowInsets(isHighlighted ? highlightEdgeInsets : defaultEdgeInsets)
+  }
+
+  @ViewBuilder var content: some View {
     HStack(alignment: .center, spacing: .bones(.large)) {
       if showImage {
         if let imageUrl {
@@ -90,22 +121,6 @@ public struct RankedElementView: View {
         alignment: .leading,
         spacing: .bones(.small)
       ) {
-        HStack(
-          alignment: .center,
-          spacing: .bones(.small),
-          content: {
-            Text(title)
-              .font(.custom(.bones(.bodyBold)))
-              .lineLimit(2)
-              .multilineTextAlignment(.leading)
-              .frame(maxWidth: .infinity, alignment: .leading)
-            Text(rank?.ordinalString() ?? "")
-              .font(.custom(.bones(.h2)))
-              .lineLimit(1)
-              .frame(alignment: .trailing)
-          }
-        )
-        .frame(maxWidth: .infinity, alignment: .leading)
         if medals.isEmpty {
           if let points {
             Text(points)
@@ -116,35 +131,26 @@ public struct RankedElementView: View {
             EmptyView()
           }
         }
-        else if (medals.count == 1) {
+        else
+        if (medals.count == 1) {
           singleMedal(medals[0])
         } else {
           multipleMedal(medals)
         }
       }
     }
-    .padding(.bones(.large))
-    .frame(height: isHighlighted ? 94 : 88)
-    .listRowBackground(
-      RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .fill(
-          Color.bones.white
-            .shadow(.bones.drop(isHighlighted ? .far : .none))
-        )
-        .overlay(
-          RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-            .stroke(Color.bones.primary, lineWidth: isHighlighted ? 2 : 0)
-        )
-        .padding(.horizontal, .bones(isHighlighted ? .medium : .large))
-    )
-    .foregroundStyle(Color.bones.textDark)
-    .listRowSeparator(.hidden)
-    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+  }
+
+  @ViewBuilder var header: some View {
+    Text(rank?.ordinalString() ?? "")
+      .font(.custom(.bones(.h2)))
+      .lineLimit(1)
+      .frame(alignment: .trailing)
   }
 
   fileprivate func singleMedal(_ medal: Medal) -> some View {
-    HStack(
-      alignment: .center,
+    VStack(
+      alignment: .leading,
       spacing: .bones(.small),
       content: {
         HStack(
@@ -170,7 +176,7 @@ public struct RankedElementView: View {
           Text(points)
             .font(.custom(.bones(.bodyBold)))
             .lineLimit(1)
-            .frame(alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
       }
     )
@@ -214,16 +220,17 @@ public struct RankedElementView: View {
 
 #Preview {
   List {
-    RankedElementView(
+    CardRankedElement(
       title: "NOM DE L’ÉQUIPE",
       rank: 1,
       imageUrl: "https://picsum.photos/220/670",
       points: "1000k pts",
       medals: [
         .init(image: "https://picsum.photos/200", name: "Boogie Star", count: 1)
-      ]
-    ) 
-    RankedElementView(
+      ], 
+      didTap: { }
+    )
+    CardRankedElement(
       title: "NOM DE L’ÉQUIPE",
       rank: 1,
       imageUrl: "https://picsum.photos/400",
@@ -231,20 +238,22 @@ public struct RankedElementView: View {
       medals: [
         .init(image: "https://picsum.photos/200", name: "Boogie Star", count: 1)
       ],
-      isHighlighted: true
+      isHighlighted: true,
+      didTap: { }
     )
 
-    RankedElementView(
+    CardRankedElement(
       title: "est qui minim occaecat sit veniam cillum laboris anim ea cupidatat eu",
       rank: 1,
       imageUrl: "https://picsum.photos/400",
       points: "1000k pts",
       medals: [
         .init(image: "https://picsum.photos/200", name: "nostrud ipsum cillum proident", count: 1)
-      ]
+      ],
+      didTap: { }
     )
 
-    RankedElementView(
+    CardRankedElement(
       title: "NOM DE L’ÉQUIPE",
       rank: 5,
       imageUrl: "https://picsum.photos/600",
@@ -253,10 +262,11 @@ public struct RankedElementView: View {
         .init(image: "https://picsum.photos/200", name: "Boogie Star", count: 2),
         .init(image: "https://picsum.photos/220", name: "Boogie Star", count: 1),
         .init(image: "https://picsum.photos/240", name: "Boogie Star", count: 4)
-      ]
+      ],
+      didTap: { }
     )
 
-    RankedElementView(
+    CardRankedElement(
       title: "est qui minim occaecat sit veniam cillum laboris anim ea cupidatat eu",
       rank: 5,
       imageUrl: "https://picsum.photos/600",
@@ -265,10 +275,11 @@ public struct RankedElementView: View {
         .init(image: "https://picsum.photos/200", name: "Boogie Star", count: 2),
         .init(image: "https://picsum.photos/220", name: "Boogie Star", count: 1),
         .init(image: "https://picsum.photos/240", name: "Boogie Star", count: 4)
-      ]
+      ],
+      didTap: { }
     )
 
-    RankedElementView(
+    CardRankedElement(
       title: "NOM DE L’ÉQUIPE",
       rank: 5,
       imageUrl: "https://picsum.photos/600",
@@ -283,9 +294,10 @@ public struct RankedElementView: View {
         .init(image: "https://picsum.photos/290", name: "Boogie Star", count: 4),
         .init(image: "https://picsum.photos/300", name: "Boogie Star", count: 4),
         .init(image: "https://picsum.photos/320", name: "Boogie Star", count: 4),
-      ]
-    )   
-    RankedElementView(
+      ],
+      didTap: { }
+    )
+    CardRankedElement(
       title: "est qui minim occaecat sit veniam cillum laboris anim ea cupidatat eu",
       rank: 5,
       imageUrl: "https://picsum.photos/600",
@@ -300,15 +312,16 @@ public struct RankedElementView: View {
         .init(image: "https://picsum.photos/290", name: "Boogie Star", count: 4),
         .init(image: "https://picsum.photos/300", name: "Boogie Star", count: 4),
         .init(image: "https://picsum.photos/320", name: "Boogie Star", count: 4),
-      ]
+      ],
+      didTap: { }
     )
 
-    RankedElementView(title: "NOM DE L’ÉQUIPE", rank: 1, imageUrl: nil, points: "1000k pts", medals: [])
-    RankedElementView(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: "1000k pts", medals: [])
-    RankedElementView(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: "1000k pts", medals: [], isHighlighted: true)
-    RankedElementView(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: nil, medals: [])
-    RankedElementView(title: "incididunt et id sit anim veniam ipsum esse veniam Lorem anim duis id consequat nisi incididunt ea tempor labore et cupidatat cupidatat culpa non eiusmod", rank: 1, imageUrl: nil, showImage: false, points: nil, medals: [])
-    RankedElementView(title: "NOM l'entitée", rank: nil, imageUrl: nil, showImage: false, points: nil, medals: [])
+    CardRankedElement(title: "NOM DE L’ÉQUIPE", rank: 1, imageUrl: nil, points: "1000k pts", medals: [], didTap: { })
+    CardRankedElement(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: "1000k pts", medals: [], didTap: { })
+    CardRankedElement(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: "1000k pts", medals: [], isHighlighted: true, didTap: { })
+    CardRankedElement(title: "NOM l'entitée", rank: 1, imageUrl: nil, showImage: false, points: nil, medals: [], didTap: { })
+    CardRankedElement(title: "incididunt et id sit anim veniam ipsum esse veniam Lorem anim duis id consequat nisi incididunt ea tempor labore et cupidatat cupidatat culpa non eiusmod", rank: 1, imageUrl: nil, showImage: false, points: nil, medals: [], didTap: { })
+    CardRankedElement(title: "NOM l'entitée", rank: nil, imageUrl: nil, showImage: false, points: nil, medals: [], didTap: { })
   }
   .listStyle(.grouped)
   .listBackgroundColor()
