@@ -1,13 +1,13 @@
-[![OS](https://img.shields.io/badge/iOS_>16-000000?style=fla&logo=ios&logoColor=white)](https://apple.com/) [![Language](https://img.shields.io/badge/Swift_5.9-FA7343?style=fla&logo=swift&logoColor=white)](https://swift.org/download/) [![Framework](https://img.shields.io/badge/SwiftUI_-4497ed?style=fla&logo=swift&logoColor=white)](https://developer.apple.com/documentation/swiftui/)
+[![OS](https://img.shields.io/badge/iOS_>17-000000?style=fla&logo=ios&logoColor=white)](https://apple.com/) [![Language](https://img.shields.io/badge/Swift_5.9-FA7343?style=fla&logo=swift&logoColor=white)](https://swift.org/download/) [![Framework](https://img.shields.io/badge/SwiftUI_-4497ed?style=fla&logo=swift&logoColor=white)](https://developer.apple.com/documentation/swiftui/)
 
 > [!IMPORTANT]
 > 🚨 This current version of Bones is still in development. It is not yet ready for production use.
 
 <h1 align="center">🦴 Bones iOS</h1>
-<p align="center">Squadeasy Design System libraries for iOS applications</p>
+<p align="center">Design System libraries for iOS applications</p>
 
 ## 🌐 Introduction
-Bones Design System is the framework that helps our ecosystem design and develop consistent, high-quality experiences. It consists of rules, principles, and guidelines used to design and develop the Squadeasy ecosystem.
+Bones Design System is the framework that helps our ecosystem design and develop consistent, high-quality experiences. It consists of rules, principles, and guidelines likes used to design.
 
 To help developers avoid any design mistakes, we prefix all our design system elements with the `bones` keyword. We also prefer to scope any type into a `bones` namespace enum.
 
@@ -18,7 +18,7 @@ To help developers avoid any design mistakes, we prefix all our design system el
     ```swift
     dependencies: [
       .package(
-        url: "https://github.com/squadeasy/bones-ios",
+        url: "https://github.com/phoenisis/bones-swiftui",
         .upToNextMajor(from: "0.0.0")
       ),
       // Any other dependencies...
@@ -32,7 +32,7 @@ To help developers avoid any design mistakes, we prefix all our design system el
     dependencies: [
       .product(
         name: "Bones", 
-        package: "bones-ios"
+        package: "bones-swiftui"
       ),
       // Any other dependencies...
     ]

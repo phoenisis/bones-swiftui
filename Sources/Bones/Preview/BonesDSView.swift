@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  BonesDSView.swift
 //
 //
 //  Created by Quentin PIDOUX on 26/09/2023.
@@ -20,12 +20,6 @@ public struct BonesFullPreview: View {
           }
           .font(.custom(.bones(.body)))
 
-          NavigationLink("Fonts") {
-            Preview_Fonts()
-              .navigationTitle("Fonts")
-          }
-          .font(.custom(.bones(.body)))
-
           NavigationLink("Sizes") {
             Preview_Sizes()
               .navigationTitle("Sizes")
@@ -39,8 +33,19 @@ public struct BonesFullPreview: View {
           .font(.custom(.bones(.body)))
 
           NavigationLink("Icons") {
-            Preview_Icons()
-              .navigationTitle("Icons")
+            List {
+              ForEach(Image.BonesImage.allCases) { icon in
+                HStack {
+                  Text(icon.id.toWords)
+                    .font(.custom(.bones(.body)))
+                  Spacer()
+                  BonesIcon(icon: .bones(icon))
+                    .frame(width: 24, height: 24)
+                }
+              }
+            }
+            .listBackgroundColor()
+            .navigationTitle("Icons")
           }
           .font(.custom(.bones(.body)))
 
@@ -79,11 +84,6 @@ public struct BonesFullPreview: View {
               .navigationTitle("Tag")
           }
           .font(.custom(.bones(.body)))
-
-          NavigationLink("Cards") {
-            Preview_CardStyles()
-              .navigationTitle("Cards")
-          }
         } header: {
           Text("Components")
             .font(.custom(.bones(.bodyBold)))

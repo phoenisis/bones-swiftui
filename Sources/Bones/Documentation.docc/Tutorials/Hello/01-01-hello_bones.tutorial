@@ -1,0 +1,44 @@
+@Tutorial(time: 2) {
+  @Intro(title: "Install") {
+    This "Install Bones" tutorial will show how to install Bones components in your SwiftUI code.
+    
+    You will learn all the necessary steps to have Bones up and running.
+    
+    @Image(source: 01-01-hello_bones-s01, alt: "A snapshot of SwiftUI code next to a preview canvas showing mapping of Bones components between code and canvas")
+  }
+  
+  @Section(title: "Create a new Bones Enabled Project") {
+    @ContentAndMedia {
+      Create a new Xcode project that uses SwiftUI and has the Bones package linked to it.
+      
+    }
+    
+    @Steps {
+      @Step {
+        Create a new iOS app project in Xcode, using SwiftUI.
+        
+        @Image(source: 01-01-hello_bones-s01, alt: "Create xcode project")
+      }
+      
+      @Step {
+        In Project settings, add a new swift package dependency.
+        
+        @Image(source: 01-01-hello_bones-s01-2, alt: "Add dependency to project")
+      }
+      
+      @Step {
+        Search for the Bones package and select it. Specify a dependency rule. If you want to use the development version, choose the `main` branch.
+        
+        @Image(source: 01-01-hello_bones-s02, alt: "A screenshot of Xcode showing the package search UI with bones-swiftui shown in search results")
+      }
+      
+      @Step {
+        In the Project navigator, select `ContentView.swift`.
+        
+        This will open the hello world sample SwiftUI file. If the canvas is not opened, you can toggle it using the `Cmd+Opt+Enter` keyboard shortcut.
+        
+        @Code(name: "ContentView.swift", file: 01-01-hello_bones-s03)
+      }
+    }
+  }
+}

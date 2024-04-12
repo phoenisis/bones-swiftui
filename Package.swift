@@ -19,27 +19,22 @@ let package = Package(
     .package(
       url: "https://github.com/EmergeTools/Pow",
       .upToNextMajor(from: "1.0.0")
-    ),
-      .package(
-        url: "https://github.com/raphaelmor/Polyline",
-        .upToNextMajor(from: "5.0.0")
-      ),
+    )
   ],
 	targets: [
 		.target(
 			name: "Bones",
 			dependencies: [
-        .product(name: "Pow", package: "Pow"),
-        .product(name: "Polyline", package: "Polyline"),
+        .product(name: "Pow", package: "Pow")
 			],
-			resources: [
-				.process("Resources/Catalogs"),
-				.process("Resources/Fonts"),
-				.process("Resources/Lotties")
-			],
-			swiftSettings: [
-				.enableUpcomingFeature("StrictConcurrency=complete"),
-			]
+      resources: [
+        .process("Resources/Catalogs"),
+        .process("Resources/Fonts"),
+        .process("Resources/Lotties")
+      ], 
+      swiftSettings: [
+        .enableUpcomingFeature("StrictConcurrency=complete"),
+      ]
 		)
 	]
 )
