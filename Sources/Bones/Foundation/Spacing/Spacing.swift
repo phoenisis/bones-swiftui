@@ -15,7 +15,7 @@ extension BonesConfig {
   /// an application.
   public static var spacings: [CGFloat.BonesSpacing: CGFloat] = [:]
 }
-  
+
 /// An enumeration representing different spacing sizes.
 ///
 /// This enum provides a standardized way to define and use spacing sizes within the

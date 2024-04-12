@@ -13,7 +13,7 @@ public final class Bones {
   /**
    Establishes the foundational theme for your app by defining the color tokens
    and spacing values used throughout.
-   
+
    - Parameters:
    - colors: A dictionary mapping `Color.BonesColorToken` to hex color strings
    (defaults to an empty dictionary).
@@ -27,12 +27,12 @@ public final class Bones {
     BonesConfig.colors = colors
     BonesConfig.spacings = spacing
   }
-  
+
   /// Overrides specific color tokens or spacing values.
   /**
    Allows for adjustments to the application's theme after the initial configuration.
    Use this method to update specific color tokens or spacing values.
-   
+
    - Parameter type: An `OverrideType` specifying the modification to be made.
    */
   public class func update(_ type: Bones.ThemeComponent) {
@@ -49,7 +49,7 @@ public final class Bones {
       }
     }
   }
-  
+
   // Accessors for color tokens and spacing values can be added here
   // if needed in your app.
   public enum ThemeComponent {

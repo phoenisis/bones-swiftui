@@ -143,8 +143,14 @@ extension Font {
     BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "ttf") }
       .compactMap { $0 }
-      .forEach { CTFontManagerRegisterFontsForURL($0 as CFURL, .process, nil) }
-    
+      .forEach {
+        var error: Unmanaged<CFError>?
+        CTFontManagerRegisterFontsForURL($0 as CFURL, .process, &error)
+        if let error = error?.takeRetainedValue() {
+          print("Error registering font: \(error)")
+        }
+      }
+
     fontsTTFLoaded = true
   }
   

@@ -73,7 +73,7 @@ extension UIFont {
       case .bones(style: let style):
         switch style {
           case .h1:
-            self.init(name: h1.name, size: h1.size)!
+            self.init(name: h1.name, size: h1.size)! 
           case .h2:
             self.init(name: h2.name, size: h2.size)!
           case .h3:

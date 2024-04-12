@@ -34,19 +34,22 @@ public extension ShadowStyle {
 
   /// Provides a convenient way to access predefined shadow styles.
   struct bones {
+    private static let closeOpacity: Double = 0.15
+    private static let farOpacity: Double = 0.25
+
     /// Returns a drop shadow style based on a `BonesShadowToken`.
     public static func drop(_ style: BonesShadowToken) -> ShadowStyle {
       switch style {
         case .none:
           return ShadowStyle.drop(color: .clear, radius: 0)
         case .reallyClose:
-          return ShadowStyle.drop(color: .bones.black.opacity(0.15), radius: 2, x: 0, y: 2)
+          return ShadowStyle.drop(color: .bones.black.opacity(closeOpacity), radius: 2, x: 0, y: 2)
         case .close:
-          return ShadowStyle.drop(color: .bones.black.opacity(0.15), radius: 4, x: 0, y: 4)
+          return ShadowStyle.drop(color: .bones.black.opacity(closeOpacity), radius: 4, x: 0, y: 4)
         case .medium:
-          return ShadowStyle.drop(color: .bones.black.opacity(0.15), radius: 8, x: 0, y: 8)
+          return ShadowStyle.drop(color: .bones.black.opacity(closeOpacity), radius: 8, x: 0, y: 8)
         case .far:
-          return ShadowStyle.drop(color: .bones.black.opacity(0.25), radius: 16, x: 0, y: 8)
+          return ShadowStyle.drop(color: .bones.black.opacity(farOpacity), radius: 16, x: 0, y: 8)
       }
     }
 
