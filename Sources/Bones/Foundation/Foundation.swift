@@ -54,14 +54,8 @@ public final class Bones {
   // if needed in your app.
   public enum ThemeComponent {
     case colors([Color.BonesColorToken: String])
-    case color(Color.BonesColorToken, with: String)
+    case color(Color.BonesColorToken, withColor: String)
     case spacings([CGFloat.BonesSpacing: CGFloat])
-    case spacing(CGFloat.BonesSpacing, with: CGFloat)
+    case spacing(CGFloat.BonesSpacing, withPading: CGFloat)
   }
-}
-
-
-public class BonesConfig {
-  public static let shared = BonesConfig()
-  private init() {}
 }

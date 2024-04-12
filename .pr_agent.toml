@@ -1,0 +1,58 @@
+[pr_reviewer]
+inline_code_comments = true
+ask_and_reflect = true
+automatic_review = true
+remove_previous_review_comment = true
+persistent_comment = true
+extra_instructions = "Please ensure comments are concise and actionable."
+enable_review_labels_security = true
+enable_review_labels_effort = true
+require_all_thresholds_for_incremental_review = false
+minimal_commits_for_incremental_review = 2
+minimal_minutes_for_incremental_review = 10
+enable_help_text = false
+enable_auto_approval = true
+maximal_review_effort = 5
+
+[pr_code_suggestions]
+num_code_suggestions = 5
+summarize = true
+auto_extended_mode = true
+rank_suggestions = true
+enable_help_text = false
+
+[pr_update_changelog]
+push_changelog_changes = false
+
+[github_action_config]
+auto_review = true
+auto_describe = true
+auto_improve = true
+
+[github_app]
+pr_commands = [
+    "/describe --pr_description.add_original_user_description=true --pr_description.keep_original_user_title=true",
+    "/update_changelog --pr_update_changelog.push_changelog_changes=false",
+    "/improve --extended --pr_code_suggestions.summarize=true",
+    "/review auto_approve --pr_reviewer.num_code_suggestions=0 --pr_reviewer.inline_code_comments=true",
+]
+push_commands = [
+    "/describe --pr_description.add_original_user_description=true --pr_description.keep_original_user_title=true",
+    "/update_changelog --pr_update_changelog.push_changelog_changes=false",
+    "/improve --extended --pr_code_suggestions.summarize=true",
+    """/auto_review -i \
+        --pr_reviewer.require_focused_review=false \
+        --pr_reviewer.require_score_review=false \
+        --pr_reviewer.require_tests_review=false \
+        --pr_reviewer.require_estimate_effort_to_review=false \
+        --pr_reviewer.num_code_suggestions=0 \
+        --pr_reviewer.inline_code_comments=true \
+        --pr_reviewer.remove_previous_review_comment=true \
+        --pr_reviewer.require_all_thresholds_for_incremental_review=false \
+        --pr_reviewer.minimal_commits_for_incremental_review=2 \
+        --pr_reviewer.minimal_minutes_for_incremental_review=10 \
+        --pr_reviewer.extra_instructions='' \
+    """,
+    "/review auto_approve --pr_reviewer.num_code_suggestions=0 --pr_reviewer.inline_code_comments=true"
+]
+handle_push_trigger = true
