@@ -1,6 +1,9 @@
 name: Publish DocC
 
 on:
+  push:
+    branches:
+      - 'Documentation'
   release:
     types: [published]
   workflow_dispatch:
