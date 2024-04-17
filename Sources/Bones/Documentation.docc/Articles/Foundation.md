@@ -94,14 +94,14 @@ VStack {}
   .frame(width: 100, height: 100)
   .fill(
     Color.green
-      .shadow(.drop(radius: 8)
+      .shadow(.drop(radius: 8))
   )
 
 VStack {}
   .frame(width: 100, height: 100)
   .fill(
     Color.green
-      .shadow(.bones.drop(.close)
+      .shadow(.bones.drop(.close))
   )
 ```
 **🦴 Bones**
