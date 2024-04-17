@@ -22,6 +22,6 @@ This library allows you to integrate the Bones Design System into your iOS Swift
 - <doc:Tutorials>
 
 ### Articles
-- <doc:Tokens>
-- <doc:Components>
+- <doc:Foundation>
+- <doc:Supports>
 - <doc:Templates>

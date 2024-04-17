@@ -59,3 +59,10 @@ public final class Bones {
     case spacing(CGFloat.BonesSpacing, withPading: CGFloat)
   }
 }
+
+struct Test: View {
+  var body: some View {
+    Rectangle()
+      .fill(Color.blue.shadow(.bones.drop(.close)))
+  }
+}

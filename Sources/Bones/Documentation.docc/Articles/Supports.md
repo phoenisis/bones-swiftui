@@ -1,4 +1,4 @@
-# 🧩 Components
+# 🧩 Supports
 
 Components are groups of elements that work together to create a reusable, functional, and specific UI. They are the building blocks of a design system. They are also the most important part of a design system because they are the most reusable and flexible.
 
