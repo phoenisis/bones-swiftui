@@ -1,4 +1,4 @@
-# 🎨 Tokens
+# 🎨 Foundation
 
 Design tokens are the atoms of a design system — the smallest pieces, like colors, fonts, spacings, and shadows. Instead of hard coding these values, tokens allow for a more scalable, consistent, and maintainable system. By defining these tokens, it becomes easier to ensure that the design and the implementation remain synchronized.
 
@@ -63,6 +63,7 @@ Text("Hello, World!")
   .padding(.bones(.small))
 Text("Hello, World!")
   .padding(.leading, .bones(.xLarge)) 
+
 HStack(spacing: .bones(.small)) {}
 HStack(alignment: .top, spacing: .bones(.small)) {}
 VStack(spacing: .bones(.small)) {}
@@ -91,29 +92,33 @@ VStack {}
 ```swift
 VStack {}
   .frame(width: 100, height: 100)
-  .fill(Color.green)
-  .shadow(radius: 8)
+  .fill(
+    Color.green
+      .shadow(.drop(radius: 8))
+  )
+
 VStack {}
   .frame(width: 100, height: 100)
-  .fill(Color.green)
-  .shadow(color: .black, radius: 8, x: 0, y: 0)
+  .fill(
+    Color.green
+      .shadow(.bones.drop(.close))
+  )
 ```
 **🦴 Bones**
 ```swift
 VStack {}
   .frame(width: 100, height: 100)
-  .fill(Color.bones.primary)
-  .shadow(radius: .bones(.none))
+  .fill(
+    Color.bones.primary
+      .shadow(.bones.drop(.none))
+  )
+
 VStack {}
   .frame(width: 100, height: 100)
   .fill(
     Color.bones.primary
       .shadow(.bones.drop(.close))
   )
-VStack {}
-  .frame(width: 100, height: 100)
-  .fill(Color.bones.primary)
-  .shadow(color: Color.bones.black, radius: .bones(.far))
 ```
 
 ### Haptic Feedback
@@ -121,8 +126,8 @@ VStack {}
 ```swift
 Button("Tap me") {
 // Action to perform on tap
+  HapticsProvider.sendHapticFeedback(.light())
 }
-.haptic(.medium)
 ```
 
 ### Shapes

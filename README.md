@@ -39,12 +39,8 @@ To help developers avoid any design mistakes, we prefix all our design system el
   ),
 ```
 
-## ✨ Available Elements
-This Design System is intended to align closely with the SwiftUI base modifier signature. This way, you can use it as follows
-
-- [🎨 Tokens](Documentations/Tokens.md)
-- [🧩 Components](Documentations/Components.md)
-- [🧱 Templates](Documentations/Templates.md)
+## 📖 Documentation
+- [🔗 Documentation](https://phoenisis.github.io/bones-swiftui/documentation/bones)
 
 ## 💪 Contributing
 To ensure consistent code quality and adherence to best practices, we've integrated tools to help automate the process. Please follow the steps below to set up your development environment

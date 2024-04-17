@@ -25,10 +25,6 @@ import SwiftUI
 /// ```
 ///
 /// ### Layout
-///
-/// Component expands horizontally.
-///
-/// - Note: [Bones.kiwi documentation](https://Bones.kiwi/components/structure/separator/)
 public struct Separator: View {
   
   @Environment(\.textColor) private var textColor
