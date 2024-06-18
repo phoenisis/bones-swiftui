@@ -10,7 +10,7 @@ import SwiftUI
 public enum Layout {
 
   /// Maximum readable width used for Bones layout in regular width environment.
-  public static var readableMaxWidth: CGFloat = 672
+  @MainActor public static var readableMaxWidth: CGFloat = 672
 }
 
 public extension Alignment {

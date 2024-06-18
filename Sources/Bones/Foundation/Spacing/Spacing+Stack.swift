@@ -15,7 +15,7 @@ public extension HStack {
   ///   - spacing: The spacing value as `BonesPadding`.
   ///   - content: The content within the stack.
   ///
-  init(
+  @inlinable nonisolated init(
     alignment: VerticalAlignment = .center,
     spacing: BonesSpacing,
     @ViewBuilder content: () -> Content
@@ -35,7 +35,7 @@ public extension VStack {
   ///   - spacing: The spacing value as `BonesPadding`.
   ///   - content: The content within the stack.
   ///
-  init(
+  @inlinable nonisolated init(
     alignment: HorizontalAlignment = .center,
     spacing: BonesSpacing,
     @ViewBuilder content: () -> Content

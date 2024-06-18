@@ -16,7 +16,7 @@ public extension RoundedRectangle {
   /// - Parameters:
   ///   - bonesRadius: The corner radius value as `BonesRadius`.
   ///   - style: The corner style as `RoundedCornerStyle`. Defaults to `.continuous`.
-  @inlinable init(bonesRadius: BonesRadius, style: RoundedCornerStyle = .continuous) {
+  @inlinable nonisolated init(bonesRadius: BonesRadius, style: RoundedCornerStyle = .continuous) {
     switch bonesRadius {
       case let .bones(radius):
         self.init(cornerRadius: radius.rawValue, style: style)

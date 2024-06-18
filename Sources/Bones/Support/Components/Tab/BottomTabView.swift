@@ -186,8 +186,8 @@ struct MainTabView: View {
 
 
 
-struct SafeAreaInsetsKey: PreferenceKey {
-  static var defaultValue = EdgeInsets()
+struct SafeAreaInsetsKey: @preconcurrency PreferenceKey {
+  @MainActor static var defaultValue = EdgeInsets()
   static func reduce(value: inout EdgeInsets, nextValue: () -> EdgeInsets) {
     value = nextValue()
   }

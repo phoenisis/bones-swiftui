@@ -10,8 +10,8 @@ import SwiftUI
   import UIKit
 #endif
 
-var fontsTTFUIKitLoaded: Bool = false
-var fontsOTFUIKitLoaded: Bool = false
+@MainActor var fontsTTFUIKitLoaded: Bool = false
+@MainActor var fontsOTFUIKitLoaded: Bool = false
 /// Extends `UIFont` to support loading and using custom fonts defined for SwiftUI `Font`.
 ///
 /// This extension introduces methods for loading TTF and OTF fonts into UIKit applications,
@@ -22,7 +22,7 @@ extension UIFont {
   ///
   /// This method locates and registers TTF font files based on the custom font names
   /// defined in `Font.BonesFontName`, making them available for use in UIKit components.
-  static func loadFontsTTF() {
+  @MainActor static func loadFontsTTF() {
     guard !fontsTTFUIKitLoaded else { return }
     Font.BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "ttf") }
@@ -36,7 +36,7 @@ extension UIFont {
   ///
   /// Similar to `loadFontsTTF`, this method locates and registers OTF font files for
   /// all custom font names, ensuring these fonts can be utilized in UIKit components.
-  static func loadFontsOTF() {
+  @MainActor static func loadFontsOTF() {
     guard !fontsOTFUIKitLoaded else { return }
     Font.BonesFontName.allCases
       .map { Bundle.module.url(forResource: Optional($0.rawValue), withExtension: "otf") }
@@ -54,9 +54,11 @@ extension UIFont {
   ///
   /// - Parameter style: The `Font.BonesFontStyle` specifying the desired font style.
   public convenience init(_ style: Font.BonesFontStyle) {
-    UIFont.loadFontsTTF()
-    UIFont.loadFontsOTF()
-    
+    Task {
+      await UIFont.loadFontsTTF()
+      await UIFont.loadFontsOTF()
+    }
+   
     // Define UIFont instances based on the custom BonesFontStyle.
     let h1: Font.BonesFont = .bones(size: 32, weight: .black)
     let h2: Font.BonesFont = .bones(size: 24, weight: .black)

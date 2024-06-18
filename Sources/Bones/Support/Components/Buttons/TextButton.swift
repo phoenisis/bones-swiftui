@@ -26,7 +26,7 @@ struct BonesTextButton: ButtonStyle {
     ) {
       configuration.label
         .font(.bones(.smallBold))
-        .minimumScaleFactor(0.5)
+        .minimumScaleFactor(0.8)
 
       if let icon {
         Image(.bones(icon))

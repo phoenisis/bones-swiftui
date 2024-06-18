@@ -18,7 +18,7 @@ public struct BonesSearchTextFieldStyle: TextFieldStyle {
     .foregroundStyle(Color.bones.textDark)
     .frame(minHeight: 40)
     .padding(.horizontal, .bones(.large))
-    .padding(.vertical, .bones(.medium))
+    .padding(.vertical, .bones(.small))
     .background(
       RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
         .overlay(content: {
@@ -31,7 +31,9 @@ public struct BonesSearchTextFieldStyle: TextFieldStyle {
         )
     )
     .onAppear {
-      UITextField.appearance().clearButtonMode = .whileEditing
+      Task { @MainActor in
+        UITextField.appearance().clearButtonMode = .whileEditing
+      }
     }
   }
 }

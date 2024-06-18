@@ -28,7 +28,7 @@ extension View {
   ///   - bonesLength: The padding value as `BonesPadding`.
   ///
   /// - Returns: A view with applied padding to specific edges.
-  @inlinable public func padding(_ edges: Edge.Set = .all, _ bonesLength: BonesSpacing) -> some View {
+  @inlinable nonisolated public func padding(_ edges: Edge.Set = .all, _ bonesLength: BonesSpacing) -> some View {
     switch bonesLength {
       case .bones(let size):
         return self

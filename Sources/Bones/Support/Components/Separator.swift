@@ -95,13 +95,13 @@ public extension Separator {
 public extension Separator {
   
   /// Bones ``Separator`` thickness.
-  enum Thickness {
+  enum Thickness: Sendable {
     case `default`
     case hairline
     case custom(CGFloat)
     
     /// Value of Bones `Separator` ``Separator/Thickness``.
-    public var value: CGFloat {
+    @MainActor public var value: CGFloat {
       switch self {
         case .`default`:            return 1
         case .hairline:             return .hairline

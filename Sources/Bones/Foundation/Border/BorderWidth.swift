@@ -11,22 +11,22 @@ import CoreGraphics
 #endif
 
 /// Predefiend Bones border widths.
-public enum BorderWidth {
+public enum BorderWidth: Sendable {
   /// 1 pixel border width.
   #if canImport(UIKit)
-    public static let hairline: CGFloat = 1.0 / UIScreen.main.scale
+  @MainActor public static let hairline: CGFloat = 1.0 / UIScreen.main.scale
   #else
-    public static let hairline: CGFloat = 1.0 // Fallback or alternative calculation
+  @MainActor public static let hairline: CGFloat = 1.0 // Fallback or alternative calculation
   #endif
   /// 0.5 pt border width.
-  public static let thin: CGFloat = 0.5
+  @MainActor public static let thin: CGFloat = 0.5
   /// A default 1 pt border.
-  public static let `default`: CGFloat = 1.0
+  @MainActor public static let `default`: CGFloat = 1.0
   /// 2 pt border width used for actively selected or highlighted components.
-  public static let active: CGFloat = 2.0
+  @MainActor public static let active: CGFloat = 2.0
 }
 
 public extension CGFloat {
   /// 1 pixel size.
-  static let hairline: Self = BorderWidth.hairline
+  @MainActor static let hairline: Self = BorderWidth.hairline
 }

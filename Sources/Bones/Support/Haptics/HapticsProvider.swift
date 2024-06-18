@@ -21,13 +21,14 @@ public enum HapticsProvider {
     case notification(_ feedbackType: UINotificationFeedbackGenerator.FeedbackType)
   }
   
-  private static let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-  private static let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-  private static let heavyImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
-  private static let mediumImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-  private static let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+  @MainActor private static let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+  @MainActor private static let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+  @MainActor private static let heavyImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+  @MainActor private static let mediumImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+  @MainActor private static let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
   
   /// Prepares the specified type of haptic feedback generator for use.
+  @MainActor
   public static func prepareHapticFeedbackGenerator(_ type: HapticFeedbackType) {
     switch type {
       case .selection: selectionFeedbackGenerator.prepare()
@@ -39,6 +40,7 @@ public enum HapticsProvider {
   }
   
   /// Triggers the specified type of haptic feedback.
+  @MainActor
   public static func sendHapticFeedback(_ type: HapticFeedbackType) {
     prepareHapticFeedbackGenerator(type)
     

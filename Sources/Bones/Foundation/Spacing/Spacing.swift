@@ -21,7 +21,7 @@ extension BonesConfig {
 /// This enum provides a standardized way to define and use spacing sizes within the
 /// application, leveraging the `CGFloat.BonesSpacing` type for specifying the spacing,
 /// ensuring consistency with the defined design system.
-public enum BonesSpacing { case bones(CGFloat.BonesSpacing) }
+public enum BonesSpacing: Sendable { case bones(CGFloat.BonesSpacing) }
 
 extension CGFloat {
   /// An enumeration of predefined spacing sizes.
@@ -39,7 +39,7 @@ extension CGFloat {
   ///
   /// The actual values for these spacing sizes can be customized by assigning different
   /// values to the corresponding cases in `bonesSpacings`.
-  public enum BonesSpacing: CaseIterable, Identifiable {
+  public enum BonesSpacing: CaseIterable, Identifiable, Sendable {
     case none
     case small
     case medium

@@ -169,7 +169,7 @@ public extension AccessibilityID {
 
 // MARK: - Types
 /// The layout of Bones ``BonesCard`` stack content.
-public struct CardLayout {
+public struct CardLayout: Sendable{
   
   /// Content layout uses a `VStack` with default `.medium` padding and spacing.
   public static let `default` = Self()

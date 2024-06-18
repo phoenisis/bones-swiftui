@@ -52,7 +52,7 @@ public final class Bones {
 
   // Accessors for color tokens and spacing values can be added here
   // if needed in your app.
-  public enum ThemeComponent {
+  public enum ThemeComponent: Sendable {
     case colors([Color.BonesColorToken: String])
     case color(Color.BonesColorToken, withColor: String)
     case spacings([CGFloat.BonesSpacing: CGFloat])
