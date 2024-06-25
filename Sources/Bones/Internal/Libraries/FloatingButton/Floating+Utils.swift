@@ -39,10 +39,10 @@ struct SizeGetter: ViewModifier {
   }
 }
 
-struct SubmenuButtonPreferenceKey: PreferenceKey {
+struct SubmenuButtonPreferenceKey: @preconcurrency PreferenceKey {
   typealias Value = [CGSize]
 
-  static var defaultValue: Value = []
+  @MainActor static var defaultValue: Value = []
 
   static func reduce(value: inout Value, nextValue: () -> Value) {
     value.append(contentsOf: nextValue())

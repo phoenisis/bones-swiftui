@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-var fontsTTFLoaded: Bool = false
-var fontsOTFLoaded: Bool = false
+@MainActor var fontsTTFLoaded: Bool = false
+@MainActor var fontsOTFLoaded: Bool = false
 /// Extends the `Font` struct to include custom font styles and tokens.
 ///
 /// This extension allows for the creation of a flexible and consistent font system
@@ -137,7 +137,7 @@ extension Font {
   ///
   /// This method iterates through all `BonesFontName` cases, attempts to locate the TTF font files
   /// in the module bundle, and registers them with the system for use within the application.
-  static func loadFontsTTF() {
+  @MainActor static func loadFontsTTF() {
     guard !fontsTTFLoaded else { return }
     
     BonesFontName.allCases
@@ -158,7 +158,7 @@ extension Font {
   ///
   /// Similar to `loadFontsTTF`, this method locates and registers OTF font files
   /// for all `BonesFontName` cases, making them available for use within the app.
-  static func loadFontsOTF() {
+  @MainActor static func loadFontsOTF() {
     guard !fontsOTFLoaded else { return }
     
     BonesFontName.allCases
@@ -176,7 +176,7 @@ extension Font {
   ///   - size: The size of the font.
   ///   - relativeTo: The `Font.TextStyle` to which the font size is relative.
   /// - Returns: A `Font` configured with the specified custom font, size, and relative style.
-  static func custom(_ font: BonesFont, size: CGFloat, relativeTo: Font.TextStyle) -> Font {
+  @MainActor static func custom(_ font: BonesFont, size: CGFloat, relativeTo: Font.TextStyle) -> Font {
     Font.loadFontsTTF()
     Font.loadFontsOTF()
     return Font
@@ -191,8 +191,10 @@ extension Font {
   /// - Parameter style: The `BonesFontStyle` specifying the font style to use.
   /// - Returns: A `Font` configured for the specified style.
   public static func custom(_ style: BonesFontStyle) -> Font {
-    Font.loadFontsTTF()
-    Font.loadFontsOTF()
+    Task {
+      await Font.loadFontsTTF()
+      await Font.loadFontsOTF()
+    }
     
     // Define font configurations for different styles.
     let h1: BonesFont = .bones(size: 32, weight: .black)
@@ -248,6 +250,7 @@ extension View {
   ///
   /// - Parameter font: The `BonesFontStyle` specifying the font style to use.
   /// - Returns: The view with the applied custom font.
+  nonisolated
   public func font(_ font: Font.BonesFontStyle) -> some View {
     self
       .font(Font.custom(font))

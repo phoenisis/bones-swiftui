@@ -20,7 +20,7 @@ extension Color {
   ///
   /// This enum defines a comprehensive set of colors represented as tokens,
   /// enabling a consistent and flexible color system within the app.
-  public enum BonesColorToken: String, CaseIterable, Identifiable {
+  public enum BonesColorToken: String, CaseIterable, Sendable, Identifiable {
     case background
     case foreground
     

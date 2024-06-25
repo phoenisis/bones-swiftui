@@ -11,7 +11,7 @@ import SwiftUI
 #endif
 
 /// Extends `UIImage` to conform to `Transferable` for sharing purposes.
-extension UIImage: Transferable {
+extension UIImage: @retroactive Transferable {
   /// The representation used for transferring `UIImage` instances.
   public static var transferRepresentation: some TransferRepresentation {
 
