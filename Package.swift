@@ -30,8 +30,9 @@ let package = Package(
       resources: [
         .process("Resources/Catalogs"),
         .process("Resources/Fonts"),
-        .process("Resources/Lotties")
-      ], 
+        .process("Resources/Lotties"),
+        .process("Resources/Manifests")
+      ],
       swiftSettings: [
         .swiftLanguageVersion(.v6),
       ]
