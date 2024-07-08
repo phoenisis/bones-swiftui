@@ -42,26 +42,24 @@ public enum HapticsProvider {
   /// Triggers the specified type of haptic feedback.
   public static func sendHapticFeedback(_ type: HapticFeedbackType) {
     triggerHapticFeedback(type)
-
-    private static func triggerHapticFeedback(_ type: HapticFeedbackType) {
-      Task { @MainActor in
-        prepareHapticFeedbackGenerator(type)
-    
-        switch type {
-          case .selection:
-            selectionFeedbackGenerator.selectionChanged()
-          case .light(let intensity):
-            lightImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-          case .medium(let intensity):
-            mediumImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-          case .heavy(let intensity):
-            heavyImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-          case .notification(let feedbackType):
-            notificationFeedbackGenerator.notificationOccurred(feedbackType)
-        }
+  }
+   
+  private static func triggerHapticFeedback(_ type: HapticFeedbackType) {
+    Task { @MainActor in
+      prepareHapticFeedbackGenerator(type)
+      
+      switch type {
+        case .selection:
+          selectionFeedbackGenerator.selectionChanged()
+        case .light(let intensity):
+          lightImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .medium(let intensity):
+          mediumImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .heavy(let intensity):
+          heavyImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .notification(let feedbackType):
+          notificationFeedbackGenerator.notificationOccurred(feedbackType)
       }
     }
-    }
-   
   }
 }

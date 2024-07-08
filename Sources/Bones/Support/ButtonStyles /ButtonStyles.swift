@@ -9,7 +9,7 @@ import SwiftUI
 
 /// An extension that provides a variety of button styles to SwiftUI views.
 extension View {
-  
+
   /// Applies a specific button style to a view.
   ///
   /// This function takes a predefined button style and applies it to the view.
@@ -83,7 +83,7 @@ extension View {
         }
     }
   }
-  
+
   public func buttonStyle<S>(_ bonesStyle: BonesButtonStyles) -> some View where S : PrimitiveButtonStyle {
     switch bonesStyle {
       case .bones(let style):
