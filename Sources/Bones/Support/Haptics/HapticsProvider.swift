@@ -13,7 +13,7 @@ import SwiftUI
 /// A utility to provide haptic feedback in iOS applications.
 public enum HapticsProvider {
   /// The types of haptic feedback that can be generated.
-  public enum HapticFeedbackType {
+  public enum HapticFeedbackType : Sendable{
     case selection
     case light(_ intensity: CGFloat = 1.0)
     case medium(_ intensity: CGFloat = 1.0)
@@ -40,21 +40,23 @@ public enum HapticsProvider {
   }
   
   /// Triggers the specified type of haptic feedback.
-  @MainActor
   public static func sendHapticFeedback(_ type: HapticFeedbackType) {
-    prepareHapticFeedbackGenerator(type)
-    
-    switch type {
-      case .selection:
-        selectionFeedbackGenerator.selectionChanged()
-      case .light(let intensity):
-        lightImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-      case .medium(let intensity):
-        mediumImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-      case .heavy(let intensity):
-        heavyImpactFeedbackGenerator.impactOccurred(intensity: intensity)
-      case .notification(let feedbackType):
-        notificationFeedbackGenerator.notificationOccurred(feedbackType)
+    Task { @MainActor in
+      prepareHapticFeedbackGenerator(type)
+      
+      switch type {
+        case .selection:
+          selectionFeedbackGenerator.selectionChanged()
+        case .light(let intensity):
+          lightImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .medium(let intensity):
+          mediumImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .heavy(let intensity):
+          heavyImpactFeedbackGenerator.impactOccurred(intensity: intensity)
+        case .notification(let feedbackType):
+          notificationFeedbackGenerator.notificationOccurred(feedbackType)
+      }
     }
+   
   }
 }

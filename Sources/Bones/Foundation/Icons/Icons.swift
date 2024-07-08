@@ -198,7 +198,6 @@ extension Image {
             self.init(systemName: "globe.europe.africa")
           case .globFill:
             self.init(systemName: "globe.europe.africa.fill")
-            
           // MARK: Custom
           case .bolt:
             self.init("bolt", bundle: .module)

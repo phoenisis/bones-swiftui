@@ -57,7 +57,6 @@ public struct CardHistorySocialTag: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundStyle(Color.bones.grey4)
                 .transition(.movingParts.snapshot)
-
             @unknown default:
               EmptyView()
           }

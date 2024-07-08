@@ -171,11 +171,9 @@ struct MainTabView: View {
       case .move:
         List{}
           .listBackgroundColor(.bones(.AQILevel3))
-
       case .profile:
         List{}
           .listBackgroundColor(.bones(.AQILevel4))
-
     }
   }
 }

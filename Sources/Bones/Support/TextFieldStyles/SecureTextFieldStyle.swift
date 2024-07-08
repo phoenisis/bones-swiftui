@@ -19,34 +19,48 @@ public struct BonesSecureTextFieldStyle: TextFieldStyle {
 
   /// Stylizes the body of the secure text field with a visibility toggle button.
   public func _body(configuration: TextField<Self._Label>) -> some View {
-    HStack(alignment: .center, content: {
-      configuration
-        .font(.bones(.bodyBold))
-      Button(action: { securityChanged() }, label: {
-        Image( isProtected
-          ? .bones(.passwordOn)
-          : .bones(.passwordOff)
+    configuration
+      .font(.bones(.bodyBold))
+      .frame(alignment: .leading)
+      .padding(.horizontal, .bones(.medium))
+      .padding(.vertical, .bones(.medium))
+      .padding(.trailing, .bones(.large))
+      .frame(minHeight: 40)
+      .foregroundStyle(Color.bones.textDark)
+      .background(
+        RoundedRectangle(
+          bonesRadius: .bones(.medium),
+          style: .continuous
         )
-      })
-    })
-    .frame(alignment: .leading)
-    .frame(minHeight: 40)
-    .padding(.horizontal, .bones(.large))
-    .padding(.vertical, .bones(.medium))
-    .foregroundStyle(Color.bones.textDark)
-    .background(
-      RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .overlay(content: {
-          RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-            .stroke(Color.bones.grey2, lineWidth: 2)
-        })
+        .overlay {
+          RoundedRectangle(
+            bonesRadius: .bones(.medium),
+            style: .continuous
+          )
+          .stroke(Color.bones.grey2, lineWidth: 2)
+        }
         .foregroundStyle(
           Color.bones.white
             .shadow(.bones.inner(.close))
         )
-    )
-    .tint(Color.bones.textDark)
-    .disableAutocorrection(true)
-    .autocapitalization(.none)
+      )
+      .overlay(
+        alignment: .trailing,
+        content: {
+          Button(
+            action: { securityChanged() },
+            label: {
+              Image( isProtected
+                ? .bones(.passwordOn)
+                : .bones(.passwordOff)
+              )
+            }
+          )
+          .padding(.trailing, .bones(.medium))
+        }
+      )
+      .tint(Color.bones.textDark)
+      .disableAutocorrection(true)
+      .autocapitalization(.none)
   }
 }

@@ -60,7 +60,6 @@ extension View {
               case .round(let type):
                 return AnyView(self.buttonStyle(BonesTrackerRoundButton(buttonType: type)))
             }
-                        
           case let .navBar(variant):
             switch variant {
               case .icon(let icon):
@@ -68,23 +67,17 @@ extension View {
               case .text:
                 return AnyView(self.buttonStyle(BonesNavbarButton()))
             }
-            
           case let .shape(variant):
             switch variant {
               case .rectangle(let radius, let fillColor, let shadow):
                 return AnyView(self.buttonStyle(BonesRectangleButton(radius: radius, fillColor: fillColor, shadow: shadow)))
             }
-            
           case .navigation:
             return AnyView(self.buttonStyle(BonesNavigationButton(isOpen: false, isLeading: false)))
-            
           case .quiz(style: let style, isSelected: let isSelected, imageUrl: let imageUrl):
             return AnyView(self.buttonStyle(BonesQuizButtonStyle(style: style, isSelected: isSelected, imageUrl: imageUrl)))
-            
           case let .socialTag(availability, remaining, image, description, date, points):
             return AnyView(self.buttonStyle(BonesSocialTagSelectionButton(availability: availability, remaining: remaining, image: image, description: description, date: date, points: points)))
-            
-            
           case let .boost(startAt, endAt):
             return AnyView(self.buttonStyle(BonesBoostButton(startDate: startAt, endDate: endAt)))
         }
@@ -136,7 +129,6 @@ extension View {
               case .round(let type):
                 return AnyView(self.buttonStyle(BonesTrackerRoundButton(buttonType: type)))
             }
-                        
           case let .navBar(variant):
             switch variant {
               case .icon(let icon):
@@ -144,22 +136,17 @@ extension View {
               case .text:
                 return AnyView(self.buttonStyle(BonesNavbarButton()))
             }
-            
           case let .shape(variant):
             switch variant {
               case .rectangle(let radius, let fillColor, let shadow):
                 return AnyView(self.buttonStyle(BonesRectangleButton(radius: radius, fillColor: fillColor, shadow: shadow)))
             }
-            
           case .navigation:
             return AnyView(self.buttonStyle(BonesNavigationButton(isOpen: false, isLeading: false)))
-            
           case let .quiz(style, isSelected, imageUrl):
             return AnyView(self.buttonStyle(BonesQuizButtonStyle(style: style, isSelected: isSelected, imageUrl: imageUrl)))
-            
           case let .socialTag(availability, remaining, image, description, date, points):
             return AnyView(self.buttonStyle(BonesSocialTagSelectionButton(availability: availability, remaining: remaining, image: image, description: description, date: date, points: points)))
-            
           case let .boost(startAt, endAt):
             return AnyView(self.buttonStyle(BonesBoostButton(startDate: startAt, endDate: endAt)))
         }
