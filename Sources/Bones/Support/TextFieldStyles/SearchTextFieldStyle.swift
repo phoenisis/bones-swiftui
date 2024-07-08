@@ -10,30 +10,43 @@ import SwiftUI
 public struct BonesSearchTextFieldStyle: TextFieldStyle {
   /// Stylizes the body of the text field with a search icon.
   public func _body(configuration: TextField<Self._Label>) -> some View {
-    HStack(alignment: .center, spacing: .bones(.medium)) {
-      Image(.bones(.search))
-      configuration
-    }
-    .font(.bones(.bodyBold))
-    .foregroundStyle(Color.bones.textDark)
-    .frame(minHeight: 40)
-    .padding(.horizontal, .bones(.large))
-    .padding(.vertical, .bones(.small))
-    .background(
-      RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-        .overlay(content: {
-          RoundedRectangle(bonesRadius: .bones(.medium), style: .continuous)
-            .stroke(Color.bones.grey2, lineWidth: 2)
-        })
+    configuration
+      .font(.bones(.bodyBold))
+      .foregroundStyle(Color.bones.textDark)
+      .padding(.leading, .bones(.large))
+      .padding(.horizontal, .bones(.medium))
+      .padding(.vertical, .bones(.medium))
+      .frame(minHeight: 40)
+      .background(
+        RoundedRectangle(
+          bonesRadius: .bones(.medium),
+          style: .continuous
+        )
+        .overlay {
+          RoundedRectangle(
+            bonesRadius: .bones(.medium),
+            style: .continuous
+          )
+          .stroke(Color.bones.grey2, lineWidth: 2)
+        }
         .foregroundStyle(
           Color.bones.white
             .shadow(.bones.inner(.close))
         )
-    )
-    .onAppear {
-      Task { @MainActor in
-        UITextField.appearance().clearButtonMode = .whileEditing
+      )
+      .overlay(
+        alignment: .leading,
+        content: {
+          Image(.bones(.search))
+            .font(.bones(.bodyBold))
+            .padding(.leading, .bones(.medium))
+            .allowsHitTesting(false)
+        }
+      )
+      .onAppear {
+        Task { @MainActor in
+          UITextField.appearance().clearButtonMode = .whileEditing
+        }
       }
-    }
   }
 }

@@ -12,9 +12,9 @@ public struct BonesDefaultTextFieldStyle: TextFieldStyle {
     configuration
       .font(.bones(.bodyBold))
       .foregroundStyle(Color.bones.textDark)
-      .frame(minHeight: 40)
-      .padding(.horizontal, .bones(.large))
+      .padding(.horizontal, .bones(.medium))
       .padding(.vertical, .bones(.medium))
+      .frame(minHeight: 40)
       .background(
         RoundedRectangle(
           bonesRadius: .bones(.medium),

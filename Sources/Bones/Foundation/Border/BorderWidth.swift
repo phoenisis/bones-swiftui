@@ -14,9 +14,9 @@ import CoreGraphics
 public enum BorderWidth: Sendable {
   /// 1 pixel border width.
   #if canImport(UIKit)
-  @MainActor public static let hairline: CGFloat = 1.0 / UIScreen.main.scale
+    @MainActor public static let hairline: CGFloat = 1.0 / UIScreen.main.scale
   #else
-  @MainActor public static let hairline: CGFloat = 1.0 // Fallback or alternative calculation
+    @MainActor public static let hairline: CGFloat = 1.0 // Fallback or alternative calculation
   #endif
   /// 0.5 pt border width.
   @MainActor public static let thin: CGFloat = 0.5
