@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-public struct BonesSearchTextFieldStyle: TextFieldStyle {
+public struct BonesSearchTextFieldStyle: @preconcurrency TextFieldStyle {
   /// Stylizes the body of the text field with a search icon.
-  public func _body(configuration: TextField<Self._Label>) -> some View {
+  @MainActor public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .font(.bones(.bodyBold))
       .foregroundStyle(Color.bones.textDark)

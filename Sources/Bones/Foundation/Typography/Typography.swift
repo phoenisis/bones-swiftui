@@ -190,10 +190,10 @@ extension Font {
   ///
   /// - Parameter style: The `BonesFontStyle` specifying the font style to use.
   /// - Returns: A `Font` configured for the specified style.
-  public static func custom(_ style: BonesFontStyle) -> Font {
+  @MainActor public static func custom(_ style: BonesFontStyle) -> Font {
     Task {
-      await Font.loadFontsTTF()
-      await Font.loadFontsOTF()
+      Font.loadFontsTTF()
+      Font.loadFontsOTF()
     }
     
     // Define font configurations for different styles.
@@ -250,7 +250,6 @@ extension View {
   ///
   /// - Parameter font: The `BonesFontStyle` specifying the font style to use.
   /// - Returns: The view with the applied custom font.
-  nonisolated
   public func font(_ font: Font.BonesFontStyle) -> some View {
     self
       .font(Font.custom(font))

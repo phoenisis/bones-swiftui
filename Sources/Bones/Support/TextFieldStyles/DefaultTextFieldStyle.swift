@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public struct BonesDefaultTextFieldStyle: TextFieldStyle {
-  public func _body(configuration: TextField<Self._Label>) -> some View {
+public struct BonesDefaultTextFieldStyle: @preconcurrency TextFieldStyle {
+  @MainActor public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .font(.bones(.bodyBold))
       .foregroundStyle(Color.bones.textDark)

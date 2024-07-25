@@ -53,10 +53,10 @@ extension UIFont {
   /// including handling accessibility settings like bold text enhancement.
   ///
   /// - Parameter style: The `Font.BonesFontStyle` specifying the desired font style.
-  public convenience init(_ style: Font.BonesFontStyle) {
+  @MainActor public convenience init(_ style: Font.BonesFontStyle) {
     Task {
-      await UIFont.loadFontsTTF()
-      await UIFont.loadFontsOTF()
+      UIFont.loadFontsTTF()
+      UIFont.loadFontsOTF()
     }
    
     // Define UIFont instances based on the custom BonesFontStyle.

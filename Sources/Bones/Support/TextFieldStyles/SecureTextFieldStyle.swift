@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct BonesSecureTextFieldStyle: TextFieldStyle {
+public struct BonesSecureTextFieldStyle: @preconcurrency TextFieldStyle {
   let isProtected: Bool
   var securityChanged: () -> Void
 
@@ -18,7 +18,7 @@ public struct BonesSecureTextFieldStyle: TextFieldStyle {
   }
 
   /// Stylizes the body of the secure text field with a visibility toggle button.
-  public func _body(configuration: TextField<Self._Label>) -> some View {
+  @MainActor public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .font(.bones(.bodyBold))
       .frame(alignment: .leading)
